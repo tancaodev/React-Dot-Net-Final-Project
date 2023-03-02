@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import {
   FaFacebookF,
   FaTwitter,
@@ -19,21 +20,19 @@ function Navbar() {
     <div className='w-full min-h-[50px] flex justify-between items-center absolute z-10 text-white bg-gray-700/80'>
       <ul className='hidden sm:flex px-4'>
         <li>
-          <a href='/'>HOME</a>
-        </li>
-        <li>
           <a href='#categories'>CATEGORIES</a>
         </li>
         <li>
-          <a href='#cpus'>CPUS</a>
+          <NavLink to='/cpus'>CPUS</NavLink>
         </li>
         <li>
-          <a href='#smartphones'>SMARTPHONES</a>
+          <NavLink to='/smartphones'>SMARTPHONES</NavLink>
         </li>
         <li>
-          <a href='#laptops'>LAPTOPS</a>
+          <NavLink to='/laptops'>LAPTOPS</NavLink>
         </li>
       </ul>
+
       <div className='flex justify-between'>
         <FaFacebookF className='mx-4' />
         <FaTwitter className='mx-4' />
@@ -46,7 +45,7 @@ function Navbar() {
       </div>
       {/* Mobile Menu */}
       <div
-      onClick={handleNav}
+        onClick={handleNav}
         className={
           nav
             ? 'overflow-y-hidden md:hidden ease-in duration-300 absolute text-gray-300 left-0 top-0 w-full h-screen bg-black/90 px-4 py-7 flex flex-col'

@@ -1,12 +1,12 @@
 import React from "react";
-import { BsCpu } from "react-icons/bs";
+import { GiSniffingDog } from "react-icons/gi";
 
 function TopBar() {
   return (
     <div className="flex justify-between items-center px-4 py-2">
-      <a href='/' className="flex items-center">
-        <BsCpu
-          size={30}
+      <a href='/' className="flex items-center border-none">
+        <GiSniffingDog
+          size={40}
           className="text-[var(--primary-dark)] mr-2"
         />
         <h1 className="text-xl font-bold text-gray-700">NASUS</h1>

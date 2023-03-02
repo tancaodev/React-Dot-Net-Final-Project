@@ -1,22 +1,19 @@
-import Activities from "./components/Activities";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-import Gallery from "./components/Gallery";
-import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
-import TopBar from "./components/TopBar";
+import { Routes, Route } from 'react-router-dom';
+import Cpus from './pages/Cpus';
+import Homepage from './pages/Homepage';
+import Laptops from './pages/Laptops';
+import Phones from './pages/Phones';
 
 function App() {
   return (
-    <div>
-      <TopBar />
-      <Navbar />
-      <Hero />
-      <Activities />
-      <Gallery />
-      <Contact />
-      <Footer />
-    </div>
+    <>
+      <Routes>
+        <Route path='/' element={<Homepage />} />
+        <Route path='/cpus' element={<Cpus />} />
+        <Route path='/smartphones' element={<Phones />} />
+        <Route path='/laptops' element={<Laptops />} />
+      </Routes>
+    </>
   );
 }
 

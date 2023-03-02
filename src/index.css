@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
 
 :root {
     --primary-dark: #5651e5;
@@ -28,5 +28,9 @@
 
     h2 {
         @apply text-xl font-bold
+    }
+
+    a:hover {
+        @apply text-white border-b-2 border-white
     }
 }
