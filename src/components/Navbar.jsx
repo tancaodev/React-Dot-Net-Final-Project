@@ -20,7 +20,7 @@ function Navbar() {
     <div className='w-full min-h-[50px] flex justify-between items-center absolute z-10 text-white bg-gray-700/80'>
       <ul className='hidden sm:flex px-4'>
         <li>
-          <a href='#categories'>CATEGORIES</a>
+          <a href='/categories'>CATEGORIES</a>
         </li>
         <li>
           <NavLink to='/cpus'>CPUS</NavLink>

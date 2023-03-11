@@ -34,3 +34,47 @@
         @apply text-white border-b-2 border-white
     }
 }
+
+@layer components {
+    .menu-item {
+        @apply pb-0 p-2 inline-block border-b-[4px] border-spacing-y-4 border-black hover:border-white
+    }
+
+    .logo:hover {
+        @apply border-none
+    }
+
+    .mega-sub-item:hover {
+        @apply block bg-white text-black cursor-pointer
+    }
+
+    .mega-sub-item-title {
+        @apply block font-semibold text-xl mb-5
+    }
+
+    .menu-sub-item:hover {
+        @apply block bg-white text-black
+    }
+
+    input:focus-within~label:not(#rememberMe), 
+    input:not(:placeholder-shown)~label:not(#rememberMe) {
+        @apply transform scale-75 -translate-y-6;
+    }
+
+    input:focus-within~label {
+        @apply text-blue-500;
+    }  
+}
+
+@layer utilities {
+    .sub-dropdown:hover>.sub-dropdown-content {
+        opacity: 1;
+        visibility: visible;
+        top: 0;
+    }
+
+    .sub-dropdown:hover>a {
+        background-color: #fff;
+        text-decoration-color: black;
+    }
+}

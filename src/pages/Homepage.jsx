@@ -8,7 +8,7 @@ import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
 import TopBar from "../components/TopBar";
 
-function Homepage() {
+export const Homepage = () => {
   return (
     <div>
       <TopBar />
@@ -21,5 +21,3 @@ function Homepage() {
     </div>
   )
 }
-
-export default Homepage
