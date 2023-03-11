@@ -27,57 +27,49 @@ function Laptops() {
 
               <div className=''>
                 <p className='px-4 pt-5 pb-8 text-lg'>
-                  Lenovo ThinkPad X1 Extreme 16" WQUXGA Intel Core i9-12900H
-                  2.5GHz / Nvidia GeForce RTX 3080 Ti Laptop / 64GB RAM / 4TB
-                  SSD
+                  Lenovo ThinkPad X1 Extreme 16" Intel Core i9-12900H
                 </p>
                 <ul className='font-sans'>
                   <li className='py-1'>
-                    <div>Design</div>
+                    <div>CPU Speed Base</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Display</div>
+                    <div>CPU Speed Boost</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Performance</div>
+                    <div>Ram</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Cameras</div>
+                    <div>Ram Speed</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[80%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Operating System</div>
+                    <div>Screen Size</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[30%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Battery</div>
+                    <div>Resolution</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[60%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Audio</div>
+                    <div>Weight</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[50%] bg-green-400'></div>
-                    </div>
-                  </li>
-                  <li className='py-1'>
-                    <div>Features</div>
-                    <div className='w-[100%] bg-gray-300'>
-                      <div className='text-right py-[2px] text-white w-[10%] bg-green-400'></div>
                     </div>
                   </li>
                 </ul>
@@ -98,56 +90,48 @@ function Laptops() {
               <div className=''>
                 <p className='px-4 pt-5 pb-8 text-lg'>
                   Lenovo ThinkPad X1 Extreme 16" WQUXGA Intel Core i7-12800H
-                  1.8GHz / Nvidia GeForce RTX 3070 Ti Laptop / 64GB RAM / 4TB
-                  SSD
                 </p>
                 <ul className='font-sans'>
-                  <li className='py-1'>
-                    <div>Design</div>
+                <li className='py-1'>
+                    <div>CPU Speed Base</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Display</div>
+                    <div>CPU Speed Boost</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Performance</div>
+                    <div>Ram</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Cameras</div>
+                    <div>Ram Speed</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[80%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Operating System</div>
+                    <div>Screen Size</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[30%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Battery</div>
+                    <div>Resolution</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[60%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Audio</div>
+                    <div>Weight</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[50%] bg-green-400'></div>
-                    </div>
-                  </li>
-                  <li className='py-1'>
-                    <div>Features</div>
-                    <div className='w-[100%] bg-gray-300'>
-                      <div className='text-right py-[2px] text-white w-[10%] bg-green-400'></div>
                     </div>
                   </li>
                 </ul>
@@ -168,56 +152,48 @@ function Laptops() {
               <div className=''>
                 <p className='px-4 pt-5 pb-8 text-lg'>
                   Lenovo ThinkPad X1 Extreme 16" WQUXGA Intel Core i7-12800H
-                  1.8GHz / Nvidia GeForce RTX 3050 Ti Laptop / 64GB RAM / 4TB
-                  SSD + 4TB SSD
                 </p>
                 <ul className='font-sans'>
-                  <li className='py-1'>
-                    <div>Design</div>
+                <li className='py-1'>
+                    <div>CPU Speed Base</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Display</div>
+                    <div>CPU Speed Boost</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Performance</div>
+                    <div>Ram</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Cameras</div>
+                    <div>Ram Speed</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[80%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Operating System</div>
+                    <div>Screen Size</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[30%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Battery</div>
+                    <div>Resolution</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[60%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Audio</div>
+                    <div>Weight</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[50%] bg-green-400'></div>
-                    </div>
-                  </li>
-                  <li className='py-1'>
-                    <div>Features</div>
-                    <div className='w-[100%] bg-gray-300'>
-                      <div className='text-right py-[2px] text-white w-[10%] bg-green-400'></div>
                     </div>
                   </li>
                 </ul>
@@ -242,52 +218,46 @@ function Laptops() {
                   SSD
                 </p>
                 <ul className='font-sans'>
-                  <li className='py-1'>
-                    <div>Design</div>
+                <li className='py-1'>
+                    <div>CPU Speed Base</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Display</div>
+                    <div>CPU Speed Boost</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Performance</div>
+                    <div>Ram</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Cameras</div>
+                    <div>Ram Speed</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[80%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Operating System</div>
+                    <div>Screen Size</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[30%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Battery</div>
+                    <div>Resolution</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[60%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Audio</div>
+                    <div>Weight</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[50%] bg-green-400'></div>
-                    </div>
-                  </li>
-                  <li className='py-1'>
-                    <div>Features</div>
-                    <div className='w-[100%] bg-gray-300'>
-                      <div className='text-right py-[2px] text-white w-[10%] bg-green-400'></div>
                     </div>
                   </li>
                 </ul>
@@ -311,52 +281,46 @@ function Laptops() {
                   GeForce RTX 3080 Laptop / 64GB RAM / 4TB SSD
                 </p>
                 <ul className='font-sans'>
-                  <li className='py-1'>
-                    <div>Design</div>
+                <li className='py-1'>
+                    <div>CPU Speed Base</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Display</div>
+                    <div>CPU Speed Boost</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Performance</div>
+                    <div>Ram</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Cameras</div>
+                    <div>Ram Speed</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[80%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Operating System</div>
+                    <div>Screen Size</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[30%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Battery</div>
+                    <div>Resolution</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[60%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Audio</div>
+                    <div>Weight</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[50%] bg-green-400'></div>
-                    </div>
-                  </li>
-                  <li className='py-1'>
-                    <div>Features</div>
-                    <div className='w-[100%] bg-gray-300'>
-                      <div className='text-right py-[2px] text-white w-[10%] bg-green-400'></div>
                     </div>
                   </li>
                 </ul>
@@ -380,52 +344,46 @@ function Laptops() {
                   Nvidia GeForce RTX 3080 Ti Laptop / 32GB RAM / 1TB SSD
                 </p>
                 <ul className='font-sans'>
-                  <li className='py-1'>
-                    <div>Design</div>
+                <li className='py-1'>
+                    <div>CPU Speed Base</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Display</div>
+                    <div>CPU Speed Boost</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Performance</div>
+                    <div>Ram</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Cameras</div>
+                    <div>Ram Speed</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[80%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Operating System</div>
+                    <div>Screen Size</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[30%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Battery</div>
+                    <div>Resolution</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[60%] bg-green-400'></div>
                     </div>
                   </li>
                   <li className='py-1'>
-                    <div>Audio</div>
+                    <div>Weight</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[50%] bg-green-400'></div>
-                    </div>
-                  </li>
-                  <li className='py-1'>
-                    <div>Features</div>
-                    <div className='w-[100%] bg-gray-300'>
-                      <div className='text-right py-[2px] text-white w-[10%] bg-green-400'></div>
                     </div>
                   </li>
                 </ul>
