@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Booking() {
+export const Booking = () => {
   return (
     <div id='deals' className='max-w-[1140px] m-auto w-full p-4'>
       <form className='lg:flex lg:justify-between w-full items-center'>
@@ -32,4 +32,3 @@ function Booking() {
   );
 }
 
-export default Booking;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Gallery() {
+export const Gallery = () => {
   return (
     <div id='gallery' className='max-w-[1140px] m-auto w-full px-4 py-16'>
       <h2 className='text-center text-gray-700 p-4'>Most popular phone</h2>
@@ -46,4 +46,3 @@ function Gallery() {
   );
 }
 
-export default Gallery;

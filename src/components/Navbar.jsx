@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import {
   FaFacebookF,
   FaTwitter,
@@ -9,7 +9,7 @@ import {
   FaBars,
 } from 'react-icons/fa';
 
-function Navbar() {
+export const Navbar = () => {
   const [nav, setNav] = useState(false);
 
   const handleNav = () => {
@@ -20,16 +20,24 @@ function Navbar() {
     <div className='w-full min-h-[50px] flex justify-between items-center absolute z-10 text-white bg-gray-700/80'>
       <ul className='hidden sm:flex px-4'>
         <li>
-          <a href='/categories'>CATEGORIES</a>
+          <NavLink to='/categories' className='link'>
+            CATEGORIES
+          </NavLink>
         </li>
         <li>
-          <NavLink to='/cpus'>CPUS</NavLink>
+          <NavLink to='/cpus' className='link'>
+            CPUS
+          </NavLink>
         </li>
         <li>
-          <NavLink to='/smartphones'>SMARTPHONES</NavLink>
+          <NavLink to='/smartphones' className='link'>
+            SMARTPHONES
+          </NavLink>
         </li>
         <li>
-          <NavLink to='/laptops'>LAPTOPS</NavLink>
+          <NavLink to='/laptops' className='link'>
+            LAPTOPS
+          </NavLink>
         </li>
       </ul>
 
@@ -71,4 +79,3 @@ function Navbar() {
   );
 }
 
-export default Navbar;

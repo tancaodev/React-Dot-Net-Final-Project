@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Activities() {
+export const Activities = () => {
   return (
     <div className='max-w-[1140px] m-auto w-full md:flex mt-[-75px]'>
       <div className='relative p-4'>
@@ -41,4 +41,3 @@ function Activities() {
   );
 }
 
-export default Activities;

@@ -1,7 +1,7 @@
 import React from 'react'
 import { GiSniffingDog } from "react-icons/gi";
 
-function Footer() {
+export const Footer = () => {
   return (
     <div className='max-w-[1140px] w-full py-8 m-auto border-t-4'>
         <div className='flex items-center m-auto justify-center'> 
@@ -11,5 +11,3 @@ function Footer() {
     </div>
   )
 }
-
-export default Footer

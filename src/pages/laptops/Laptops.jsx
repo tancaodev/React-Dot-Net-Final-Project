@@ -1,10 +1,14 @@
 import React from 'react';
-import Breadcrumbs from '../components/Breadcrumbs';
-import Footer from '../components/Footer';
-import { DropDownMenu } from '../components/DropDownMenu';
-import { Sidebar } from '../components/Sidebar';
+import { Link } from 'react-router-dom';
 
-function Laptops() {
+import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { Footer } from '../../components/Footer';
+import { DropDownMenu } from '../../components/DropDownMenu';
+import { Sidebar } from '../../components/Sidebar';
+import { LaptopComponent } from './LaptopComponent';
+import { Outlet } from 'react-router-dom';
+
+export const Laptops = () => {
   return (
     <div className='max-h-full bg-gray-50'>
       <DropDownMenu />
@@ -15,70 +19,9 @@ function Laptops() {
           <Sidebar />
         </div>
         <div className='w-3/4 grid grid-cols-3 gap-4 pl-5 pr-[160px]'>
+          <LaptopComponent />
           <div className='bg-white border-2 rounded-md shadow-md'>
-            <a href='#laptops' className=''>
-              <div className='w-[100%] flex justify-center'>
-                <img
-                  src='https://images.versus.io/objects/lenovo-thinkpad-x1-extreme-16-wquxga-intel-core-i9-12900h-2-5ghz-nvidia-geforce-rtx-3080-ti-laptop-64gb-ram-4tb-ssd.front.variety.1676373221082.jpg'
-                  alt='/'
-                  className='w-[100%] h-[100%] object-contain p-2'
-                />
-              </div>
-
-              <div className=''>
-                <p className='px-4 pt-5 pb-8 text-lg'>
-                  Lenovo ThinkPad X1 Extreme 16" Intel Core i9-12900H
-                </p>
-                <ul className='font-sans'>
-                  <li className='py-1'>
-                    <div>CPU Speed Base</div>
-                    <div className='w-[100%] bg-gray-300'>
-                      <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
-                    </div>
-                  </li>
-                  <li className='py-1'>
-                    <div>CPU Speed Boost</div>
-                    <div className='w-[100%] bg-gray-300'>
-                      <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
-                    </div>
-                  </li>
-                  <li className='py-1'>
-                    <div>Ram</div>
-                    <div className='w-[100%] bg-gray-300'>
-                      <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
-                    </div>
-                  </li>
-                  <li className='py-1'>
-                    <div>Ram Speed</div>
-                    <div className='w-[100%] bg-gray-300'>
-                      <div className='text-right py-[2px] text-white w-[80%] bg-green-400'></div>
-                    </div>
-                  </li>
-                  <li className='py-1'>
-                    <div>Screen Size</div>
-                    <div className='w-[100%] bg-gray-300'>
-                      <div className='text-right py-[2px] text-white w-[30%] bg-green-400'></div>
-                    </div>
-                  </li>
-                  <li className='py-1'>
-                    <div>Resolution</div>
-                    <div className='w-[100%] bg-gray-300'>
-                      <div className='text-right py-[2px] text-white w-[60%] bg-green-400'></div>
-                    </div>
-                  </li>
-                  <li className='py-1'>
-                    <div>Weight</div>
-                    <div className='w-[100%] bg-gray-300'>
-                      <div className='text-right py-[2px] text-white w-[50%] bg-green-400'></div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </a>
-          </div>
-
-          <div className='bg-white border-2 rounded-md shadow-md'>
-            <a href='#laptops' className=''>
+            <Link to='/laptops/1' href='/laptops/1' className=''>
               <div className='w-[100%] flex justify-center'>
                 <img
                   src='https://images.versus.io/objects/lenovo-thinkpad-x1-extreme-16-wquxga-intel-core-i7-12800h-1-8ghz-nvidia-geforce-rtx-3070-ti-laptop-64gb-ram-4tb-ssd.front.variety.1676384767281.jpg'
@@ -92,7 +35,7 @@ function Laptops() {
                   Lenovo ThinkPad X1 Extreme 16" WQUXGA Intel Core i7-12800H
                 </p>
                 <ul className='font-sans'>
-                <li className='py-1'>
+                  <li className='py-1'>
                     <div>CPU Speed Base</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
@@ -136,7 +79,7 @@ function Laptops() {
                   </li>
                 </ul>
               </div>
-            </a>
+            </Link>
           </div>
 
           <div className='bg-white border-2 rounded-md shadow-md'>
@@ -154,7 +97,7 @@ function Laptops() {
                   Lenovo ThinkPad X1 Extreme 16" WQUXGA Intel Core i7-12800H
                 </p>
                 <ul className='font-sans'>
-                <li className='py-1'>
+                  <li className='py-1'>
                     <div>CPU Speed Base</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
@@ -218,7 +161,7 @@ function Laptops() {
                   SSD
                 </p>
                 <ul className='font-sans'>
-                <li className='py-1'>
+                  <li className='py-1'>
                     <div>CPU Speed Base</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
@@ -281,7 +224,7 @@ function Laptops() {
                   GeForce RTX 3080 Laptop / 64GB RAM / 4TB SSD
                 </p>
                 <ul className='font-sans'>
-                <li className='py-1'>
+                  <li className='py-1'>
                     <div>CPU Speed Base</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
@@ -344,7 +287,7 @@ function Laptops() {
                   Nvidia GeForce RTX 3080 Ti Laptop / 32GB RAM / 1TB SSD
                 </p>
                 <ul className='font-sans'>
-                <li className='py-1'>
+                  <li className='py-1'>
                     <div>CPU Speed Base</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
@@ -390,12 +333,12 @@ function Laptops() {
               </div>
             </a>
           </div>
+      <Outlet />
         </div>
-      </div>
 
+
+      </div>
       <Footer />
     </div>
   );
 }
-
-export default Laptops;

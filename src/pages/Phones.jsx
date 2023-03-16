@@ -1,10 +1,10 @@
 import React from 'react';
-import Breadcrumbs from '../components/Breadcrumbs';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 import { DropDownMenu } from '../components/DropDownMenu';
-import Footer from '../components/Footer';
+import { Footer } from '../components/Footer';
 import { Sidebar } from '../components/Sidebar';
 
-function Phones() {
+export const Phones = () => {
   return (
     <div className='max-h-full bg-gray-50'>
       <DropDownMenu />
@@ -97,12 +97,93 @@ function Phones() {
                 </p>
                 <ul className='font-sans'>
                   <li className='py-1'>
+                      <div>Design</div>
+                        <progress
+                          className='w-[100%] h-[4px] p-0 m-0'
+                          value={2.5}
+                          max={5}
+                        ></progress>
+                        {/* <div className='text-right py-[2px] text-white w-[90%] aria bg-green-400'></div> */}
+                  </li>
+                  <li className='py-1'>
                     <div>Design</div>
-                    <div className='w-[100%] bg-gray-300'>
-                      <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
+                    <div className='w-[100%]'>
+                      <progress
+                        className='w-[100%]'
+                        value={2.5}
+                        max={5}
+                      ></progress>
+                      {/* <div className='text-right py-[2px] text-white w-[90%] aria bg-green-400'></div> */}
                     </div>
                   </li>
                   <li className='py-1'>
+                    <div>Design</div>
+                    <div className='w-[100%]'>
+                      <progress
+                        className='w-[100%]'
+                        value={2.5}
+                        max={5}
+                      ></progress>
+                      {/* <div className='text-right py-[2px] text-white w-[90%] aria bg-green-400'></div> */}
+                    </div>
+                  </li>
+                  <li className='py-1'>
+                    <div>Design</div>
+                    <div className='w-[100%]'>
+                      <progress
+                        className='w-[100%] h-[4px]'
+                        value={2.5}
+                        max={5}
+                      ></progress>
+                      {/* <div className='text-right py-[2px] text-white w-[90%] aria bg-green-400'></div> */}
+                    </div>
+                  </li>
+                  <li className='py-1'>
+                    <div>Design</div>
+                    <div className='w-[100%]'>
+                      <progress
+                        className='w-[100%] h-[4px]'
+                        value={2.5}
+                        max={5}
+                      ></progress>
+                      {/* <div className='text-right py-[2px] text-white w-[90%] aria bg-green-400'></div> */}
+                    </div>
+                  </li>
+                  <li className='py-1'>
+                    <div>Design</div>
+                    <div className='w-[100%]'>
+                      <progress
+                        className='w-[100%] h-[4px]'
+                        value={2.5}
+                        max={5}
+                      ></progress>
+                      {/* <div className='text-right py-[2px] text-white w-[90%] aria bg-green-400'></div> */}
+                    </div>
+                  </li>
+                  <li className='py-1'>
+                    <div>Design</div>
+                    <div className='w-[100%]'>
+                      <progress
+                        className='w-[100%] h-[4px]'
+                        value={2.5}
+                        max={5}
+                      ></progress>
+                      {/* <div className='text-right py-[2px] text-white w-[90%] aria bg-green-400'></div> */}
+                    </div>
+                  </li>
+                  <li className='py-1'>
+                    <div>Design</div>
+                    <div className='w-[100%]'>
+                      <progress
+                        className='w-[100%] h-[4px]'
+                        value={2.5}
+                        max={5}
+                      ></progress>
+                      {/* <div className='text-right py-[2px] text-white w-[90%] aria bg-green-400'></div> */}
+                    </div>
+                  </li>
+
+                  {/* <li className='py-1'>
                     <div>Display</div>
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[90%] bg-green-400'></div>
@@ -143,7 +224,7 @@ function Phones() {
                     <div className='w-[100%] bg-gray-300'>
                       <div className='text-right py-[2px] text-white w-[10%] bg-green-400'></div>
                     </div>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </a>
@@ -418,4 +499,3 @@ function Phones() {
   );
 }
 
-export default Phones;

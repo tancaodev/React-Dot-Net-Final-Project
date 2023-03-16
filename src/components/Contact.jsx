@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Contact() {
+export const Contact = () => {
   return (
     <div id='contact' className='max-w-[1140px] m-auto w-full p-4 py-16'>
       <h2 className='text-center text-gray-700'>Send us a message</h2>
@@ -27,4 +27,3 @@ function Contact() {
   );
 }
 
-export default Contact;

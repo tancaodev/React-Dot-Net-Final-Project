@@ -1,9 +1,9 @@
-import Breadcrumbs from '../components/Breadcrumbs';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 import { DropDownMenu } from '../components/DropDownMenu';
-import Footer from '../components/Footer';
+import { Footer } from '../components/Footer';
 import { Sidebar } from '../components/Sidebar';
 
-function Cpus() {
+export const Cpus = () => {
   return (
     <div className='max-h-full bg-gray-50'>
       <DropDownMenu />
@@ -422,4 +422,3 @@ function Cpus() {
   );
 }
 
-export default Cpus;

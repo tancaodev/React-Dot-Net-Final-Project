@@ -19,7 +19,7 @@
     }
 
     li {
-        @apply p-4 text-sm
+        @apply p-4 text-sm 
     }
 
     button {
@@ -29,19 +29,24 @@
     h2 {
         @apply text-xl font-bold
     }
-
-    a:hover {
-        @apply text-white border-b-2 border-white
-    }
 }
 
 @layer components {
-    .menu-item {
-        @apply pb-0 p-2 inline-block border-b-[4px] border-spacing-y-4 border-black hover:border-white
+    .link {
+        @apply relative inline-block
     }
 
-    .logo:hover {
-        @apply border-none
+    .link::before {
+        content: '';
+        @apply absolute left-0 bottom-0 w-[100%] h-[2px] bg-[#fff] rounded scale-x-0 scale-y-100 origin-left transition-all duration-300
+    }
+
+    .link:hover::before {
+        @apply scale-100
+    }
+
+    .menu-item {
+        @apply pb-0 p-2
     }
 
     .mega-sub-item:hover {
@@ -77,4 +82,39 @@
         background-color: #fff;
         text-decoration-color: black;
     }
+
+    /* scrollbar */
+    .scrollbar::-webkit-scrollbar {
+        width: 20px;
+      }
+    
+      .scrollbar::-webkit-scrollbar-track {
+        border-radius: 100vh;
+        background: #f7f4ed;
+      }
+    
+      .scrollbar::-webkit-scrollbar-thumb {
+        background: #e0cbcb;
+        border-radius: 100vh;
+        border: 3px solid #f6f7ed;
+      }
+    
+      .scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #c0a0b9;
+      }
+
+      .scrollbar::-webkit-scrollbar-thumb {
+        height: 90px;
+      }
+
+    /* progress */
+      progress::-webkit-progress-bar {
+        background-color: #eee;
+        border-radius: 100px;
+      }
+
+      progress::-webkit-progress-value {
+        background-color: steelblue;
+        border-radius: 100px;
+      }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Hero() {
+export const Hero = () => {
   return (
     <div className='w-full h-[90vh]'>
       <img
@@ -25,4 +25,3 @@ function Hero() {
   );
 }
 
-export default Hero;

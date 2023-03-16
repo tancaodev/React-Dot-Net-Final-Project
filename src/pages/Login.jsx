@@ -1,10 +1,10 @@
 import React from 'react';
 
-function Login() {
+export const Login = () => {
   return (
     <div className='bg-login bg-cover bg-center bg-no-repeat h-screen flex items-center justify-center'>
         {/* Gradient background: bg-gradient-to-b from-[#6596E3] */}
-      <div className='bg-white flex rounded-2xl shadow-lg max-w-3xl p-5 items-center'>
+      <div className='bg-white flex rounded-2xl shadow-lg max-w-4xl p-5 items-center'>
         {/* White Spacing */}
         <div className='md:block hidden w-1/2 '>
           <img
@@ -49,7 +49,7 @@ function Login() {
                 <span>Remember me</span>
               </div>
 
-              <a href='/'>Forgot your password ?</a>
+              <a href='#none'>Forgot your password ?</a>
             </div>
 
             <button className='mt-3 rounded-lg'>LOGIN</button>
@@ -60,4 +60,3 @@ function Login() {
   );
 }
 
-export default Login;
