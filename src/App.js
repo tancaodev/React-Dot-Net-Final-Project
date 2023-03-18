@@ -1,12 +1,14 @@
 import { Routes, Route } from 'react-router-dom';
-import { CpuDetail } from './components/CpuDetail';
-import { Categories } from './pages/Categories';
-import { Cpus } from './pages/Cpus';
-import { Homepage } from './pages/Homepage';
+
+import { Cpus } from './pages/cpus/Cpus';
 import { LaptopDetails } from './pages/laptops/LaptopDetails';
-import { Laptops } from './pages/laptops/Laptops';
-import { Login } from './pages/Login';
-import { Phones } from './pages/Phones';
+import { Phones } from './pages/phones/Phones';
+import { Laptops } from './pages/laptops/Laptops'
+import { Login } from './pages/login/Login';
+import { Categories } from './pages/caterogies/Categories';
+import { Homepage } from './pages/homepage/Homepage';
+import { CpuDetail } from './pages/cpus/CpuDetail';
+
 function App() {
   return (
     <Routes>

@@ -1,21 +1,21 @@
-import axios from 'axios';
 import { useState, useEffect, Fragment } from 'react';
+import axios from 'axios';
 
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { Footer } from '../../components/Footer';
 import { DropDownMenu } from '../../components/DropDownMenu';
+import { Footer } from '../../components/Footer';
 import { Sidebar } from '../../components/Sidebar';
-import { LaptopComponent } from './LaptopComponent';
+import { CpuComponent } from './CpuComponent';
 
-export const Laptops = () => {
-  const [laptops, setLaptops] = useState([]);
-  const url = 'https://localhost:44345/api/laptop/get-laptops';
+export const Cpus = () => {
+  const [cpus, setCpus] = useState([]);
+  const url = 'https://localhost:44345/api/chipset/get-chipset';
 
   const fetchData = async () => {
     try {
       const response = await axios.get(url);
       const data = response.data;
-      setLaptops(data);
+      setCpus(data);
     } catch (error) {
       console.log(error.response);
     }
@@ -24,7 +24,6 @@ export const Laptops = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
   return (
     <div className='max-h-full bg-gray-50'>
       <DropDownMenu />
@@ -35,11 +34,11 @@ export const Laptops = () => {
           <Sidebar />
         </div>
         <div className='w-3/4 grid grid-cols-3 gap-4 pl-5 pr-[160px]'>
-          { laptops[0] ? (
-            laptops.map((laptop) => {
+          {cpus[0] ? (
+            cpus.map((cpu) => {
               return (
-                <Fragment key={laptop.name}>
-                  <LaptopComponent laptop={laptop} />
+                <Fragment key={cpu.name}>
+                  <CpuComponent cpu={cpu} />
                 </Fragment>
               );
             })

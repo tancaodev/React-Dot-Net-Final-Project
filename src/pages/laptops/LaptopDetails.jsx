@@ -6,7 +6,7 @@ export const LaptopDetails = () => {
   return (
     <div>
         <TopBar />
-        <LaptopComponent />
+        {/* <LaptopComponent /> */}
     </div>
   )
 }

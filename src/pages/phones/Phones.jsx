@@ -1,21 +1,21 @@
-import axios from 'axios';
 import { useState, useEffect, Fragment } from 'react';
+import axios from 'axios';
 
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { Footer } from '../../components/Footer';
 import { DropDownMenu } from '../../components/DropDownMenu';
+import { Footer } from '../../components/Footer';
 import { Sidebar } from '../../components/Sidebar';
-import { LaptopComponent } from './LaptopComponent';
+import { PhoneComponent } from './PhoneComponent';
 
-export const Laptops = () => {
-  const [laptops, setLaptops] = useState([]);
-  const url = 'https://localhost:44345/api/laptop/get-laptops';
+export const Phones = () => {
+  const [phones, setPhones] = useState([]);
+  const url = 'https://localhost:44345/api/phone/get-phones';
 
   const fetchData = async () => {
     try {
       const response = await axios.get(url);
       const data = response.data;
-      setLaptops(data);
+      setPhones(data);
     } catch (error) {
       console.log(error.response);
     }
@@ -35,11 +35,11 @@ export const Laptops = () => {
           <Sidebar />
         </div>
         <div className='w-3/4 grid grid-cols-3 gap-4 pl-5 pr-[160px]'>
-          { laptops[0] ? (
-            laptops.map((laptop) => {
+          { phones[0] ? (
+            phones.map((phone) => {
               return (
-                <Fragment key={laptop.name}>
-                  <LaptopComponent laptop={laptop} />
+                <Fragment key={phone.name}>
+                  <PhoneComponent phone={phone} />
                 </Fragment>
               );
             })
@@ -48,6 +48,7 @@ export const Laptops = () => {
           )}
         </div>
       </div>
+
       <Footer />
     </div>
   );
