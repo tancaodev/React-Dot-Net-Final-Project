@@ -1,9 +1,14 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 export const CpuComponent = ({ cpu }) => {
+  //change spacing on url from '%20' to '-'
+  let name = cpu.name;
+  name = name.replace(/\s+/g, '-');
+  const url = `/cpus/${name}`;
+
   return (
     <div className='bg-white border-2 rounded-md shadow-md'>
-      <a href='#cpus' className=''>
+      <Link to={`${url}`} state={{ cpu: cpu }}>
         <div className='w-[100%] flex justify-center'>
           <img
             src={cpu.image}
@@ -13,13 +18,13 @@ export const CpuComponent = ({ cpu }) => {
         </div>
 
         <div className=''>
-          <p className='px-4 pt-5 pb-8 text-lg'>{ cpu.name }</p>
+          <p className='px-4 pt-5 pb-8 text-lg'>{cpu.name}</p>
           <ul className='font-sans'>
             <li className='py-0 h-8'>
               <div className='inline'>Max CPU Speed</div>
               <progress
                 className='w-[100%] pb-2'
-                value={ cpu.maxCpuSpeed }
+                value={cpu.maxCpuSpeed}
                 max={6}
               ></progress>
             </li>
@@ -27,7 +32,7 @@ export const CpuComponent = ({ cpu }) => {
               <div>CPU Thread</div>
               <progress
                 className='w-[100%] pb-2'
-                value={ cpu.cpuThread }
+                value={cpu.cpuThread}
                 max={128}
               ></progress>
             </li>
@@ -35,7 +40,7 @@ export const CpuComponent = ({ cpu }) => {
               <div>Nanomet Number</div>
               <progress
                 className='w-[100%] pb-2'
-                value={ 45 - cpu.nanometNumber }
+                value={45 - cpu.nanometNumber}
                 max={45}
               ></progress>
             </li>
@@ -43,7 +48,7 @@ export const CpuComponent = ({ cpu }) => {
               <div>Benchmark</div>
               <progress
                 className='w-[100%] pb-2'
-                value={ cpu.benchmark }
+                value={cpu.benchmark}
                 max={80000}
               ></progress>
             </li>
@@ -51,13 +56,13 @@ export const CpuComponent = ({ cpu }) => {
               <div>Memory</div>
               <progress
                 className='w-[100%] pb-2'
-                value={ cpu.memory }
+                value={cpu.memory}
                 max={8}
               ></progress>
             </li>
           </ul>
         </div>
-      </a>
+      </Link>
     </div>
   );
 };

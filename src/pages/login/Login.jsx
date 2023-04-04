@@ -3,7 +3,7 @@ import React from 'react';
 export const Login = () => {
   return (
     <div className='bg-login bg-cover bg-center bg-no-repeat h-screen flex items-center justify-center'>
-        {/* Gradient background: bg-gradient-to-b from-[#6596E3] */}
+      {/* Gradient background: bg-gradient-to-b from-[#6596E3] */}
       <div className='bg-white flex rounded-2xl shadow-lg max-w-4xl p-5 items-center'>
         {/* White Spacing */}
         <div className='md:block hidden w-1/2 '>
@@ -43,12 +43,11 @@ export const Login = () => {
               </label>
             </div>
 
-            <div className='mt-3 text-base flex justify-between items-center gap-4 md:text-xs md:gap-0'>
-              <div>
+            <div className='mt-3 text-[10px] flex justify-between lg:text-[12px]'>
+              <div className='flex text-justify'>
                 <input type='checkbox' className='mr-1' />
                 <span>Remember me</span>
               </div>
-
               <a href='#none'>Forgot your password ?</a>
             </div>
 
@@ -58,5 +57,4 @@ export const Login = () => {
       </div>
     </div>
   );
-}
-
+};

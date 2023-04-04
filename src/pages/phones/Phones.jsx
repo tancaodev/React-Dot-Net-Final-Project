@@ -6,6 +6,7 @@ import { DropDownMenu } from '../../components/DropDownMenu';
 import { Footer } from '../../components/Footer';
 import { Sidebar } from '../../components/Sidebar';
 import { PhoneComponent } from './PhoneComponent';
+import { ProductSkeleton } from '../../components/ProductSkeleton';
 
 export const Phones = () => {
   const [phones, setPhones] = useState([]);
@@ -35,7 +36,7 @@ export const Phones = () => {
           <Sidebar />
         </div>
         <div className='w-3/4 grid grid-cols-3 gap-4 pl-5 pr-[160px]'>
-          { phones[0] ? (
+          {phones[0] ? (
             phones.map((phone) => {
               return (
                 <Fragment key={phone.name}>
@@ -44,7 +45,7 @@ export const Phones = () => {
               );
             })
           ) : (
-            <h1>Loading...</h1>
+            <ProductSkeleton cards={6} />
           )}
         </div>
       </div>

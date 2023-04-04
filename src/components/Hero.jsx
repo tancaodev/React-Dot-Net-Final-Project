@@ -10,9 +10,9 @@ export const Hero = () => {
       />
       <div className='max-w-[1140px] m-auto'>
         <div className='absolute top-[40%] w-full md:-[50%] max-w-[600px] h-full flex flex-col text-white p-4'>
-          <h1 className='font-[1000] text-6xl'>Find Tech Specs</h1>
-          <h2 className='text-6xl py-4 italic'>With NASUS </h2>
-          <p className='text-yellow-200 font-medium bg-black/60 p-[15px] text-[18px]'>
+          <h1 className='text-2xl sm:font-[1000] sm:text-6xl'>Find Tech Specs</h1>
+          <h2 className='text-2xl sm:text-6xl sm:py-4 italic'>With NASUS </h2>
+          <p className='my-4 text-yellow-200 font-medium bg-black/60 p-[15px] text-[18px]'>
             Nasus is a global comparison platform, providing unbiased and
             user-friendly comparisons across various categories, from tech
             products to cities. By providing accurate and objective information,

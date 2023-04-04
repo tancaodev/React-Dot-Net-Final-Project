@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Breadcrumbs as MUIBreadcrumbs, Typography } from '@mui/material';
 
-export const Breadcrumbs = () => {
+export const Breadcrumbs = (props) => {
   const location = useLocation();
   const pathnames = location.pathname
     .split('/')
@@ -13,20 +13,34 @@ export const Breadcrumbs = () => {
       separator='>'
       aria-label='breadcrumb'
       sx={{
-        marginTop: '60px',
+        marginTop: `${props.page === 'product-detail' ? '10px' : '70px'}`,
+        display: 'block',
+        width: '100%',
         '.MuiBreadcrumbs-ol': {
-          margin: '0 0 0 74px',
+          display: 'block',
+          position: 'relative',
+          maxWidth: '1170px',
+          width: '100%',
+          margin: '16px auto',
         },
         '.MuiBreadcrumbs-li': {
           margin: '0 0 0 0',
           padding: '0 0 0 0',
           fontSize: '16px',
           fontWeight: 'bold',
+          textTransform: 'capitalize',
+          display: 'inline'
         },
         '.MuiTypography-body1': {
           fontWeight: 'bold',
           textTransform: 'capitalize',
         },
+        '.MuiBreadcrumbs-separator': {
+          display: 'inline'
+        },
+        '.MuiTypography-root': {
+          display: 'inline'
+        }
       }}
       className='breadcrumb'
     >
@@ -51,4 +65,4 @@ export const Breadcrumbs = () => {
       })}
     </MUIBreadcrumbs>
   );
-}
+};

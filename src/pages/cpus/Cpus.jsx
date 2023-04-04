@@ -6,6 +6,7 @@ import { DropDownMenu } from '../../components/DropDownMenu';
 import { Footer } from '../../components/Footer';
 import { Sidebar } from '../../components/Sidebar';
 import { CpuComponent } from './CpuComponent';
+import { ProductSkeleton } from '../../components/ProductSkeleton';
 
 export const Cpus = () => {
   const [cpus, setCpus] = useState([]);
@@ -24,26 +25,29 @@ export const Cpus = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
   return (
-    <div className='max-h-full bg-gray-50'>
+    <div className='max-h-full bg-gray-50 block w-[100%] max-w-[1170px] m-auto'>
       <DropDownMenu />
       <Breadcrumbs />
 
       <div className='flex py-4'>
-        <div className='w-1/4 pl-[74px]'>
+        <div className='w-1/4'>
           <Sidebar />
         </div>
-        <div className='w-3/4 grid grid-cols-3 gap-4 pl-5 pr-[160px]'>
+        <div className='w-3/4 grid grid-cols-3 gap-4 pl-5 '>
           {cpus[0] ? (
             cpus.map((cpu) => {
               return (
-                <Fragment key={cpu.name}>
-                  <CpuComponent cpu={cpu} />
-                </Fragment>
+                (
+                  <Fragment key={cpu.name}>
+                    <CpuComponent cpu={cpu} />
+                  </Fragment>
+                ) || <ProductSkeleton />
               );
             })
           ) : (
-            <h1>Loading...</h1>
+            <ProductSkeleton cards={6} />
           )}
         </div>
       </div>

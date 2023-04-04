@@ -1,10 +1,44 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaBars } from 'react-icons/fa';
 export const DropDownMenu = () => {
+  const [nav, setNav] = useState(false);
+
+  const handleNav = () => {
+    setNav(!nav);
+  };
   return (
-    <div className='fixed top-0 left-0 -z--1'>
-      <nav className={`bg-black text-white w-screen`}>
-        <div className='max-w-7xl h-[64px] flex justify-between items-center mx-auto'>
+    <div className='block fixed top-0 left-0 -z--1'>
+      <nav className='bg-black text-white w-screen'>
+        {/* navbar menu for small device */}
+        {/* <div
+          onClick={handleNav}
+          className={
+            nav
+              ? 'overflow-y-hidden md:hidden ease-in duration-300 absolute text-gray-300 left-0 top-0 w-full h-screen bg-black/90 px-4 py-7 flex flex-col'
+              : 'absolute top-0 h-screen left-[-100%] ease-in duration-500'
+          }
+        >
+          <ul className='h-full w-full text-center pt-12'>
+            <li className='text-2xl py-8'>
+              <a href='/'>Home</a>
+            </li>
+            <li className='text-2xl py-8'>
+              <a href='#gallery'>Gallery</a>
+            </li>
+            <li className='text-2xl py-8'>
+              <a href='#deals'>Deals</a>
+            </li>
+            <li className='text-2xl py-8'>
+              <a href='#contact'>Contact</a>
+            </li>
+          </ul>
+        </div> */}
+        
+        {/* navbar menu for tablet device */}
+
+        {/* navbar menu for laptop device */}
+        {/* <div className='max-w-7xl h-[64px] lg:flex justify-between items-center mx-auto'>
           <Link to='/' className='font-bold text-3xl logo'>
             NASUS
           </Link>
@@ -51,7 +85,6 @@ export const DropDownMenu = () => {
               <Link to='/cpus' className='menu-item link'>
                 CPUS
               </Link>
-              
             </li>
             <li className='group relative'>
               <Link to='/smartphones' className='menu-item link'>
@@ -130,7 +163,7 @@ export const DropDownMenu = () => {
               </Link>
             </li>
           </ul>
-        </div>
+        </div> */}
       </nav>
     </div>
   );

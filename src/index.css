@@ -15,14 +15,14 @@
     }
 
     body {
-        @apply font-[Poppins]
+        @apply font-[Poppins] block
     }
 
     li {
         @apply p-4 text-sm 
     }
 
-    button {
+    button:not(.nav-button){
         @apply px-4 py-2 border bg-gradient-to-r from-[var(--primary-dark)] to-[var(--primary-light)] text-white
     }
 
