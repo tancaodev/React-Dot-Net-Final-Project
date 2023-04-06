@@ -39,7 +39,7 @@ export const Breadcrumbs = (props) => {
           display: 'inline'
         },
         '.MuiTypography-root': {
-          display: 'inline'
+          display: 'inline',
         }
       }}
       className='breadcrumb'
@@ -55,6 +55,7 @@ export const Breadcrumbs = (props) => {
       {pathnames.map((name, index) => {
         const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
         const isLast = index === pathnames.length - 1;
+        name = decodeURIComponent(name)
         return isLast ? (
           <Typography key={name}>{name}</Typography>
         ) : (

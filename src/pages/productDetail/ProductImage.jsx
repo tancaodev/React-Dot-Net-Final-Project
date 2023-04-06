@@ -1,8 +1,9 @@
 import React from 'react';
+import { ProductTitle } from './ProductTitle';
 
 export const ProductImage = ({ name, image }) => {
   return (
-    <div className=''>
+    <section id='overviews' className='h-[100vh]'>
       <div className='flex flex-col m-auto max-w-[1025px] relative w-[100%]'>
         <div className='flex justify-center relative mb-4'>
           <div className='flex items-center min-w-[50%] w-[50%] box-border px-[45px]'>
@@ -23,6 +24,9 @@ export const ProductImage = ({ name, image }) => {
           </div>
         </div>
       </div>
-    </div>
+
+      <ProductTitle name={name} />
+
+    </section>
   );
 };

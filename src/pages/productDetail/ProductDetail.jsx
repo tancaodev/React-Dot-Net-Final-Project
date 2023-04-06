@@ -15,14 +15,13 @@ export const ProductDetail = () => {
   return (
     <div>
       <div className='block  md:h-16'></div>
-      <Header />
+      {/* <Header /> */}
       <DropDownMenu />
       <SectionContainer />
       <div className='block pt-8 h-[100%] m-auto min-h-[100%]'>
         <Breadcrumbs page={'product-detail'} />
         <ProductImage name={cpu.name} image={cpu.image} />
 
-        <ProductTitle name={cpu.name} />
         <ProductSpecs />
       </div>
     </div>

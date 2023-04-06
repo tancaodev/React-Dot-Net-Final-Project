@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaBars } from 'react-icons/fa';
+import { BiSearch } from 'react-icons/bi';
+
 export const DropDownMenu = () => {
   const [nav, setNav] = useState(false);
 
@@ -8,37 +9,54 @@ export const DropDownMenu = () => {
     setNav(!nav);
   };
   return (
-    <div className='block fixed top-0 left-0 -z--1'>
-      <nav className='bg-black text-white w-screen'>
-        {/* navbar menu for small device */}
-        {/* <div
-          onClick={handleNav}
-          className={
-            nav
-              ? 'overflow-y-hidden md:hidden ease-in duration-300 absolute text-gray-300 left-0 top-0 w-full h-screen bg-black/90 px-4 py-7 flex flex-col'
-              : 'absolute top-0 h-screen left-[-100%] ease-in duration-500'
-          }
-        >
-          <ul className='h-full w-full text-center pt-12'>
-            <li className='text-2xl py-8'>
-              <a href='/'>Home</a>
-            </li>
-            <li className='text-2xl py-8'>
-              <a href='#gallery'>Gallery</a>
-            </li>
-            <li className='text-2xl py-8'>
-              <a href='#deals'>Deals</a>
-            </li>
-            <li className='text-2xl py-8'>
-              <a href='#contact'>Contact</a>
-            </li>
-          </ul>
-        </div> */}
-        
-        {/* navbar menu for tablet device */}
+    <header className='block w-[100%] bg-black text-white fixed top-0 z-10'>
+      <div className='flex items-center h-16 justify-between m-auto max-w-[1170px] w-[90%]'>
+        <div className='flex items-center'>
+          <div className='block self-center relative w-[95px]'>
+            <Link className='text-2xl font-extrabold'>NASUS</Link>
+          </div>
 
-        {/* navbar menu for laptop device */}
-        {/* <div className='max-w-7xl h-[64px] lg:flex justify-between items-center mx-auto'>
+          <div className='ml-[3em]'>
+            <Link className='p-[5px_0] link'>CATEGORIES</Link>
+          </div>
+
+          <div className='flex ml-[2em]'>
+            <form action='' className='relative'>
+              <input type='text' />
+              <span className='text-black absolute left-1'>Search</span>
+              <BiSearch
+                size={20}
+                className='search absolute right-1 top-[2px] text-black'
+              />
+            </form>
+          </div>
+
+          <div className='flex ml-[1.5em]'>
+            <Link className='relative cursor-pointer p-[5px_0] m-1 ml-[0.5em] link'>
+              CPUS
+            </Link>
+            <Link className='relative cursor-pointer p-[5px_0] m-1 ml-[2em] link'>
+              SMARTPHONES
+            </Link>
+            <Link className='relative cursor-pointer p-[5px_0] m-1 ml-[2em] link'>
+              LAPTOPS
+            </Link>
+          </div>
+        </div>
+
+        <div className='flex items-center '>
+          <div>
+            <Link className='p-[5px_0] link'>COMPARISIONS</Link>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+  {
+    /* <div className='block fixed top-0 left-0 -z--1'>
+        <nav className='bg-black text-white w-screen'>
+          
+          <div className='max-w-7xl h-[64px] lg:flex justify-between items-center mx-auto'>
           <Link to='/' className='font-bold text-3xl logo'>
             NASUS
           </Link>
@@ -163,8 +181,8 @@ export const DropDownMenu = () => {
               </Link>
             </li>
           </ul>
-        </div> */}
-      </nav>
-    </div>
-  );
+        </div>
+        </nav>
+      </div> */
+  }
 };

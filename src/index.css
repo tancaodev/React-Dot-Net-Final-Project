@@ -22,7 +22,7 @@
         @apply p-4 text-sm 
     }
 
-    button:not(.nav-button){
+    button:not(.nav-button, .search){
         @apply px-4 py-2 border bg-gradient-to-r from-[var(--primary-dark)] to-[var(--primary-light)] text-white
     }
 
@@ -69,6 +69,10 @@
     input:focus-within~label {
         @apply text-blue-500;
     }  
+
+    .active {  
+        @apply font-extrabold
+    }
 }
 
 @layer utilities {

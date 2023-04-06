@@ -7,7 +7,7 @@ import { Features } from './showProductSpecs/Features'
 
 export const ProductSpecs = () => {
   return (
-    <section className='relative block'>
+    <section id='specs' className='relative block'>
         <GeneralInfo /> 
         <Performance />
         <Benchmark />

@@ -10,7 +10,7 @@ import { ProductSkeleton } from '../../components/ProductSkeleton';
 
 export const Cpus = () => {
   const [cpus, setCpus] = useState([]);
-  const url = 'https://localhost:44345/api/chipset/get-chipset';
+  const url = 'https://localhost:44345/api/chipset/get-all-chipset';
 
   const fetchData = async () => {
     try {
@@ -27,31 +27,33 @@ export const Cpus = () => {
   }, []);
 
   return (
-    <div className='max-h-full bg-gray-50 block w-[100%] max-w-[1170px] m-auto'>
+    <div className='bg-gray-50'>
       <DropDownMenu />
-      <Breadcrumbs />
+      <div className='max-h-full bg-gray-50 block w-[100%] max-w-[1170px] m-auto'>
+        <Breadcrumbs />
 
-      <div className='flex py-4'>
-        <div className='w-1/4'>
-          <Sidebar />
+        <div className='flex py-4'>
+          <div className='w-1/4'>
+            <Sidebar />
+          </div>
+          <div className='w-3/4 grid grid-cols-3 gap-4 pl-5'>
+            {cpus[0] ? (
+              cpus.map((cpu) => {
+                return (
+                  (
+                    <Fragment key={cpu.name}>
+                      <CpuComponent cpu={cpu} />
+                    </Fragment>
+                  ) || <ProductSkeleton />
+                );
+              })
+            ) : (
+              <ProductSkeleton cards={6} />
+            )}
+          </div>
         </div>
-        <div className='w-3/4 grid grid-cols-3 gap-4 pl-5 '>
-          {cpus[0] ? (
-            cpus.map((cpu) => {
-              return (
-                (
-                  <Fragment key={cpu.name}>
-                    <CpuComponent cpu={cpu} />
-                  </Fragment>
-                ) || <ProductSkeleton />
-              );
-            })
-          ) : (
-            <ProductSkeleton cards={6} />
-          )}
-        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+      </div>
   );
 };

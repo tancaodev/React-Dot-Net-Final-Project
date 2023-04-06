@@ -15,7 +15,9 @@ export const Homepage = () => {
       <Navbar />
       <Hero />
       <Activities />
-      <Gallery />
+      <Gallery type='best of 5 phone'/>
+      <Gallery type='cpu'/>
+      <Gallery type='laptop'/>
       <Contact />
       <Footer />
     </div>

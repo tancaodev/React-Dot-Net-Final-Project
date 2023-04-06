@@ -24,7 +24,7 @@ export const CpuComponent = ({ cpu }) => {
               <div className='inline'>Max CPU Speed</div>
               <progress
                 className='w-[100%] pb-2'
-                value={cpu.maxCpuSpeed}
+                value={cpu.cpuSpeedBoost}
                 max={6}
               ></progress>
             </li>
@@ -40,24 +40,24 @@ export const CpuComponent = ({ cpu }) => {
               <div>Nanomet Number</div>
               <progress
                 className='w-[100%] pb-2'
-                value={45 - cpu.nanometNumber}
-                max={45}
+                value={14 - cpu.semiconductorSize}
+                max={14}
               ></progress>
             </li>
             <li className='py-0 h-8'>
-              <div>Benchmark</div>
+              <div>TDP</div>
               <progress
                 className='w-[100%] pb-2'
-                value={cpu.benchmark}
-                max={80000}
+                value={cpu.tdp}
+                max={125}
               ></progress>
             </li>
             <li className='py-0 h-8'>
-              <div>Memory</div>
+              <div>Ram Speed</div>
               <progress
                 className='w-[100%] pb-2'
-                value={cpu.memory}
-                max={8}
+                value={cpu.ramSpeed}
+                max={6400}
               ></progress>
             </li>
           </ul>
