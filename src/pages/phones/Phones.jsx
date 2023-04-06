@@ -10,13 +10,16 @@ import { ProductSkeleton } from '../../components/ProductSkeleton';
 
 export const Phones = () => {
   const [phones, setPhones] = useState([]);
+  const [phoneTotal, setPhoneTotal] = useState('');
+
   const url = 'https://localhost:44345/api/phone/get-phones';
 
   const fetchData = async () => {
     try {
       const response = await axios.get(url);
       const data = response.data;
-      setPhones(data);
+      setPhones(data.data);
+      setPhoneTotal(data.total)
     } catch (error) {
       console.log(error.response);
     }
@@ -27,26 +30,34 @@ export const Phones = () => {
   }, []);
 
   return (
-    <div className='max-h-full bg-gray-50'>
+    <div className='bg-gray-50'>
       <DropDownMenu />
-      <Breadcrumbs />
+      <div className='max-h-full bg-gray-50 block w-[100%] max-w-[1170px] m-auto'>
+        <Breadcrumbs />
 
-      <div className='flex py-4'>
-        <div className='w-1/4 pl-[74px]'>
-          <Sidebar />
-        </div>
-        <div className='w-3/4 grid grid-cols-3 gap-4 pl-5 pr-[160px]'>
-          {phones[0] ? (
-            phones.map((phone) => {
-              return (
-                <Fragment key={phone.name}>
-                  <PhoneComponent phone={phone} />
-                </Fragment>
-              );
-            })
-          ) : (
-            <ProductSkeleton cards={6} />
-          )}
+        <div className='flex py-4'>
+          <div className='w-1/4'>
+            <Sidebar />
+          </div>
+          <div className='w-3/4'>
+            <div className='text-right'>
+              <h1 className='text-3xl mb-4'>Smartphone comparision: {phoneTotal}</h1>
+            </div>
+            <div className='grid grid-cols-3 gap-4 pl-5'>
+            {phones[0] ? (
+              phones.map((phone) => {
+                return (
+                  <Fragment key={phone.name}>
+                    <PhoneComponent phone={phone} />
+                  </Fragment>
+                );
+              })
+            ) : (
+              <ProductSkeleton cards={6} />
+            )}
+            </div>
+          
+          </div>
         </div>
       </div>
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Login = () => {
   return (
-    <div className='bg-login bg-cover bg-center bg-no-repeat h-screen flex items-center justify-center'>
+    <div className='bg-gradient-to-r from-slate-400 to-cyan-400 bg-cover bg-center bg-no-repeat h-screen flex items-center justify-center'>
       {/* Gradient background: bg-gradient-to-b from-[#6596E3] */}
       <div className='bg-white flex rounded-2xl shadow-lg max-w-4xl p-5 items-center'>
         {/* White Spacing */}

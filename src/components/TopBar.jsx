@@ -16,7 +16,7 @@ export const TopBar = () => {
         <h1 className='text-xl font-bold text-gray-700'>NASUS</h1>
       </a>
       <div className='flex'>
-        <button onClick={routeChange}>Login</button>
+        <button onClick={routeChange} className='rounded-xl loginbtn px-4 py-2 border border-black'>Login</button>
       </div>
     </div>
   );

@@ -18,6 +18,7 @@ function App() {
         <Route path='/cpus' element={<Cpus />} />
         <Route path='/cpus/:productName' element={<ProductDetail />} />
         <Route path='/smartphones' element={<Phones />} />
+        <Route path='/smartphones/:productName' element={<ProductDetail />} />
         <Route path='/laptops' element={<Laptops />}></Route>
         <Route path='/login' element={<Login />} />
         <Route path='/categories' element={<Categories />} />

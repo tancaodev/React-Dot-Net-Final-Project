@@ -10,17 +10,17 @@ import { SectionContainer } from './SectionContainer';
 
 export const ProductDetail = () => {
   const { state } = useLocation();
-  const cpu = state.cpu || {}; // <-- unpack the item from state
-
+  const product = state.cpu ||  state.phone || {}; // <-- unpack the item from state
   return (
-    <div>
-      <div className='block  md:h-16'></div>
+    <div className='h-[100dvh]'>
       {/* <Header /> */}
+      <div className='h-16'></div>
       <DropDownMenu />
       <SectionContainer />
+
       <div className='block pt-8 h-[100%] m-auto min-h-[100%]'>
         <Breadcrumbs page={'product-detail'} />
-        <ProductImage name={cpu.name} image={cpu.image} />
+        <ProductImage name={product.name} image={product.image} type={product.type}/>
 
         <ProductSpecs />
       </div>

@@ -6,7 +6,7 @@ import { HiOutlineChip } from 'react-icons/hi';
 
 export const Memory = () => {
   return (
-    <div className='block box-border p-[64px_0_32px] bg-slate-50'>
+    <div className='block box-border p-[64px_0_32px]'>
       <div className='block m-auto max-w-[1170px] relative w-[calc(100%-152px)]'>
         <h2
           className='flex text-3xl m-[0_0_40px] relative break-words

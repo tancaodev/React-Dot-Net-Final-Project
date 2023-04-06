@@ -58,7 +58,7 @@ export const Categories = () => {
       </div>
       <section
         id='about'
-        className='grid items-center bg-slate-100  h-[80vh] text-xl font-bold about text-center '
+        className='grid items-center bg-slate-100 h-[80vh] text-xl font-bold about text-center '
       >
         ABOUT
       </section>

@@ -10,13 +10,16 @@ import { ProductSkeleton } from '../../components/ProductSkeleton';
 
 export const Cpus = () => {
   const [cpus, setCpus] = useState([]);
-  const url = 'https://localhost:44345/api/chipset/get-all-chipset';
+  const [cpusTotal, setCpusTotal] = useState('');
+
+  const url = 'https://localhost:44345/api/chipset/get-chipsets';
 
   const fetchData = async () => {
     try {
       const response = await axios.get(url);
       const data = response.data;
-      setCpus(data);
+      setCpus(data.data);
+      setCpusTotal(data.total)
     } catch (error) {
       console.log(error.response);
     }
@@ -36,24 +39,27 @@ export const Cpus = () => {
           <div className='w-1/4'>
             <Sidebar />
           </div>
-          <div className='w-3/4 grid grid-cols-3 gap-4 pl-5'>
-            {cpus[0] ? (
-              cpus.map((cpu) => {
-                return (
-                  (
+          <div className='w-3/4'>
+            <div className='text-right'>
+              <h1 className='text-3xl mb-4'>CPU comparision: {cpusTotal}</h1>
+            </div>
+            <div className='grid grid-cols-3 gap-4 pl-5'>
+              {cpus[0] ? (
+                cpus.map((cpu) => {
+                  return (
                     <Fragment key={cpu.name}>
                       <CpuComponent cpu={cpu} />
                     </Fragment>
-                  ) || <ProductSkeleton />
-                );
-              })
-            ) : (
-              <ProductSkeleton cards={6} />
-            )}
+                  );
+                })
+              ) : (
+                <ProductSkeleton cards={6} />
+              )}
+            </div>
           </div>
         </div>
         <Footer />
       </div>
-      </div>
+    </div>
   );
 };

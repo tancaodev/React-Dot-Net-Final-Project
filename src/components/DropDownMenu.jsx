@@ -9,7 +9,7 @@ export const DropDownMenu = () => {
     setNav(!nav);
   };
   return (
-    <header className='block w-[100%] bg-black text-white fixed top-0 z-10'>
+    <header className='block w-[100%] bg-black text-white fixed top-0 z-[100]'>
       <div className='flex items-center h-16 justify-between m-auto max-w-[1170px] w-[90%]'>
         <div className='flex items-center'>
           <div className='block self-center relative w-[95px]'>

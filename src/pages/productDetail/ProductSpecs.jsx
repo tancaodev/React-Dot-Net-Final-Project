@@ -7,10 +7,9 @@ import { Features } from './showProductSpecs/Features'
 
 export const ProductSpecs = () => {
   return (
-    <section id='specs' className='relative block'>
+    <section id='specs' className='relative block pt-8'>
         <GeneralInfo /> 
         <Performance />
-        <Benchmark />
         <Memory />
         <Features />
     </section>
