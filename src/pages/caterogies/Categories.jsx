@@ -79,6 +79,10 @@ export const Categories = () => {
         className='grid items-center bg-cyan-100  h-[100vh] text-xl font-bold about text-center'
       >
         CONTACT ME
+        <input
+          type='range'
+          className='transparent h-1.5 w-full cursor-pointer appearance-none rounded-lg border-transparent bg-neutral-200'
+        />
       </section>
       <Footer />
     </div>

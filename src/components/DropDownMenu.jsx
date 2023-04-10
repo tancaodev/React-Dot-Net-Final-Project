@@ -13,11 +13,11 @@ export const DropDownMenu = () => {
       <div className='flex items-center h-16 justify-between m-auto max-w-[1170px] w-[90%]'>
         <div className='flex items-center'>
           <div className='block self-center relative w-[95px]'>
-            <Link className='text-2xl font-extrabold'>NASUS</Link>
+            <Link to='/' className='text-2xl font-extrabold'>NASUS</Link>
           </div>
 
           <div className='ml-[3em]'>
-            <Link className='p-[5px_0] link'>CATEGORIES</Link>
+            <Link to='/categories' className='p-[5px_0] link'>CATEGORIES</Link>
           </div>
 
           <div className='flex ml-[2em]'>
@@ -32,13 +32,13 @@ export const DropDownMenu = () => {
           </div>
 
           <div className='flex ml-[1.5em]'>
-            <Link className='relative cursor-pointer p-[5px_0] m-1 ml-[0.5em] link'>
+            <Link to='/cpus' className='relative cursor-pointer p-[5px_0] m-1 ml-[0.5em] link'>
               CPUS
             </Link>
-            <Link className='relative cursor-pointer p-[5px_0] m-1 ml-[2em] link'>
+            <Link to='/smartphones' className='relative cursor-pointer p-[5px_0] m-1 ml-[2em] link'>
               SMARTPHONES
             </Link>
-            <Link className='relative cursor-pointer p-[5px_0] m-1 ml-[2em] link'>
+            <Link to='/laptops' className='relative cursor-pointer p-[5px_0] m-1 ml-[2em] link'>
               LAPTOPS
             </Link>
           </div>
@@ -46,7 +46,7 @@ export const DropDownMenu = () => {
 
         <div className='flex items-center '>
           <div>
-            <Link className='p-[5px_0] link'>COMPARISIONS</Link>
+            <Link to='/comparisions' className='p-[5px_0] link'>COMPARISIONS</Link>
           </div>
         </div>
       </div>

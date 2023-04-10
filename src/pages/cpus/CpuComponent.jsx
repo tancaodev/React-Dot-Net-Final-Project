@@ -8,7 +8,7 @@ export const CpuComponent = ({ cpu }) => {
 
   return (
     <div className='bg-white border-2 rounded-md shadow-md'>
-      <Link to={`${url}`} state={{ cpu: cpu }}>
+      <Link to={`${url}`} state={{ cpu: cpu.name }}>
         <div className='w-[100%] flex justify-center'>
           <img
             src={cpu.image}

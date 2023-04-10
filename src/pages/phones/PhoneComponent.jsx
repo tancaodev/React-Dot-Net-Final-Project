@@ -7,7 +7,6 @@ export const PhoneComponent = ({ phone }) => {
   name = name.replace(/\s+/g, '-');
   const url = `/smartphones/${name}`;
 
-  phone.type = 'phone';
   return (
     <div className='bg-white border-2 rounded-md shadow-md'>
       <Link to={`${url}`} state={{ phone: phone }}>

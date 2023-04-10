@@ -1,7 +1,6 @@
 import React from 'react'
 import { GeneralInfo } from './showProductSpecs/GeneralInfo'
 import { Performance } from './showProductSpecs/Performance'
-import { Benchmark } from './showProductSpecs/Benchmark'
 import { Memory } from './showProductSpecs/Memory'
 import { Features } from './showProductSpecs/Features'
 

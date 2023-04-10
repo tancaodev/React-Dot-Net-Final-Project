@@ -4,9 +4,9 @@ import axios from 'axios';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { DropDownMenu } from '../../components/DropDownMenu';
 import { Footer } from '../../components/Footer';
-import { Sidebar } from '../../components/Sidebar';
 import { CpuComponent } from './CpuComponent';
 import { ProductSkeleton } from '../../components/ProductSkeleton';
+import { CpuFilterSidebar } from './CpuFilterSidebar';
 
 export const Cpus = () => {
   const [cpus, setCpus] = useState([]);
@@ -18,6 +18,7 @@ export const Cpus = () => {
     try {
       const response = await axios.get(url);
       const data = response.data;
+      console.log(data.data);
       setCpus(data.data);
       setCpusTotal(data.total)
     } catch (error) {
@@ -36,12 +37,12 @@ export const Cpus = () => {
         <Breadcrumbs />
 
         <div className='flex py-4'>
-          <div className='w-1/4'>
-            <Sidebar />
+          <div className='w-1/4 invisible block'>
+            <CpuFilterSidebar  />
           </div>
           <div className='w-3/4'>
             <div className='text-right'>
-              <h1 className='text-3xl mb-4'>CPU comparision: {cpusTotal}</h1>
+              <h1 className='text-2xl mb-4'>CPU comparision: {cpusTotal}</h1>
             </div>
             <div className='grid grid-cols-3 gap-4 pl-5'>
               {cpus[0] ? (

@@ -41,7 +41,7 @@ export const Phones = () => {
           </div>
           <div className='w-3/4'>
             <div className='text-right'>
-              <h1 className='text-3xl mb-4'>Smartphone comparision: {phoneTotal}</h1>
+              <h1 className='text-2xl mb-4'>Smartphone comparision: {phoneTotal}</h1>
             </div>
             <div className='grid grid-cols-3 gap-4 pl-5'>
             {phones[0] ? (
