@@ -2,9 +2,9 @@ import React from 'react';
 
 import { Properties } from './Properties';
 
-import { HiOutlineChip } from 'react-icons/hi';
+import { RiCameraLensLine } from 'react-icons/ri';
 
-export const Memory = ({ product }) => {
+export const Cameras = ({ product }) => {
   return (
     <div className='block box-border p-[64px_0_32px]'>
       <div className='block m-auto max-w-[1170px] relative w-[calc(100%-152px)]'>
@@ -13,19 +13,19 @@ export const Memory = ({ product }) => {
         after:bg-black after:bottom-[-8px] after:h-[1px] after:left-0 after:absolute after:w-[40px] after:content-[""]'
         >
           <span className='mr-2'>
-            <HiOutlineChip size={24} className='mt-1' />
+            <RiCameraLensLine size={24} className='mt-1' />
           </span>
-          Memory
+          Cameras
         </h2>
 
         <div className='flex flex-wrap h-[80%]'>
           <Properties
             type='ram speed'
-            name={product.ramSpeed}
+            name=''
             caption='The market that the CPU is designed for'
           />
-          <Properties type='DDR memory version' name={product.ramVersion} />
-          <Properties type='memory channels' name={product.memoryChannels} />
+          <Properties type='DDR memory version' name=''/>
+          <Properties type='memory channels' name='' />
         </div>
       </div>
     </div>

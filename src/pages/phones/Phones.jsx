@@ -4,9 +4,9 @@ import axios from 'axios';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { DropDownMenu } from '../../components/DropDownMenu';
 import { Footer } from '../../components/Footer';
-import { Sidebar } from '../../components/Sidebar';
 import { PhoneComponent } from './PhoneComponent';
 import { ProductSkeleton } from '../../components/ProductSkeleton';
+import { PhoneSidebar } from './PhoneSidebar';
 
 export const Phones = () => {
   const [phones, setPhones] = useState([]);
@@ -37,7 +37,7 @@ export const Phones = () => {
 
         <div className='flex py-4'>
           <div className='w-1/4'>
-            <Sidebar />
+            <PhoneSidebar />
           </div>
           <div className='w-3/4'>
             <div className='text-right'>

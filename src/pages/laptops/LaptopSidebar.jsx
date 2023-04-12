@@ -1,9 +1,10 @@
+import React from 'react';
 import { BsInfoCircle } from 'react-icons/bs';
 import { IoIosArrowDropright } from 'react-icons/io';
 import { CgPerformance } from 'react-icons/cg';
 import { HiOutlineChip } from 'react-icons/hi';
 
-export const CpuFilterSidebar = () => {
+export const LaptopSidebar = () => {
   return (
     <div className='block overflow-y-scroll h-[600px] sticky top-20 z-0 scrollbar'>
       <h3 className='block font-bold'>FILTERS</h3>
@@ -33,9 +34,12 @@ export const CpuFilterSidebar = () => {
               </div>
               <div className='block p-[0_5px_9px]'>
                 <div className='block p-[10px_10px_10px_25px]'>
-                  <div className='block box-border rounded-md h-[14px] p-[5px_0] relative w-[100%]'>
-                  </div>
-                    <input type="range" value='50' className='w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700'/>
+                  <div className='block box-border rounded-md h-[14px] p-[5px_0] relative w-[100%]'></div>
+                  <input
+                    type='range'
+                    value='50'
+                    className='w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700'
+                  />
                 </div>
               </div>
             </li>
@@ -83,9 +87,12 @@ export const CpuFilterSidebar = () => {
               </div>
               <div className='block p-[0_5px_9px]'>
                 <div className='block p-[10px_10px_10px_25px]'>
-                  <div className='block box-border rounded-md h-[14px] p-[5px_0] relative w-[100%]'>
-                  </div>
-                    <input type="range" value='50' className='w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700'/>
+                  <div className='block box-border rounded-md h-[14px] p-[5px_0] relative w-[100%]'></div>
+                  <input
+                    type='range'
+                    value='50'
+                    className='w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700'
+                  />
                 </div>
               </div>
             </li>
@@ -133,9 +140,12 @@ export const CpuFilterSidebar = () => {
               </div>
               <div className='block p-[0_5px_9px]'>
                 <div className='block p-[10px_10px_10px_25px]'>
-                  <div className='block box-border rounded-md h-[14px] p-[5px_0] relative w-[100%]'>
-                  </div>
-                    <input type="range" value='50' className='w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700'/>
+                  <div className='block box-border rounded-md h-[14px] p-[5px_0] relative w-[100%]'></div>
+                  <input
+                    type='range'
+                    value='50'
+                    className='w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700'
+                  />
                 </div>
               </div>
             </li>

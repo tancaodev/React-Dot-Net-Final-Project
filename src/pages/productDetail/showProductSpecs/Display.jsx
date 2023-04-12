@@ -2,30 +2,30 @@ import React from 'react';
 
 import { Properties } from './Properties';
 
-import { HiOutlineChip } from 'react-icons/hi';
+import { AiOutlinePicture } from 'react-icons/ai';
 
-export const Memory = ({ product }) => {
+export const Display = ({ product }) => {
   return (
-    <div className='block box-border p-[64px_0_32px]'>
+    <div className='block box-border p-[64px_0_32px] bg-slate-50'>
       <div className='block m-auto max-w-[1170px] relative w-[calc(100%-152px)]'>
         <h2
           className='flex text-3xl m-[0_0_40px] relative break-words
         after:bg-black after:bottom-[-8px] after:h-[1px] after:left-0 after:absolute after:w-[40px] after:content-[""]'
         >
           <span className='mr-2'>
-            <HiOutlineChip size={24} className='mt-1' />
+            <AiOutlinePicture size={24} className='mt-1' />
           </span>
-          Memory
+          Display
         </h2>
 
         <div className='flex flex-wrap h-[80%]'>
           <Properties
             type='ram speed'
-            name={product.ramSpeed}
+            name=''
             caption='The market that the CPU is designed for'
           />
-          <Properties type='DDR memory version' name={product.ramVersion} />
-          <Properties type='memory channels' name={product.memoryChannels} />
+          <Properties type='DDR memory version' name=''/>
+          <Properties type='memory channels' name='' />
         </div>
       </div>
     </div>

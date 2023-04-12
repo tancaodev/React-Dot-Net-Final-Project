@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 export const CpuComponent = ({ cpu }) => {
   //change spacing on url from '%20' to '-'
   let name = cpu.name;
@@ -8,7 +9,7 @@ export const CpuComponent = ({ cpu }) => {
 
   return (
     <div className='bg-white border-2 rounded-md shadow-md'>
-      <Link to={`${url}`} state={{ cpu: cpu.name }}>
+      <Link to={`${url}`} state={{ cpu: { name: cpu.name, type: 'cpu' } }}>
         <div className='w-[100%] flex justify-center'>
           <img
             src={cpu.image}

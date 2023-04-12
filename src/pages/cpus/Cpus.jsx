@@ -18,7 +18,6 @@ export const Cpus = () => {
     try {
       const response = await axios.get(url);
       const data = response.data;
-      console.log(data.data);
       setCpus(data.data);
       setCpusTotal(data.total)
     } catch (error) {
@@ -37,7 +36,7 @@ export const Cpus = () => {
         <Breadcrumbs />
 
         <div className='flex py-4'>
-          <div className='w-1/4 invisible block'>
+          <div className='w-1/4 block'>
             <CpuFilterSidebar  />
           </div>
           <div className='w-3/4'>

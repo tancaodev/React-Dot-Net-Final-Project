@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const PhoneComponent = ({ phone }) => {
@@ -9,7 +8,9 @@ export const PhoneComponent = ({ phone }) => {
 
   return (
     <div className='bg-white border-2 rounded-md shadow-md'>
-      <Link to={`${url}`} state={{ phone: phone }}>
+      <Link
+        to={`${url}`} state={{ phone: { name: phone.name, type: 'phone' } }}
+      >
         <div className='w-[100%] flex justify-center'>
           <img src={phone.image} alt='/' className='w-[120px] h-[260px] pt-2' />
         </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Properties } from './Properties';
 import { BsInfoCircle } from 'react-icons/bs';
 
-export const GeneralInfo = () => {
+export const GeneralInfo = ({ product }) => {
   return (
     <div className='block box-border p-[64px_0_32px]'>
       <div className='block m-auto max-w-[1170px] relative w-[calc(100%-152px)]'>
@@ -18,10 +18,11 @@ export const GeneralInfo = () => {
 
         <div className='flex flex-wrap h-[80%]'>
           <Properties type='type' name='Desktop' />
-          <Properties type='cpu socket' name='Unknown' />
-          <Properties type='thermal design power (TDP)' name='96W' />
-          <Properties type='semiconductor size' name='5nm' />
-          <Properties type='cpu temperature' name='Unknown' />
+          <Properties type='cpu socket' name={product.cpuSocket} />
+          <Properties type='thermal design power (TDP)' name={product.tdp} />
+          <Properties type='semiconductor size' name={product.semiconductorSize} />
+          <Properties type='cpu temperature' name={product.cpuTemp} />
+          <Properties type='PCI Express (PCIE) Version' name={product.pci} />
         </div>
       </div>
     </div>

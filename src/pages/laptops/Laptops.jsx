@@ -4,9 +4,9 @@ import { useState, useEffect, Fragment } from 'react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Footer } from '../../components/Footer';
 import { DropDownMenu } from '../../components/DropDownMenu';
-import { Sidebar } from '../../components/Sidebar';
 import { LaptopComponent } from './LaptopComponent';
 import { ProductSkeleton } from '../../components/ProductSkeleton';
+import { LaptopSidebar } from './LaptopSidebar';
 
 export const Laptops = () => {
   const [laptops, setLaptops] = useState([]);
@@ -18,7 +18,7 @@ export const Laptops = () => {
     try {
       const response = await axios.get(url);
       const data = response.data;
-      setLaptops(data);
+      setLaptops(data.data);
       setLaptopTotal(data.total);
     } catch (error) {
       console.log(error.response);
@@ -37,7 +37,7 @@ export const Laptops = () => {
         <Breadcrumbs />
         <div className='flex py-4'>
           <div className='w-1/4'>
-            <Sidebar />
+            <LaptopSidebar />
           </div>
           <div className='w-3/4'>
             <div className='text-right'>
