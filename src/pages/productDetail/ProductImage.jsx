@@ -4,20 +4,20 @@ export const ProductImage = ({ name, image, type }) => {
   const renderImage = () => {
     if (type === 'phone') {
       return (
-        <div className='h-[320px] m-auto max-w-[320px] relative w-[100%] text-center'>
-          <img src={image} alt='/' className='w-[160px] m-auto block' />;
+        <div className='h-[320px] m-auto max-w-[320px] relative w-[100%] text-center mb-4'>
+          <img src={image} alt='/' className='w-[160px] h-[250px] m-auto block' />
         </div>
       );
     } else if (type === 'cpu') {
       return (
         <div className='h-[320px] m-auto max-w-[320px] relative w-[100%] text-center'>
-          <img src={image} alt='/' className='flex h-[100%] w-[100%]' />;
+          <img src={image} alt='/' className='flex h-[100%] w-[100%]' />
         </div>
       );
     } else if (type === 'laptop') {
       return (
         <div className='h-[320px] m-auto max-w-[320px] relative w-[100%] text-center'>
-          <img src={image} alt='/' className='h-[260px] m-auto block'/>
+          <img src={image} alt='/' className='h-[300px] object-contain p-2'/>
         </div>
       );
     }

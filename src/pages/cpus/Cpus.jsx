@@ -1,5 +1,5 @@
-import { useState, useEffect, Fragment } from 'react';
 import axios from 'axios';
+import { useState, useEffect, Fragment } from 'react';
 
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { DropDownMenu } from '../../components/DropDownMenu';
@@ -11,7 +11,7 @@ import { CpuFilterSidebar } from './CpuFilterSidebar';
 export const Cpus = () => {
   const [cpus, setCpus] = useState([]);
   const [cpusTotal, setCpusTotal] = useState('');
-
+  
   const url = 'https://localhost:44345/api/chipset/get-chipsets';
 
   const fetchData = async () => {
@@ -19,7 +19,7 @@ export const Cpus = () => {
       const response = await axios.get(url);
       const data = response.data;
       setCpus(data.data);
-      setCpusTotal(data.total)
+      setCpusTotal(data.total);
     } catch (error) {
       console.log(error.response);
     }
@@ -32,14 +32,14 @@ export const Cpus = () => {
   return (
     <div className='bg-gray-50'>
       <DropDownMenu />
-      <div className='max-h-full bg-gray-50 block w-[100%] max-w-[1170px] m-auto'>
+      <div id='web-content' className='max-h-full bg-gray-50 block w-[100%] max-w-[1170px] m-auto'>
         <Breadcrumbs />
 
         <div className='flex py-4'>
           <div className='w-1/4 block'>
-            <CpuFilterSidebar  />
+            <CpuFilterSidebar />
           </div>
-          <div className='w-3/4'>
+          <div id='web-content' className='w-3/4'>
             <div className='text-right'>
               <h1 className='text-2xl mb-4'>CPU comparision: {cpusTotal}</h1>
             </div>

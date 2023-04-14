@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 
 import { Activities } from '../../components/Activities';
 import { Contact } from '../../components/Contact';
@@ -9,6 +10,9 @@ import { TopBar } from '../../components/TopBar';
 import { Hero } from '../../components/Hero';
 
 export const Homepage = () => {
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
   return (
     <div>
       <TopBar />

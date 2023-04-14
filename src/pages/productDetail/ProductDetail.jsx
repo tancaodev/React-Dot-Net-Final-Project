@@ -12,9 +12,10 @@ import { Footer } from '../../components/Footer';
 export const ProductDetail = () => {
   const { state } = useLocation();
   const getProduct = state.cpu || state.phone || state.laptop || {}; // <-- unpack the item from state
-  const productName = getProduct.name
+  const productName = encodeURIComponent(getProduct.name)
   const type = getProduct.type
 
+  console.log(productName);
   //call api get data from product name
   const [product, setProduct] = useState([]);
 
@@ -28,6 +29,7 @@ export const ProductDetail = () => {
     url = `https://localhost:44345/api/laptop/get-laptop-by-name/${productName}`
   }
 
+  console.log(url);
   const fetchData = async () => {
     try {
       const response = await axios.get(url);
@@ -40,7 +42,7 @@ export const ProductDetail = () => {
 
   useEffect(() => {
     fetchData();
-  },);
+  }, []);
 
   return (
     <div className='h-[100dvh]'>
