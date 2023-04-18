@@ -1,8 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
+  let navigate = useNavigate();
+  
+  const routeChange = () => {
+    let path = `/admin`;
+    navigate(path);
+  };
+
   return (
-    <div className='bg-gradient-to-r from-slate-400 to-cyan-400 bg-cover bg-center bg-no-repeat h-screen flex items-center justify-center'>
+    <div className='bg-gradient-to-r from-slate-400 to-purple-400 bg-cover bg-center bg-no-repeat h-screen flex items-center justify-center'>
       {/* Gradient background: bg-gradient-to-b from-[#6596E3] */}
       <div className='bg-white flex rounded-2xl shadow-lg max-w-4xl p-5 items-center'>
         {/* White Spacing */}
@@ -51,7 +59,7 @@ export const Login = () => {
               <a href='#none'>Forgot your password ?</a>
             </div>
 
-            <button className='mt-3 rounded-lg'>LOGIN</button>
+            <button className='mt-3 rounded-lg' onClick={routeChange}>LOGIN</button>
           </form>
         </div>
       </div>

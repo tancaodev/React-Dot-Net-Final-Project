@@ -15,13 +15,15 @@ import { AddChipset } from './admin/AddChipset';
 import { AddLaptop } from './admin/AddLaptop';
 import { AddPhone } from './admin/AddPhone';
 import { AddImage } from './admin/AddImage';
-
+import { ShowChipset } from './admin/ShowChipset';
+import { ShowLaptop } from './admin/ShowLaptop';
+import { ShowPhone } from './admin/ShowPhone';
+import { ShowImage } from './admin/ShowImage';
 function App() {
-
   useEffect(() => {
     // Tìm đối tượng gốc của trang
     const rootElement = document.getElementById('root');
-  
+
     // Thiết lập thuộc tính scrollTop của đối tượng gốc thành 0 sau mỗi lần render
     rootElement.scrollTop = 0;
   });
@@ -42,6 +44,10 @@ function App() {
           <Route path='/admin/add-laptop' element={<AddLaptop />} />
           <Route path='/admin/add-phone' element={<AddPhone />} />
           <Route path='/admin/add-image' element={<AddImage />} />
+          <Route path='/admin/show-chipset' element={<ShowChipset />} />
+          <Route path='/admin/show-laptop' element={<ShowLaptop />} />
+          <Route path='/admin/show-phone' element={<ShowPhone />} />
+          <Route path='/admin/show-image' element={<ShowImage />} />
         </Route>
       </Routes>
     </SkeletonTheme>

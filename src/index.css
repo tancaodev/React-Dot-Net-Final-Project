@@ -29,6 +29,10 @@
     h2 {
         @apply text-xl font-bold
     }
+
+    th, td {
+        @apply border-black border 
+    }
 }
 
 @layer components {

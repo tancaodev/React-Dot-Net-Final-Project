@@ -1,10 +1,27 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { BiChip } from 'react-icons/bi';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 export const AddChipset = () => {
+  let navigate = useNavigate();
+
   return (
     <div className='max-h-full block box-border bg-slate-100/70'>
-      <div className='m-auto w-[90%]'>
+      <div className='mx-auto w-[90%]'>
+        <div className='bg-slate-100/70 invisible'>hi</div>
+        <div
+          className='inline-block mb-4 cursor-pointer hover:text-blue-500'
+          onClick={() => {
+            navigate(-1)
+          }}
+        >
+          <span>
+            <AiOutlineArrowLeft className='inline mb-[2px] mr-1' />
+          </span>
+          <span>GO BACK</span>
+        </div>
         <div className='flex'>
           <span>
             <BiChip size={40} className='mr-2' />

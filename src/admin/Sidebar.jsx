@@ -17,7 +17,7 @@ export const Sidebar = () => {
             </Link>
           </li>
           <li className='hover:bg-slate-400 hover:duration-500 p-0'>
-            <Link className='m-0 flex w-[100%] h-[100%] p-4' to='/admin/add-image'>
+            <Link className='m-0 flex w-[100%] h-[100%] p-4' to='/admin/show-image'>
               <span>
                 <BsImages size={18} className='mr-1'/>
               </span>
@@ -25,7 +25,7 @@ export const Sidebar = () => {
             </Link>
           </li>
           <li className='hover:bg-slate-400 hover:duration-500 p-0'>
-            <Link className='m-0 flex w-[100%] h-[100%] p-4' to='/admin/add-phone'>
+            <Link className='m-0 flex w-[100%] h-[100%] p-4' to='/admin/show-phone'>
               <span>
                 <BsPhone size={18} className='mr-1'/>
               </span>
@@ -33,7 +33,7 @@ export const Sidebar = () => {
             </Link>
           </li>
           <li className='hover:bg-slate-400 hover:duration-500 p-0'>
-            <Link className='m-0 flex w-[100%] h-[100%] p-4' to='/admin/add-laptop'>
+            <Link className='m-0 flex w-[100%] h-[100%] p-4' to='/admin/show-laptop'>
               <span>
                 <BsLaptop size={18} className='mr-1'/>
               </span>
@@ -41,7 +41,7 @@ export const Sidebar = () => {
             </Link>
           </li>
           <li className='hover:bg-slate-400 hover:duration-500 p-0'>
-            <Link className='m-0 flex w-[100%] h-[100%] p-4' to='/admin/add-chipset'>
+            <Link className='m-0 flex w-[100%] h-[100%] p-4' to='/admin/show-chipset'>
               <span>
                 <BiChip size={18} className='mr-1'/>
               </span>
