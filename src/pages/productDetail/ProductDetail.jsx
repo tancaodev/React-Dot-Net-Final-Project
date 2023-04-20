@@ -11,6 +11,13 @@ import { Footer } from '../../components/Footer';
 
 export const ProductDetail = () => {
   const { state } = useLocation();
+  // const location = useLocation();
+  // console.log(location);
+
+  // const array = location.pathname.split('/')
+  // console.log(array[2]);
+  // const name = array[2]
+  // console.log(name);
   const getProduct = state.cpu || state.phone || state.laptop || {}; // <-- unpack the item from state
   const productName = encodeURIComponent(getProduct.name)
   const type = getProduct.type

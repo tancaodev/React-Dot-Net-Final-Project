@@ -1,7 +1,10 @@
 import React from 'react';
+import { TopBar } from '../../components/TopBar';
 
 export const About = () => {
   return (
+    <>
+    <TopBar />
     <div className='block m-0 p-0 box-border'>
       <div className='relative block p-0 overflow-hidden md:bg-about sm:p-[100px_40px] md:bg-no-repeat md:bg-left md:bg-100% lg:bg-50% lg:p-[80px_0] '>
         <div className='box-border p-[50px] float-right sm:w-[90%] bg-[#fdfdfd] md:p-[80px] lg:w-[55%]'>
@@ -85,8 +88,9 @@ export const About = () => {
               SEE ALL
             </a>
           </div>
-          <div className='flex flex-col justify-between'>
-            <div className='block bg-gradient-to-bl from-[#7600e0] to-[#ff2de0] overflow-hidden relative w-[100%] mt-[10px] h-[130px]'>
+          <div className='flex max-sm:flex-col justify-between '>
+            <div className='block bg-gradient-to-bl from-[#7600e0] to-[#ff2de0] overflow-hidden relative w-[100%] mt-[10px] h-[130px]
+            sm:w-[18%]'>
               <img
                 src='https://images.versus.io/objects/dell-alienware-m18-18-qhd-plus-intel-core-i9-13900hx-2-2ghz-nvidia-geforce-rtx-4090-laptop-64gb-ram-4tb-ssd-4tb-ssd.front.variety.1679330589281.jpg'
                 alt='Sony A7C'
@@ -102,13 +106,15 @@ export const About = () => {
                   href='/en/camera'
                   rel='noopener noreferrer'
                   target='_blank'
-                  className='h-[130px] text-[1.6em] text-[#fff] absolute text-center top-[35%] capitalize w-[100%]'
+                  className='h-[130px] text-[1.6em] text-[#fff] absolute text-center top-[35%] capitalize w-[100%]
+                  sm:h-[250px]'
                 >
                   Laptops
                 </a>
               </div>
             </div>
-            <div className='block bg-gradient-to-bl from-[#ff164b] to-[#ff5631] overflow-hidden relative w-[100%] mt-[10px] h-[130px]'>
+            <div className='block bg-gradient-to-bl from-[#ff164b] to-[#ff5631] overflow-hidden relative w-[100%] mt-[10px] h-[130px]
+            sm:w-[18%]'>
               <img
                 src='https://images.versus.io/objects/apple-iphone-14-pro-max.front.variety.1662579719861.jpg'
                 alt='Apple iPhone 14 Pro Max'
@@ -130,7 +136,8 @@ export const About = () => {
                 </a>
               </div>
             </div>
-            <div className='block bg-gradient-to-bl from-[#7600e0] to-[#3c59fc] overflow-hidden relative w-[100%] mt-[10px] h-[130px]'>
+            <div className='block bg-gradient-to-bl from-[#7600e0] to-[#3c59fc] overflow-hidden relative w-[100%] mt-[10px] h-[130px]
+            sm:w-[18%]'>
               <img
                 src='https://images.versus.io/objects/apple-m1-ultra.front.variety.1647448144172.jpg'
                 alt='Huawei Watch 3 Pro'
@@ -161,7 +168,7 @@ export const About = () => {
           <p className='text-[#313131] text-base font-normal font-sans'>
             You can get in touch via email at{' '}
             <a
-              href=''
+              href='#none'
               rel='noopener noreferrer'
               target='_blank'
               className='underline text-purple-500'
@@ -170,7 +177,7 @@ export const About = () => {
             </a>
             ,{' '}
             <a
-              href=''
+              href='#none'
               rel='noopener noreferrer'
               target='_blank'
               className='underline text-purple-500'
@@ -179,7 +186,7 @@ export const About = () => {
             </a>
             , or{' '}
             <a
-              href=''
+              href='#none'
               rel='noopener noreferrer'
               target='_blank'
               className='underline text-purple-500'
@@ -191,26 +198,27 @@ export const About = () => {
         </div>
         <footer className='bg-[#161616] p-[1em_0] w-[100%]'>
           <div className='flex justify-between m-auto max-w-[1170px]'>
-            <ul className='block relative w-[70%] text-white'>
-              <li>
+            <ul className='block relative w-[70%] text-white
+            sm:flex'>
+              <li className='sm:p-[0_1em] flex items-center'>
                 <a href='http://urge.io/'>Imprint</a>
               </li>
-              <li>
+              <li className='sm:p-[0_1em] flex items-center text-xs'>
                 <a href='/privacypolicy'>Privacy policy</a>
               </li>
-              <li>
+              <li className='sm:p-[0_1em] flex items-center text-xs'>
                 <a href='/terms'>Terms and conditions</a>
               </li>
-              <li>
+              <li className='sm:p-[0_1em] flex items-center text-xs'>
                 <a href='/about-us'>About us</a>
               </li>
-              <li>
+              <li className='sm:p-[0_1em] flex items-center text-xs'>
                 <a href='/editorial-guidelines'>Editorial guidelines</a>
               </li>
-              <li>
+              <li className='sm:p-[0_1em] flex items-center text-xs'>
                 <a href='/en/news'>News</a>
               </li>
-              <li>
+              <li className='sm:p-[0_1em] flex items-center text-xs'>
                 <a href='/en/glossary'>Glossary</a>
               </li>
             </ul>
@@ -219,7 +227,7 @@ export const About = () => {
                 <li>
                   <a
                     aria-label='versus facebook page'
-                    href=''
+                    href='#none'
                     target='_blank'
                     rel='noopener noreferrer'
                   >
@@ -239,7 +247,7 @@ export const About = () => {
                 <li>
                   <a
                     aria-label='versus youtube channel'
-                    href=''
+                    href='#none'
                     target='_blank'
                     rel='noopener noreferrer'
                   >
@@ -259,7 +267,7 @@ export const About = () => {
                 <li>
                   <a
                     aria-label='versus twitter channel'
-                    href=''
+                    href='#none'
                     target='_blank'
                     rel='noopener noreferrer'
                   >
@@ -281,7 +289,7 @@ export const About = () => {
                 <li>
                   <a
                     aria-label='versus instagram page'
-                    href=''
+                    href='#none'
                     target='_blank'
                     rel='noopener noreferrer'
                   >
@@ -299,8 +307,8 @@ export const About = () => {
                   </a>
                 </li>
               </ul>
-              <div className='mt-[5px]'>
-                <a href=''>
+              <div className='mt-[5px] sm:hidden'>
+                <a href='#none'>
                   <img
                     alt='Get it on Google Play'
                     src='https://images.versus.io/badges/en_get.png'
@@ -310,15 +318,8 @@ export const About = () => {
             </div>
           </div>
         </footer>
-        <noscript>
-          <iframe
-            src='//www.googletagmanager.com/ns.html?id=GTM-WFSDS3'
-            height='0'
-            width='0'
-            style='display:none;visibility:hidden'
-          ></iframe>
-        </noscript>
       </div>
     </div>
+    </>
   );
 };

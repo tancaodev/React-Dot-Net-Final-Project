@@ -10,7 +10,7 @@ export const TopBar = () => {
   };
 
   return (
-    <div className='flex justify-between items-center px-4 py-2'>
+    <div className='flex justify-between items-center px-4 py-2 border-b'>
       <a href='/' className='flex items-center logo'>
         <GiSniffingDog size={40} className='text-[var(--primary-dark)] mr-2' />
         <h1 className='text-xl font-bold text-gray-700'>NASUS</h1>

@@ -27,7 +27,7 @@ export const LaptopComponent = ({ laptop }) => {
               <div className='inline'>CPU Speed Base</div>
               <progress
                 className='w-[100%] pb-2'
-                value={laptop.cpuSpeedBase}
+                value={laptop.cpu.cpuSpeedBase}
                 max={2.5}
               ></progress>
             </li>
@@ -35,7 +35,7 @@ export const LaptopComponent = ({ laptop }) => {
               <div>CPU Speed Boost</div>
               <progress
                 className='w-[100%] pb-2'
-                value={laptop.cpuSpeedBoost}
+                value={laptop.cpu.cpuSpeedBoost}
                 max={5}
               ></progress>
             </li>

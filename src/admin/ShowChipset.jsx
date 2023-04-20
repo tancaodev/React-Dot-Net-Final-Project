@@ -43,7 +43,7 @@ export const ShowChipset = () => {
           <h1 className='text-4xl'>SHOW CHIPSETS</h1>
         </div>
         <div className='mt-4'>
-          <button onClick={routeChange} className='rounded-lg'>
+          <button onClick={routeChange} className='rounded-lg border-2 border-black p-1 hover:bg-blue-300'>
             CREATE NEW
           </button>
         </div>
