@@ -19,6 +19,8 @@ import { ShowChipset } from './admin/ShowChipset';
 import { ShowLaptop } from './admin/ShowLaptop';
 import { ShowPhone } from './admin/ShowPhone';
 import { ShowImage } from './admin/ShowImage';
+import { DashboardLayout } from './admin/layouts/dashboard/DashboardLayout';
+import { About } from './pages/about/About';
 function App() {
   useEffect(() => {
     // Tìm đối tượng gốc của trang
@@ -39,7 +41,7 @@ function App() {
         <Route path='/laptops/:laptopName' element={<ProductDetail />} />
         <Route path='/login' element={<Login />} />
         <Route path='/categories' element={<Categories />} />
-        <Route path='/admin' element={<Admin />}>
+        <Route path='/admin' element={<DashboardLayout />}>
           <Route path='/admin/add-chipset' element={<AddChipset />} />
           <Route path='/admin/add-laptop' element={<AddLaptop />} />
           <Route path='/admin/add-phone' element={<AddPhone />} />
@@ -49,6 +51,7 @@ function App() {
           <Route path='/admin/show-phone' element={<ShowPhone />} />
           <Route path='/admin/show-image' element={<ShowImage />} />
         </Route>
+        <Route path='/about' element={<About />} />
       </Routes>
     </SkeletonTheme>
   );

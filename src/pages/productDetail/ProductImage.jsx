@@ -4,8 +4,8 @@ export const ProductImage = ({ name, image, type }) => {
   const renderImage = () => {
     if (type === 'phone') {
       return (
-        <div className='h-[320px] m-auto max-w-[320px] relative w-[100%] text-center mb-4'>
-          <img src={image} alt='/' className='w-[160px] h-[250px] m-auto block' />
+        <div className='h-[320px] m-auto max-w-[320px] relative w-[100%] text-center'>
+          <img src={image} alt='/' className='w-[160px] h-full m-auto block' />
         </div>
       );
     } else if (type === 'cpu') {

@@ -15,7 +15,6 @@ export const ProductDetail = () => {
   const productName = encodeURIComponent(getProduct.name)
   const type = getProduct.type
 
-  console.log(productName);
   //call api get data from product name
   const [product, setProduct] = useState([]);
 
@@ -29,7 +28,6 @@ export const ProductDetail = () => {
     url = `https://localhost:44345/api/laptop/get-laptop-by-name/${productName}`
   }
 
-  console.log(url);
   const fetchData = async () => {
     try {
       const response = await axios.get(url);

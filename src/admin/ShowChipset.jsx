@@ -311,7 +311,7 @@ export const ShowChipset = () => {
                   );
                 })
               ) : (
-                <h1>Loading...</h1>
+                <tr>Loading...</tr>
               )}
             </tbody>
           </table>

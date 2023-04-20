@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { Activities } from '../../components/Activities';
 import { Contact } from '../../components/Contact';
 import { Footer } from '../../components/Footer';
-import { Gallery } from '../../components/Gallery';
+import { PhoneGallery } from '../../components/PhoneGallery';
 import { Navbar } from '../../components/Navbar';
 import { TopBar } from '../../components/TopBar';
 import { Hero } from '../../components/Hero';
@@ -19,9 +19,7 @@ export const Homepage = () => {
       <Navbar />
       <Hero />
       <Activities />
-      <Gallery type='best of 5 phone'/>
-      <Gallery type='cpu'/>
-      <Gallery type='laptop'/>
+      <PhoneGallery type='best of 5 phone'/>
       <Contact />
       <Footer />
     </div>

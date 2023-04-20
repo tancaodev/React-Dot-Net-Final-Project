@@ -3,7 +3,7 @@ import { TopBar } from '../../components/TopBar';
 import { Navbar } from '../../components/Navbar';
 import { Footer } from '../../components/Footer';
 import { Link } from 'react-scroll';
-import { useState } from 'react';
+
 export const Categories = () => {
   return (
     <div>

@@ -1,13 +1,12 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BiSearch } from 'react-icons/bi';
 
 export const DropDownMenu = () => {
-  const [nav, setNav] = useState(false);
+  // const [nav, setNav] = useState(false);
 
-  const handleNav = () => {
-    setNav(!nav);
-  };
+  // const handleNav = () => {
+  //   setNav(!nav);
+  // };
   return (
     <header className='block w-[100%] bg-black text-white fixed top-0 z-[100]'>
       <div className='flex items-center h-16 justify-between m-auto max-w-[1170px] w-[90%]'>

@@ -26,17 +26,20 @@ export const Admin = () => {
   }
 
   return (
-    <div className='w-[100%] h-[100%]'>
-      <div className='max-h-full block w-[100%]'>
-        <div className='flex'>
-          <div className={` w-1/8 bg-purple-400 ${ isActive ? 'min-h-full' : 'h-[100dvh]'}`}>
-            <Sidebar />
-          </div>
-          <div className='w-7/8 min-h-full w-full'>
-            <Outlet />
-          </div>
-        </div>
-      </div>
+    // <div className='w-[100%] h-[100%]'>
+    //   <div className='max-h-full block w-[100%]'>
+    //     <div className='flex'>
+    //       <div className={` w-1/8 bg-purple-400 ${ isActive ? 'min-h-full' : 'h-[100dvh]'}`}>
+    //         <Sidebar />
+    //       </div>
+    //       <div className='w-7/8 min-h-full w-full'>
+    //         <Outlet />
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
+
+    <div>
     </div>
   );
 };
