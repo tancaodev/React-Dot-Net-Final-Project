@@ -4,7 +4,7 @@ import { BsInfoCircle } from 'react-icons/bs';
 
 export const GeneralInfo = ({ product }) => {
   const math = (value, max) => {
-    return (value / max) * 100;
+  return ((value / max) * 100).toFixed(0);
   };
   
   return (
@@ -21,9 +21,9 @@ export const GeneralInfo = ({ product }) => {
         </h2>
 
         <div className='flex flex-wrap h-[80%]'>
-          <Properties type='type' name='Desktop' percent={math(80, 100)} />
+          <Properties type='type' name={product.type}/>
           <Properties type='cpu socket' name={product.cpuSocket} />
-          <Properties type='thermal design power (TDP)' name={product.tdp} />
+          <Properties type='thermal design power (TDP)' name={product.tdp} percent={math(product.tdp, 45)} />
           <Properties
             type='semiconductor size'
             name={product.semiconductorSize}
