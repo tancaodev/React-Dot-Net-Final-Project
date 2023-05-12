@@ -19,7 +19,7 @@ export const Navbar = () => {
   return (
     <div className='w-full min-h-[50px] flex justify-between items-center absolute z-10 text-white'>
       <ul className='hidden sm:flex px-4'>
-        <li>
+        {/* <li>
           <NavLink to='/categories' className='link'>
             CATEGORIES
           </NavLink>
@@ -37,6 +37,11 @@ export const Navbar = () => {
         <li>
           <NavLink to='/laptops' className='link'>
             LAPTOPS
+          </NavLink>
+        </li> */}
+        <li>
+          <NavLink to='/laptops' className='link'>
+            ABOUT
           </NavLink>
         </li>
       </ul>

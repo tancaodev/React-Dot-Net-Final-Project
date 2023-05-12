@@ -1,8 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 export const Register = () => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [gender, setGender] = useState(true);
+  const [email, setEmail] = useState('');
+  const [userName, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    if (id === 'firstName') {
+      setFirstName(value);
+    }
+    if (id === 'lastName') {
+      setLastName(value);
+    }
+    if (id === 'gender') {
+      // if (value === 'male') {
+      //   setGender(gender);
+      // } else {
+      //   setGender(!gender);
+      // }
+      setGender(!gender)
+    }
+    if (id === 'email') {
+      setEmail(value);
+    }
+    if (id === 'userName') {
+      setUsername(value);
+    }
+    if (id === 'password') {
+      setPassword(value);
+    }
+    if (id === 'confirmPassword') {
+      setConfirmPassword(value);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(
+      firstName,
+      lastName,
+      gender,
+      email,
+      userName,
+      password,
+      confirmPassword
+    );
+  };
+
   let navigate = useNavigate();
 
   const toLogin = () => {
@@ -44,6 +95,9 @@ export const Register = () => {
                 type='text'
                 name='firstName'
                 placeholder=' '
+                id='firstName'
+                value={firstName}
+                onChange={(e) => handleInputChange(e)}
               />
               <label className='absolute top-0 duration-300 origin-0 pointer-events-none text-[#5B5656]'>
                 First Name
@@ -55,6 +109,9 @@ export const Register = () => {
                 type='text'
                 name='lastName'
                 placeholder=' '
+                id='lastName'
+                value={lastName}
+                onChange={(e) => handleInputChange(e)}
               />
               <label className='absolute top-0 duration-300 origin-0 pointer-events-none text-[#5B5656]'>
                 Last Name
@@ -65,15 +122,16 @@ export const Register = () => {
                 Gender
               </label>
               <br />
-              <select name='gender' className='border w-full'>
+              <select
+                name='gender'
+                id='gender'
+                className='border w-full'
+                value={gender}
+                onChange={(e) => handleInputChange(e)}
+              >
                 <option value=''>Please select one…</option>
                 <option value='female'>Female</option>
                 <option value='male'>Male</option>
-                <option value='non-binary'>Non-Binary</option>
-                <option value='other'>Other</option>
-                <option value='Prefer not to answer'>
-                  Perfer not to Answer
-                </option>
               </select>
             </div>
             <div className='relative mt-4 border-b-2 focus-within:border-blue-500'>
@@ -82,6 +140,9 @@ export const Register = () => {
                 type='email'
                 name='email'
                 placeholder=' '
+                id='email'
+                value={email}
+                onChange={(e) => handleInputChange(e)}
               />
               <label className='absolute top-0 duration-300 origin-0 pointer-events-none text-[#5B5656]'>
                 Email
@@ -93,6 +154,9 @@ export const Register = () => {
                 type='text'
                 name='username'
                 placeholder=' '
+                id='userName'
+                value={userName}
+                onChange={(e) => handleInputChange(e)}
               />
               <label className='absolute top-0 duration-300 origin-0 pointer-events-none text-[#5B5656]'>
                 Username
@@ -104,6 +168,9 @@ export const Register = () => {
                 type='password'
                 name='password'
                 placeholder=' '
+                id='password'
+                value={password}
+                onChange={(e) => handleInputChange(e)}
               />
               <label className='absolute top-0 duration-300 origin-0 pointer-events-none text-[#5B5656]'>
                 Password
@@ -115,6 +182,9 @@ export const Register = () => {
                 type='password'
                 name='password'
                 placeholder=' '
+                id='confirmPassword'
+                value={confirmPassword}
+                onChange={(e) => handleInputChange(e)}
               />
               <label className='absolute top-0 duration-300 origin-0 pointer-events-none text-[#5B5656]'>
                 Confirm Password
@@ -123,7 +193,7 @@ export const Register = () => {
 
             <button
               className='mt-3 rounded-lg border-black border p-1 hover:bg-blue-500 hover:text-white'
-              onClick={toLogin}
+              onClick={handleSubmit}
             >
               Register
             </button>

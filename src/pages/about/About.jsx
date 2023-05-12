@@ -1,5 +1,6 @@
 import React from 'react';
 import { TopBar } from '../../components/TopBar';
+import { Footer } from '../../components/Footer';
 
 export const About = () => {
   return (
@@ -196,6 +197,7 @@ export const About = () => {
             .
           </p>
         </div>
+        <Footer />
         <footer className='bg-[#161616] p-[1em_0] w-[100%]'>
           <div className='flex justify-between m-auto max-w-[1170px]'>
             <ul className='block relative w-[70%] text-white

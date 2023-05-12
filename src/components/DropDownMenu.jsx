@@ -1,43 +1,74 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { BiSearch } from 'react-icons/bi';
 
 export const DropDownMenu = () => {
-  // const [nav, setNav] = useState(false);
+  let location = useLocation();
 
-  // const handleNav = () => {
-  //   setNav(!nav);
-  // };
+  const isHomepage = () => {
+    if (location.pathname === '/') {
+      return (
+        <div className='hidden ml-[2em]'>
+          <form action='' className='relative'>
+            <input type='text' />
+            <span className='text-black absolute left-1'>Search</span>
+            <BiSearch
+              size={20}
+              className='search absolute right-1 top-[2px] text-black'
+            />
+          </form>
+        </div>
+      );
+    } else {
+      return (
+        <div className='flex ml-[2em]'>
+          <form action='' className='relative'>
+            <input type='text' />
+            <span className='text-black absolute left-1'>Search</span>
+            <BiSearch
+              size={20}
+              className='search absolute right-1 top-[2px] text-black'
+            />
+          </form>
+        </div>
+      );
+    }
+  };
+
   return (
-    <header className='block w-[100%] bg-black text-white fixed top-0 z-[100]'>
+    <header className='block w-[100%] bg-purple-700 text-white fixed top-0 z-[100]'>
       <div className='flex items-center h-16 justify-between m-auto max-w-[1170px] w-[90%]'>
         <div className='flex items-center'>
           <div className='block self-center relative w-[95px]'>
-            <Link to='/' className='text-2xl font-extrabold'>NASUS</Link>
+            <Link to='/' className='text-2xl font-extrabold'>
+              NASUS
+            </Link>
           </div>
 
           <div className='ml-[3em]'>
-            <Link to='/categories' className='p-[5px_0] link'>CATEGORIES</Link>
+            <Link to='/categories' className='p-[5px_0] link'>
+              CATEGORIES
+            </Link>
           </div>
 
-          <div className='flex ml-[2em]'>
-            <form action='' className='relative'>
-              <input type='text' />
-              <span className='text-black absolute left-1'>Search</span>
-              <BiSearch
-                size={20}
-                className='search absolute right-1 top-[2px] text-black'
-              />
-            </form>
-          </div>
+          {isHomepage()}
 
           <div className='flex ml-[1.5em]'>
-            <Link to='/cpus' className='relative cursor-pointer p-[5px_0] m-1 ml-[0.5em] link'>
+            <Link
+              to='/cpus'
+              className='relative cursor-pointer p-[5px_0] m-1 ml-[0.5em] link'
+            >
               CPUS
             </Link>
-            <Link to='/smartphones' className='relative cursor-pointer p-[5px_0] m-1 ml-[2em] link'>
+            <Link
+              to='/smartphones'
+              className='relative cursor-pointer p-[5px_0] m-1 ml-[2em] link'
+            >
               SMARTPHONES
             </Link>
-            <Link to='/laptops' className='relative cursor-pointer p-[5px_0] m-1 ml-[2em] link'>
+            <Link
+              to='/laptops'
+              className='relative cursor-pointer p-[5px_0] m-1 ml-[2em] link'
+            >
               LAPTOPS
             </Link>
           </div>
@@ -45,7 +76,15 @@ export const DropDownMenu = () => {
 
         <div className='flex items-center '>
           <div>
-            <Link to='/comparisions' className='p-[5px_0] link'>COMPARISIONS</Link>
+            <Link to='/comparisions' className='p-[5px_0] link'>
+              COMPARISIONS
+            </Link>
+          </div>
+
+          <div>
+            <Link to='/login' className='p-[5px_0]  ml-[2em] link'>
+              ACCOUNT
+            </Link>
           </div>
         </div>
       </div>

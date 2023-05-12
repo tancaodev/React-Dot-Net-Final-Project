@@ -22,6 +22,7 @@ import { ShowImage } from './admin/ShowImage';
 import { DashboardLayout } from './admin/layouts/dashboard/DashboardLayout';
 import { About } from './pages/about/About';
 import { Register } from './pages/register/Register';
+import { Comparision } from './pages/comparision/Comparision';
 function App() {
   useEffect(() => {
     // Tìm đối tượng gốc của trang
@@ -43,6 +44,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/categories' element={<Categories />} />
+        <Route path='/comparisions'  element={<Comparision />} />
         <Route path='/admin' element={<Admin />}>
           <Route path='/admin/add-chipset' element={<AddChipset />} />
           <Route path='/admin/add-laptop' element={<AddLaptop />} />

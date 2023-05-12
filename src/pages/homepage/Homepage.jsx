@@ -8,6 +8,7 @@ import { PhoneGallery } from '../../components/PhoneGallery';
 import { Navbar } from '../../components/Navbar';
 import { TopBar } from '../../components/TopBar';
 import { Hero } from '../../components/Hero';
+import { DropDownMenu } from '../../components/DropDownMenu';
 
 export const Homepage = () => {
   useEffect(() => {
@@ -15,8 +16,10 @@ export const Homepage = () => {
   }, []);
   return (
     <div>
-      <TopBar />
-      <Navbar />
+      <div className='h-16'></div>
+      <DropDownMenu />
+      {/* <TopBar /> */}
+      {/* <Navbar /> */}
       <Hero />
       <Activities />
       <PhoneGallery type='best of 5 phone'/>
