@@ -3,6 +3,10 @@ import { Properties } from './Properties';
 import { BsInfoCircle } from 'react-icons/bs';
 
 export const GeneralInfo = ({ product }) => {
+  const math = (value, max) => {
+    return (value / max) * 100;
+  };
+  
   return (
     <div className='block box-border p-[64px_0_32px]'>
       <div className='block m-auto max-w-[1170px] relative w-[calc(100%-152px)]'>
@@ -17,10 +21,13 @@ export const GeneralInfo = ({ product }) => {
         </h2>
 
         <div className='flex flex-wrap h-[80%]'>
-          <Properties type='type' name='Desktop' />
+          <Properties type='type' name='Desktop' percent={math(80, 100)} />
           <Properties type='cpu socket' name={product.cpuSocket} />
           <Properties type='thermal design power (TDP)' name={product.tdp} />
-          <Properties type='semiconductor size' name={product.semiconductorSize} />
+          <Properties
+            type='semiconductor size'
+            name={product.semiconductorSize}
+          />
           <Properties type='cpu temperature' name={product.cpuTemp} />
           <Properties type='PCI Express (PCIE) Version' name={product.pci} />
         </div>

@@ -4,24 +4,24 @@ import { GiSniffingDog } from 'react-icons/gi';
 
 export const Footer = () => {
   return (
-    <div className='max-w-[1140px] w-full py-8 m-auto border-t-4'>
-      <div className='flex items-center m-auto justify-center'>
-        <GiSniffingDog size={40} className='text-[var(--primary-dark)] mr-2' />
-        <h1 className='text-xl font-bold text-gray-700'>NASUS</h1>
-      </div>
+    // <div className='max-w-[1140px] w-full py-8 m-auto border-t-4'>
+    //   <div className='flex items-center m-auto justify-center'>
+    //     <GiSniffingDog size={40} className='text-[var(--primary-dark)] mr-2' />
+    //     <h1 className='text-xl font-bold text-gray-700'>NASUS</h1>
+    //   </div>
+
+    // </div>
 
       <footer className='bg-[#161616] p-[1em_0] w-[100%]'>
         <div className='flex justify-between m-auto max-w-[1170px]'>
           <ul
             className='block relative w-[70%] text-white
-            sm:flex'
+    sm:flex'
           >
             <li className='sm:p-[0_1em] flex items-center text-lg'>
-
               <span>© 2023 NASUS.com</span>
             </li>
             <li className='sm:p-[0_1em] flex items-center text-lg'>
-              
               <Link to='/about'>About us</Link>
             </li>
           </ul>
@@ -121,6 +121,5 @@ export const Footer = () => {
           </div>
         </div>
       </footer>
-    </div>
   );
 };

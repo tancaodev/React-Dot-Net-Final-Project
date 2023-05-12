@@ -11,8 +11,6 @@ import { Hero } from '../../components/Hero';
 import { DropDownMenu } from '../../components/DropDownMenu';
 
 export const Homepage = () => {
-  const jwtToken = localStorage.getItem('jwtToken');
-
   useEffect(() => {
     window.scroll(0, 0);
   }, []);

@@ -2,12 +2,7 @@
 import 'react-loading-skeleton/dist/skeleton.css';
 import { Routes, Route } from 'react-router-dom';
 import { SkeletonTheme } from 'react-loading-skeleton';
-import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import jwt_decode from 'jwt-decode';
-
-//hooks
-import { useAuth } from './hooks/useAuth';
+import { useEffect } from 'react';
 
 //components
 import { Cpus } from './pages/cpus/Cpus';
@@ -26,20 +21,12 @@ import { ShowChipset } from './admin/ShowChipset';
 import { ShowLaptop } from './admin/ShowLaptop';
 import { ShowPhone } from './admin/ShowPhone';
 import { ShowImage } from './admin/ShowImage';
-import { DashboardLayout } from './admin/layouts/dashboard/DashboardLayout';
 import { About } from './pages/about/About';
 import { Register } from './pages/register/Register';
 import { Comparision } from './pages/comparision/Comparision';
 import { RequireAuth } from './features/auth/RequireAuth';
 import { ROLES } from './config/roles';
 function App() {
-  let navigate = useNavigate();
-
-  const toAdmin = () => {
-    let path = `/admin`;
-    navigate(path);
-  };
-
   useEffect(() => {
     // Tìm đối tượng gốc của trang
     const rootElement = document.getElementById('root');

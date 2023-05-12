@@ -38,7 +38,7 @@ export const DropDownMenu = () => {
   };
 
   return (
-    <header className='block w-[100%] bg-purple-700 text-white fixed top-0 z-[100]'>
+    <header className='block w-[100%] bg-black/80 text-white fixed top-0 z-[100]'>
       <div className='flex items-center h-16 justify-between m-auto max-w-[1170px] w-[90%]'>
         <div className='flex items-center'>
           <div className='block self-center relative w-[95px]'>
