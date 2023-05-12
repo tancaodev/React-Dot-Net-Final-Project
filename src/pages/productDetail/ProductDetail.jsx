@@ -39,7 +39,8 @@ export const ProductDetail = () => {
     try {
       const response = await axios.get(url);
       const data = response.data;
-      setProduct(data[0]);
+      console.log(data);
+      setProduct(data);
     } catch (error) {
       console.log(error.response);
     }
