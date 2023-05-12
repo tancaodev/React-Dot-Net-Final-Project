@@ -1,8 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
 import { BiSearch } from 'react-icons/bi';
-
+import { useAuth } from '../hooks/useAuth';
 export const DropDownMenu = () => {
   let location = useLocation();
+
+  const auth = useAuth();
+  const username = auth.username;
 
   const isHomepage = () => {
     if (location.pathname === '/') {
@@ -82,9 +85,15 @@ export const DropDownMenu = () => {
           </div>
 
           <div>
-            <Link to='/login' className='p-[5px_0]  ml-[2em] link'>
-              ACCOUNT
-            </Link>
+            {username ? (
+              <Link to='/login' className='p-[5px_0]  ml-[2em] link uppercase'>
+                {username}
+              </Link>
+            ) : (
+              <Link to='/login' className='p-[5px_0]  ml-[2em] link'>
+                ACCOUNT
+              </Link>
+            )}
           </div>
         </div>
       </div>

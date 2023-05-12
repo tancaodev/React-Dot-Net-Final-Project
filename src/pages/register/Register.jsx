@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
@@ -5,11 +6,11 @@ import { AiOutlineArrowLeft } from 'react-icons/ai';
 export const Register = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [gender, setGender] = useState(true);
+  const [gender, setGender] = useState('');
   const [email, setEmail] = useState('');
   const [userName, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState(''); 
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -20,12 +21,7 @@ export const Register = () => {
       setLastName(value);
     }
     if (id === 'gender') {
-      // if (value === 'male') {
-      //   setGender(gender);
-      // } else {
-      //   setGender(!gender);
-      // }
-      setGender(!gender)
+      setGender(value);
     }
     if (id === 'email') {
       setEmail(value);
@@ -41,17 +37,31 @@ export const Register = () => {
     }
   };
 
+  const url = 'https://localhost:44345/api/authenticate/register';
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(
-      firstName,
-      lastName,
-      gender,
-      email,
-      userName,
-      password,
-      confirmPassword
-    );
+
+    let newUser = {
+      firstName: firstName,
+      lastName: lastName,
+      gender: gender === 'male' ? true : false,
+      email: email,
+      userName: userName,
+      password: password,
+    };
+
+    addNewUser(newUser);
+  };
+
+  const addNewUser = async (newUser) => {
+    try {
+      await axios.post(url, newUser).then((response) => {
+        toLogin();
+      });
+    } catch (error) {
+      console.log(error.response.data.errors[0]);
+    }
   };
 
   let navigate = useNavigate();
@@ -192,6 +202,7 @@ export const Register = () => {
             </div>
 
             <button
+              type='button'
               className='mt-3 rounded-lg border-black border p-1 hover:bg-blue-500 hover:text-white'
               onClick={handleSubmit}
             >
