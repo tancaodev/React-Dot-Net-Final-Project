@@ -19,8 +19,8 @@ export const ProductDetail = () => {
   // const name = array[2]
   // console.log(name);
   const getProduct = state.cpu || state.phone || state.laptop || {}; // <-- unpack the item from state
-  const productName = encodeURIComponent(getProduct.name)
-  const type = getProduct.type
+  const productName = encodeURIComponent(getProduct.name);
+  const type = getProduct.type;
 
   //call api get data from product name
   const [product, setProduct] = useState([]);
@@ -30,9 +30,8 @@ export const ProductDetail = () => {
     url = `https://localhost:44345/api/chipset/get-chipset-by-name/${productName}`;
   } else if (type === 'phone') {
     url = `https://localhost:44345/api/phone/get-phone-by-name/${productName}`;
-  }
-  else if (type === 'laptop') {
-    url = `https://localhost:44345/api/laptop/get-laptop-by-name/${productName}`
+  } else if (type === 'laptop') {
+    url = `https://localhost:44345/api/laptop/get-laptop-by-name/${productName}`;
   }
 
   const fetchData = async () => {
@@ -54,20 +53,15 @@ export const ProductDetail = () => {
     <div className='h-[100dvh]'>
       <div className='h-16'></div>
       <DropDownMenu />
-      <SectionContainer />
+      <SectionContainer name={product.name} />
 
       <div className='block pt-8 h-[100%] m-auto min-h-[100%]'>
         <Breadcrumbs page={'product-detail'} />
-        <ProductImage
-          name={product.name}
-          image={product.image}
-          type={type}
-        />
+        <ProductImage name={product.name} image={product.image} type={type} />
 
         <ProductSpecs product={product} type={type} />
-      <Footer />
+        <Footer />
       </div>
-
     </div>
   );
 };

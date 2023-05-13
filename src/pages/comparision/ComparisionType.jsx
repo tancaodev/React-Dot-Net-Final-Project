@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { DropDownMenu } from '../../components/DropDownMenu';
 import { Footer } from '../../components/Footer';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
@@ -8,12 +8,14 @@ import axios from 'axios';
 export const ComparisionType = () => {
   const outlet = useOutlet();
 
+  //search input
   const [data, setData] = useState([]);
   const [searchText, setSearchText] = useState('');
-  const [focusedIndex, setFocusedIndex] = useState(0);
+  const [focusedIndex, setFocusedIndex] = useState(-1);
   const [results, setResults] = useState([]);
   const resultContainer = useRef(null);
-  const [defaultValue, setDefaultValue] = useState('');
+  const [selectedProduct, setSelectedProduct] = useState();
+  const [showResults, setShowResults] = useState(false);
 
   const url_laptop = 'https://localhost:44345/api/laptop/get-laptops';
   const url_cpu = 'https://localhost:44345/api/chipset/get-chipsets';
@@ -38,10 +40,12 @@ export const ComparisionType = () => {
       });
   };
 
+  //fetch data from api
   useEffect(() => {
     fetchData();
   }, []);
 
+  //make focus on div has focusedIndex
   useEffect(() => {
     if (!resultContainer.current) return;
 
@@ -50,6 +54,20 @@ export const ComparisionType = () => {
     });
   }, [focusedIndex]);
 
+  // useEffect(() => {
+  //   if (results.length > 0 && !showResults) setShowResults(true);
+
+  //   if (results.length <= 0) setShowResults(false);
+  // }, [results]);
+
+  //make searchText has data from onClick or enter 
+  useEffect(() => {
+    if (selectedProduct) {
+      setSearchText(selectedProduct.name);
+    } 
+  }, [selectedProduct]);
+
+  //move up and down, escape and enter button event
   const handleKeyDown = (e) => {
     const { key } = e;
     let nextIndexCount = 0;
@@ -58,38 +76,55 @@ export const ComparisionType = () => {
     }
     // move down
     if (key === 'ArrowDown') {
-      console.log('Key down: ', focusedIndex, results.length);
       nextIndexCount = (focusedIndex + 1) % results.length;
     }
 
     // move up
     if (key === 'ArrowUp') {
       nextIndexCount = (focusedIndex + results.length - 1) % results.length;
-      console.log(nextIndexCount);
     }
 
-    // // hide search results
-    // if (key === 'Escape') {
-    //   resetSearchComplete();
-    // }
+    // hide search results
+    if (key === 'Escape') {
+      resetSearchComplete();
+    }
 
-    // // select the current item
-    // if (key === 'Enter') {
-    //   e.preventDefault();
-    //   handleSelection(focusedIndex);
-    // }
+    // select the current item
+    if (key === 'Enter') {
+      e.preventDefault();
+      handleSelection(focusedIndex);
+    }
 
+    if (results.length === 0) {
+      setFocusedIndex(-1);
+    }
     setFocusedIndex(nextIndexCount);
   };
 
-  // const handleChange = (e) => {
-  //   setDefaultValue(e.target.value);
-  //   onChange && onChange(e);
-  // };
+  //when user focus on input show view
+  const handleShow = () => {
+    setShowResults(true);
+  }
 
+  //when user pick item
+  const handleSelection = (selectedIndex) => {
+    const selectedItem = results[selectedIndex];
+    if (!selectedItem) return resetSearchComplete();
+    setSelectedProduct(selectedItem)
+    resetSearchComplete();
+  };
+
+  //when user delete all text in input
+  const resetSearchComplete = useCallback(() => {
+    setFocusedIndex(-1);
+    setShowResults(false);
+  }, []);
+
+  //show data base on user's input
   const handleInputChange = (e) => {
     // setDefaultValue(e.target.value);
     const { target } = e;
+    setShowResults(true);
 
     setSearchText(target.value);
 
@@ -124,71 +159,50 @@ export const ComparisionType = () => {
                 <div className='block basis-0 flex-grow flex-shrink p-3 w-[25%]'>
                   <div
                     tabIndex={1}
+                    onBlur={resetSearchComplete}
                     onKeyDown={handleKeyDown}
                     className='w-[100%] mb-4 relative'
                   >
                     <input
                       onChange={handleInputChange}
+                      onFocus={handleShow}
                       value={searchText}
                       type='text'
                       placeholder='Search your product'
                       className='w-[100%] border-2 rounded-[10px] block p-[6px_28px_6px_12px]'
                     />
-                    <div className='absolute mt-1 w-[100%] p-2 shadow-lg rounded-bl rounded-br max-h-56 overflow-y-auto bg-white'>
-                      <ul>
-                        {/* {results[0] ? (
-                          results.map((data, index) => {
-                            return (
-                              <div
-                                key={index}
-                                ref={
-                                  index === focusedIndex
-                                    ? resultContainer
-                                    : null
-                                }
-                                style={{
-                                  backgroundColor:
+                    {showResults && (
+                      <div className='absolute mt-1 w-[100%] p-2 shadow-lg rounded-bl rounded-br max-h-56 overflow-y-auto bg-white'>
+                        <ul>
+                          {results.length === 0 ? (
+                            <h1>Can't find product</h1>
+                          ) : (
+                            results.map((data, index) => {
+                              return (
+                                <div
+                                  key={index}
+                                  onMouseDown={() => handleSelection(index)}
+                                  ref={
                                     index === focusedIndex
-                                      ? 'rgba(0,0,0,0.1)'
-                                      : '',
-                                }}
-                                className={`cursor-pointer hover:bg-black hover:bg-opacity-10 p-2`}
-                              >
-                                <p>{data.name}</p>
-                              </div>
-                            );
-                          })
-                        ) : (
-                          <h1>Can't find product</h1>
-                        )} */}
-
-                        {results.length === 0 ? (
-                          <h1>Can't find product</h1>
-                        ) : (
-                          results.map((data, index) => {
-                            return (
-                              <div
-                                key={index}
-                                ref={
-                                  index === focusedIndex
-                                    ? resultContainer
-                                    : null
-                                }
-                                style={{
-                                  backgroundColor:
-                                    index === focusedIndex
-                                      ? 'rgba(0,0,0,0.1)'
-                                      : '',
-                                }}
-                                className={`cursor-pointer hover:bg-black hover:bg-opacity-10 p-2`}
-                              >
-                                <p>{data.name}</p>
-                              </div>
-                            );
-                          })
-                        )}
-                      </ul>
-                    </div>
+                                      ? resultContainer
+                                      : null
+                                  }
+                                  style={{
+                                    backgroundColor:
+                                      index === focusedIndex
+                                        ? 'rgba(0,0,0,0.1)'
+                                        : '',
+                                  }}
+                                  className={`cursor-pointer hover:bg-black hover:bg-opacity-10 p-2`}
+                                >
+                                  <p>{data.name}</p>
+                                </div>
+                              );
+                            })
+                          )}
+                        </ul>
+                      </div>
+                    )}
                   </div>
 
                   <div className='hidden float-left h-auto w-[100%]'>

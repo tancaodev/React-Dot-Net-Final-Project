@@ -9,7 +9,7 @@ import { AiOutlinePlusCircle } from 'react-icons/ai';
 
 export const PhoneSidebar = () => {
   return (
-    <div className='block overflow-y-scroll h-[600px] sticky top-20 z-0 scrollbar'>
+    <div className='block overflow-y-scroll h-[80dvh] sticky top-20 z-0 scrollbar'>
       <h3 className='block font-bold'>FILTERS</h3>
       <ul className='block'>
         <li className='list-item'>

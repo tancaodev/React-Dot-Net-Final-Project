@@ -29,14 +29,7 @@ import { ROLES } from './config/roles';
 import { ComparisionType } from './pages/comparision/ComparisionType';
 
 function App() {
-  useEffect(() => {
-    // Tìm đối tượng gốc của trang
-    const rootElement = document.getElementById('root');
-
-    // Thiết lập thuộc tính scrollTop của đối tượng gốc thành 0 sau mỗi lần render
-    rootElement.scrollTop = 0;
-  }, []);
-
+  
   return (
     <SkeletonTheme baseColor='#f2f2f2' highlightColor='#e6e6e6'>
       <Routes>
