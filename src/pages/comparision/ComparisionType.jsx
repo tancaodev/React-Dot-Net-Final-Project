@@ -9,8 +9,8 @@ export const ComparisionType = () => {
   const outlet = useOutlet();
 
   const [data, setData] = useState([]);
-
-  const [focusedIndex, setFocusedIndex] = useState(-1);
+  const [searchText, setSearchText] = useState('');
+  const [focusedIndex, setFocusedIndex] = useState(0);
   const [results, setResults] = useState([]);
   const resultContainer = useRef(null);
   const [defaultValue, setDefaultValue] = useState('');
@@ -53,16 +53,20 @@ export const ComparisionType = () => {
   const handleKeyDown = (e) => {
     const { key } = e;
     let nextIndexCount = 0;
-
+    if (results.length === 0) {
+      setFocusedIndex(0);
+    }
     // move down
-    if (key === 'ArrowDown')
-      console.log('Key down: ', focusedIndex, data.length);
+    if (key === 'ArrowDown') {
+      console.log('Key down: ', focusedIndex, results.length);
       nextIndexCount = (focusedIndex + 1) % results.length;
+    }
 
     // move up
-    if (key === 'ArrowUp')
+    if (key === 'ArrowUp') {
       nextIndexCount = (focusedIndex + results.length - 1) % results.length;
       console.log(nextIndexCount);
+    }
 
     // // hide search results
     // if (key === 'Escape') {
@@ -83,16 +87,18 @@ export const ComparisionType = () => {
   //   onChange && onChange(e);
   // };
 
-  const handleChange = (e) => {
-    setDefaultValue(e.target.value);
-    console.log('default value', defaultValue);
+  const handleInputChange = (e) => {
+    // setDefaultValue(e.target.value);
     const { target } = e;
-    if (!target.value.trim()) return setResults([]);
-    const filteredValue = results.filter((data) => {
-      console.log(data.name.toLowerCase().startsWith('asus'));
-      data.name.toLowerCase().startsWith(target.value);
-      console.log('data log: ', data.name.toLowerCase().startsWith(target.value));
+
+    setSearchText(target.value);
+
+    if (!target.value.trim()) return setResults(data);
+
+    const filteredValue = data.filter(({ name }) => {
+      return name.toLowerCase().includes(searchText.toLowerCase());
     });
+
     setResults(filteredValue);
   };
 
@@ -122,15 +128,16 @@ export const ComparisionType = () => {
                     className='w-[100%] mb-4 relative'
                   >
                     <input
-                      onInput={handleChange}
+                      onChange={handleInputChange}
+                      value={searchText}
                       type='text'
                       placeholder='Search your product'
                       className='w-[100%] border-2 rounded-[10px] block p-[6px_28px_6px_12px]'
                     />
                     <div className='absolute mt-1 w-[100%] p-2 shadow-lg rounded-bl rounded-br max-h-56 overflow-y-auto bg-white'>
                       <ul>
-                        {data[0] ? (
-                          data.map((data, index) => {
+                        {/* {results[0] ? (
+                          results.map((data, index) => {
                             return (
                               <div
                                 key={index}
@@ -152,7 +159,33 @@ export const ComparisionType = () => {
                             );
                           })
                         ) : (
-                          <h1>is Loading...</h1>
+                          <h1>Can't find product</h1>
+                        )} */}
+
+                        {results.length === 0 ? (
+                          <h1>Can't find product</h1>
+                        ) : (
+                          results.map((data, index) => {
+                            return (
+                              <div
+                                key={index}
+                                ref={
+                                  index === focusedIndex
+                                    ? resultContainer
+                                    : null
+                                }
+                                style={{
+                                  backgroundColor:
+                                    index === focusedIndex
+                                      ? 'rgba(0,0,0,0.1)'
+                                      : '',
+                                }}
+                                className={`cursor-pointer hover:bg-black hover:bg-opacity-10 p-2`}
+                              >
+                                <p>{data.name}</p>
+                              </div>
+                            );
+                          })
                         )}
                       </ul>
                     </div>
