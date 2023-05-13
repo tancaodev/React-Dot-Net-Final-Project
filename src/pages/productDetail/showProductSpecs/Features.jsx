@@ -4,9 +4,10 @@ import { Properties } from './Properties';
 
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 
-export const Features = () => {
+export const Features = ({ product, background }) => {
+  console.log(product, background);
   return (
-    <div className='block box-border p-[64px_0_32px] bg-slate-50'>
+    <div className={`block box-border p-[64px_0_32px] ${background ? background : 'bg-slate-50'}`}>
       <div className='block m-auto max-w-[1170px] relative w-[calc(100%-152px)]'>
         <h2
           className='flex text-3xl m-[0_0_40px] relative break-words

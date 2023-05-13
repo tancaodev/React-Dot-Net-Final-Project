@@ -26,6 +26,8 @@ import { Register } from './pages/register/Register';
 import { Comparision } from './pages/comparision/Comparision';
 import { RequireAuth } from './features/auth/RequireAuth';
 import { ROLES } from './config/roles';
+import { ComparisionType } from './pages/comparision/ComparisionType';
+
 function App() {
   useEffect(() => {
     // Tìm đối tượng gốc của trang
@@ -48,12 +50,11 @@ function App() {
         <Route path='/laptops/:laptopName' element={<ProductDetail />} />
         <Route path='/register' element={<Register />} />
         <Route path='/categories' element={<Categories />} />
-        <Route path='/comparisions' element={<Comparision />} />
+        <Route path='/comparisions' element={<ComparisionType />}>
+          <Route path='/comparisions/:productName' element={<Comparision />} />
+        </Route>
         <Route path='/about' element={<About />} />
-
-
         <Route path='/login' element={<Login />} />
-
         {/* Protected Routes */}
         <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
           <Route path='/admin' element={<Admin />}>

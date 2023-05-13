@@ -71,7 +71,7 @@ export const About = () => {
         </div>
       </div>
 
-      <div className='p-[0_10px]'>
+      <div>
         <div className='m-auto max-w-[1170px] w-[100%] pb-[50px]'>
           <div className='flex m-[10px_0]'>
             <h2

@@ -41,7 +41,9 @@ export const Laptops = () => {
           </div>
           <div className='w-3/4'>
             <div className='text-right'>
-              <h1 className='text-2xl mb-4'>Laptop comparision: {laptopTotal}</h1>
+              <h1 className='text-2xl mb-4'>
+                Laptop comparision: {laptopTotal}
+              </h1>
             </div>
             <div className='grid grid-cols-3 gap-4 pl-5'>
               {laptops[0] ? (
@@ -60,8 +62,8 @@ export const Laptops = () => {
             </div>
           </div>
         </div>
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 };

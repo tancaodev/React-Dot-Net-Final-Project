@@ -16,7 +16,7 @@ export const ProductSpecs = ({ product, type }) => {
           <GeneralInfo product={product} />
           <Performance product={product} />
           <Memory product={product} />
-          <Features product={product} />
+          <Features product={product}/>
         </section>
       );
     } else if (type === 'phone') {
@@ -28,7 +28,7 @@ export const ProductSpecs = ({ product, type }) => {
           <Performance product={product}/>
           <Cameras product={product}/>
           <Battery product={product}/>
-          <Features product={product}/>
+          <Features product={product} background={' '}/>
         </section>
       );
     } else if (type === 'laptop') {
@@ -38,7 +38,7 @@ export const ProductSpecs = ({ product, type }) => {
           <Display product={product} />
           <Memory product={product} type={type}/>
           <Performance product={product}/>
-          <Battery product={product}/>
+          <Battery product={product} background={' '}/>
           <Features product={product}/>
         </section>
       );
