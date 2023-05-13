@@ -1,13 +1,11 @@
 import React from 'react';
 import { Link } from 'react-scroll';
 
-export const SectionContainer = ({name}) => {
+export const SectionContainer = ({ name }) => {
   //change spacing on url from '%20' to '-'
-  let productName = name;
-  productName = productName.replace(/\s+/g, '-');
-  const url = `/comparision/${productName}`;
 
-  console.log(url);
+  console.log(name);
+
   return (
     <nav className='block h-8 fixed w-[100%] z-[100] shadow-md bg-white'>
       <div className='pl-[10px] block overflow-x-clip overflow-y-hidden box-border h-8 mx-auto max-w-[1190px] relative whitespace-nowrap w-[100%] z-10'>
@@ -37,7 +35,10 @@ export const SectionContainer = ({name}) => {
         </div>
 
         <div className='absolute right-0 top-0 block'>
-          <Link className='bg-[#3c59fc] border-none text-white text-xs cursor-pointer h-8 outline-none p-4' to=''>
+          <Link
+            className='bg-[#3c59fc] border-none text-white text-xs cursor-pointer h-8 outline-none p-4'
+            to=''
+          >
             <span>+</span>
             <span>Add to comparision</span>
           </Link>

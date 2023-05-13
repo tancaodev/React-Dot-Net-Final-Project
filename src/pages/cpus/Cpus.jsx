@@ -13,7 +13,7 @@ export const Cpus = () => {
   const [cpusTotal, setCpusTotal] = useState('');
   const [sortOption, setSortOption] = useState('most_popular'); // Default sorting option
 
-  const url = `https://localhost:44345/api/chipset/get-chipsets?=sort${sortOption}`;
+  const url = `https://localhost:44345/api/chipset/get-chipsets?sort=${sortOption}`;
 
   const fetchData = async () => {
     try {
@@ -37,7 +37,7 @@ export const Cpus = () => {
 
   useEffect(() => {
     // Fetch phones with selected sorting option
-    const url_sort = `https://localhost:44345/api/chipset/get-chipsets?=sort${sortOption}`;
+    const url_sort = `https://localhost:44345/api/chipset/get-chipsets?sort=${sortOption}`;
     console.log(url_sort);
     axios
       .get(url_sort)
@@ -84,9 +84,9 @@ export const Cpus = () => {
             </div>
             <div className='grid grid-cols-3 gap-4 pl-5'>
               {cpus[0] ? (
-                cpus.map((cpu) => {
+                cpus.map((cpu, index) => {
                   return (
-                    <Fragment key={cpu.name}>
+                    <Fragment key={index}>
                       <CpuComponent cpu={cpu} />
                     </Fragment>
                   );

@@ -86,9 +86,9 @@ export const Laptops = () => {
             </div>
             <div className='grid grid-cols-3 gap-4 pl-5'>
               {laptops[0] ? (
-                laptops.map((laptop) => {
+                laptops.map((laptop, index) => {
                   return (
-                    <Fragment key={laptop.name}>
+                    <Fragment key={index}>
                       <LaptopComponent laptop={laptop} />
                     </Fragment>
                   );
