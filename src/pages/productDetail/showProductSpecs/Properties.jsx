@@ -1,7 +1,6 @@
 import React from 'react';
 
 export const Properties = (props) => {
-  console.log(props.percent);
   return (
     <div
       className='flex border border-solid border-[#e7e8e7] bg-white rounded-lg box-border 
@@ -18,7 +17,7 @@ export const Properties = (props) => {
           <p className='text-sm tracking-[.2px] m-[0_0_2px]'>{props.name}</p>
           <div className='bg-[#bebebe] rounded-lg h-2 relative w-[100%]'>
             {props.name !== 'Unknown' ? (
-              <div className={`block rounded-lg absolute h-2 bg-gradient-to-r from-[#3c59fc] to-[#7600e0] w-[${ props.percent ?? 100 }%]`}></div>
+              <div className={`block rounded-lg absolute h-2 bg-gradient-to-r from-[#3c59fc] to-[#7600e0]`} style={{width: `${props.percent ?? 100}%`}}></div>
               // <div className={`block rounded-lg absolute h-2 bg-gradient-to-r from-[#3c59fc] to-[#7600e0] w-[30%]`}></div>
             ) : (
               <div></div>
@@ -27,7 +26,7 @@ export const Properties = (props) => {
         </div>
       </div>
 
-      <div className='block text-sm h-[40px] overflow-hidden p-[8px_16px] relative'>
+      <div className='block text-sm h-[50px] overflow-hidden p-[0px_16px] relative'>
         {props.caption}
       </div>
     </div>

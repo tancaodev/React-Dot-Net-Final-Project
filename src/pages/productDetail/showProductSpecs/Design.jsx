@@ -4,7 +4,20 @@ import { Properties } from './Properties';
 
 import { SlScreenSmartphone } from 'react-icons/sl';
 
-export const Design = ({ product }) => {
+export const Design = ({ product, type }) => {
+  const math = (value, max) => {
+    return ((value / max) * 100).toFixed(0)
+  };
+
+  console.log(type);
+
+  const productWeight = type === 'laptop'? `${product.weight}kg` : `${product.weight}g`
+  const productWeightLimit = type === 'laptop'? 8.6  : 570
+
+  const productHeightLimit = type === 'laptop'? 380  : 196.8
+
+  const productWidthLimit = type === 'laptop'? 530  : 254
+
   return (
     <div className='block box-border p-[64px_0_32px]'>
       <div className='block m-auto max-w-[1170px] relative w-[calc(100%-152px)]'>
@@ -19,13 +32,30 @@ export const Design = ({ product }) => {
         </h2>
 
         <div className='flex flex-wrap h-[80%]'>
-          <Properties
-            type='ram speed'
-            name=''
-            caption='The market that the CPU is designed for'
-          />
-          <Properties type='DDR memory version' name=''/>
-          <Properties type='memory channels' name='' />
+          <Properties 
+						type='Weight' 
+						name={productWeight} 
+						percent={math(product.weight, productWeightLimit)}
+            caption='The lower the weight the better.'
+						/>
+					<Properties 
+						type='Height' 
+						name={`${product.height}mm`} 
+						percent={math(product.height, productHeightLimit)}
+            caption='The vertical dimension of the product.'
+						/>
+					<Properties 
+						type='Width' 
+						name={`${product.width}mm`} 
+						percent={math(product.width, productWidthLimit)}
+            caption='The horizontal dimension of the product.'
+						/>
+					<Properties 
+						type='Design Features' 
+						// name={`${product.weight}g`} 
+						// percent={math(product.weight, 570)}
+            // caption='The lower the weight the better'
+						/>
         </div>
       </div>
     </div>

@@ -5,6 +5,22 @@ import { Properties } from './Properties';
 import { RiCameraLensLine } from 'react-icons/ri';
 
 export const Cameras = ({ product }) => {
+  const math = (value, max) => {
+    return ((value / max) * 100).toFixed(0)
+  };
+
+  const mainCameraProperties = product.mainCameraMP?.map((camera, index) => (
+    <Properties
+      key={index}
+      type={`Main Camera MP ${index+1}`}
+      name={`${camera}MP`}
+      percent={math(camera, 108)}
+      caption='The megapixel count of the main camera.'
+    />
+  ));
+
+  const mainCameraAmount = product.mainCameraCount >= 2? `${product.mainCameraCount} cameras` : `${product.mainCameraCount} camera`
+
   return (
     <div className='block box-border p-[64px_0_32px]'>
       <div className='block m-auto max-w-[1170px] relative w-[calc(100%-152px)]'>
@@ -19,13 +35,19 @@ export const Cameras = ({ product }) => {
         </h2>
 
         <div className='flex flex-wrap h-[80%]'>
-          <Properties
-            type='ram speed'
-            name=''
-            caption='The market that the CPU is designed for'
-          />
-          <Properties type='DDR memory version' name=''/>
-          <Properties type='memory channels' name='' />
+          <Properties 
+						type='Main Camera Amount' 
+						name={`${mainCameraAmount}`} 
+						percent={math(product.mainCameraCount, 6)}
+            caption='The amount of main camera this phone have.'
+					/>
+          {mainCameraProperties}
+					<Properties 
+						type='Front Camera' 
+						name={`${product.frontCameraMP}MP`} 
+						percent={math(product.frontCameraMP, 84)}
+            caption='A higher megapixel count the more details selfies.'
+					/>
         </div>
       </div>
     </div>
