@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { Properties } from './Properties';
+import { PropertiesCompare } from './PropertiesCompare';
 
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 
-export const Features = ({ product, background }) => {
+export const FeaturesCompare = ({ product, background }) => {
 
   return (
     <div className={`block box-border p-[64px_0_32px] ${background ? background : 'bg-slate-50'}`}>
@@ -20,11 +20,11 @@ export const Features = ({ product, background }) => {
         </h2>
 
         <div className='flex flex-wrap h-[80%]'>
-          <Properties type='type' name='Desktop' caption='The market that the CPU is designed for'/>
-          <Properties type='cpu socket'/>
-          <Properties type='thermal design power (TDP)'/>
-          <Properties type='semiconductor size'/>
-          <Properties type='cpu temperature'/>
+          <PropertiesCompare type='type' name='Desktop' caption='The market that the CPU is designed for'/>
+          <PropertiesCompare type='cpu socket'/>
+          <PropertiesCompare type='thermal design power (TDP)'/>
+          <PropertiesCompare type='semiconductor size'/>
+          <PropertiesCompare type='cpu temperature'/>
         </div>
       </div>
     </div>

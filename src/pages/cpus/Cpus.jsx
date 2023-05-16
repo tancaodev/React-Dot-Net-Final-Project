@@ -15,20 +15,20 @@ export const Cpus = () => {
 
   const url = `https://localhost:44345/api/chipset/get-chipsets?sort=${sortOption}`;
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(url);
-      const data = response.data;
-      setCpus(data.data);
-      setCpusTotal(data.total);
-    } catch (error) {
-      console.log(error.response);
-    }
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(url);
+        const data = response.data;
+        setCpus(data.data);
+        setCpusTotal(data.total);
+      } catch (error) {
+        console.log(error.response);
+      }
+    };
+
     fetchData();
-  }, []);
+  }, [url]);
 
   //call api to sort data with filter
   const handleSortOptionChange = (event) => {
@@ -38,7 +38,6 @@ export const Cpus = () => {
   useEffect(() => {
     // Fetch phones with selected sorting option
     const url_sort = `https://localhost:44345/api/chipset/get-chipsets?sort=${sortOption}`;
-    console.log(url_sort);
     axios
       .get(url_sort)
       .then((response) => {

@@ -1,41 +1,50 @@
-import { Link, useLocation } from 'react-router-dom';
-import { BiSearch } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
-export const DropDownMenu = () => {
-  let location = useLocation();
 
+import { BiSearch } from 'react-icons/bi';
+import { FaUserAlt, FaUserEdit } from 'react-icons/fa';
+import { AiFillSetting } from 'react-icons/ai';
+import { IoMdHelpCircle } from 'react-icons/io';
+import { BiLogOut } from 'react-icons/bi';
+
+export const DropDownMenu = () => {
+  const [active, setAcitve] = useState(false);
   const auth = useAuth();
   const username = auth.username;
+  let menuRef = useRef();
 
-  const isHomepage = () => {
-    if (location.pathname === '/') {
-      return (
-        <div className='hidden ml-[2em]'>
-          <form action='' className='relative'>
-            <input type='text' />
-            <span className='text-black absolute left-1'>Search</span>
-            <BiSearch
-              size={20}
-              className='search absolute right-1 top-[2px] text-black'
-            />
-          </form>
-        </div>
-      );
-    } else {
-      return (
-        <div className='flex ml-[2em]'>
-          <form action='' className='relative'>
-            <input type='text' />
-            <span className='text-black absolute left-1'>Search</span>
-            <BiSearch
-              size={20}
-              className='search absolute right-1 top-[2px] text-black'
-            />
-          </form>
-        </div>
-      );
-    }
+  const menuToggle = (event) => {
+    event.preventDefault()
+    setAcitve((prevActive) => !prevActive);
   };
+
+  const menuItemCSS = {
+    menuLi: 'flex items-center p-[16px_0] border-t border-solid group',
+    menuImg:
+      'max-w-[20px] mr-2 opacity-50 transition-all duration-500 group-hover:opacity-100',
+    menuLink:
+      'group-hover:text-red-500 transition-all duration-500 inline-block text-[#555]',
+  };
+
+  const handleLogOut = () => {
+    localStorage.removeItem('jwtToken');
+    window.location.reload();
+  };
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!menuRef.current.contains(e.target)) {
+        setAcitve(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handler);
+
+    return () => {
+      document.removeEventListener('mousedown', handler);
+    };
+  });
 
   return (
     <header className='block w-[100%] bg-black/80 text-white fixed top-0 z-[100]'>
@@ -47,13 +56,16 @@ export const DropDownMenu = () => {
             </Link>
           </div>
 
-          <div className='ml-[3em]'>
-            <Link to='/categories' className='p-[5px_0] link'>
-              CATEGORIES
-            </Link>
+          <div className='flex ml-[2em]'>
+            <form action='' className='relative'>
+              <input type='text' />
+              <span className='text-black absolute left-1'>Search</span>
+              <BiSearch
+                size={20}
+                className='search absolute right-1 top-[2px] text-black'
+              />
+            </form>
           </div>
-
-          {isHomepage()}
 
           <div className='flex ml-[1.5em]'>
             <Link
@@ -77,23 +89,100 @@ export const DropDownMenu = () => {
           </div>
         </div>
 
-        <div className='flex items-center '>
+        <div className='flex items-center'>
           <div>
             <Link to='/comparisions' className='p-[5px_0] link'>
               COMPARISIONS
             </Link>
           </div>
 
-          <div>
+          <div ref={menuRef}>
             {username ? (
-              <Link to='/login' className='p-[5px_0]  ml-[2em] link uppercase'>
+              <Link
+                id='username'
+                onClick={menuToggle}
+                className='p-[5px_0] ml-[2em] link uppercase' 
+              >
                 {username}
               </Link>
             ) : (
-              <Link to='/login' className='p-[5px_0]  ml-[2em] link'>
+              <Link to='/login' className='p-[5px_0] ml-[2em] link'>
                 ACCOUNT
               </Link>
             )}
+            <div
+              className={`${
+                active
+                  ? 'mt-0 visible opacity-100'
+                  : 'invisible mt-32 opacity-0'
+              } absolute top-full border border-black
+          right-32 w-[200px] p-[10px_20px] bg-[#fff] rounded-2xl transition-all duration-500 text-black
+          before:content-[""] before:absolute before:top-[-5px] before:right-[28px] before:w-[20px] 
+          before:h-[20px] before:bg-[#fff] before:rotate-45`}
+            >
+              <h3 className='flex text-base p-[20px_0] text-[#555]'>
+                <div>
+                  <span>Name: {username}</span>
+                  <br />
+                  <span className='text-sm text-[#cecece]'>ID: 123456</span>
+                </div>
+              </h3>
+              <ul className=''>
+                <li className={`${menuItemCSS.menuLi}`}>
+                  <span>
+                    <FaUserAlt size={20} className={`${menuItemCSS.menuImg}`} />
+                  </span>
+                  <a href='#none' className={`${menuItemCSS.menuLink}`}>
+                    My Profile
+                  </a>
+                </li>
+                <li className={`${menuItemCSS.menuLi}`}>
+                  <span>
+                    <FaUserEdit
+                      size={20}
+                      className={`${menuItemCSS.menuImg}`}
+                    />
+                  </span>
+                  <a href='#none' className={`${menuItemCSS.menuLink}`}>
+                    Edit Profile
+                  </a>
+                </li>
+                <li className={`${menuItemCSS.menuLi}`}>
+                  <span>
+                    <AiFillSetting
+                      size={20}
+                      className={`${menuItemCSS.menuImg}`}
+                    />
+                  </span>
+                  <a href='#none' className={`${menuItemCSS.menuLink}`}>
+                    Settings
+                  </a>
+                </li>
+                <li className={`${menuItemCSS.menuLi}`}>
+                  <span>
+                    <IoMdHelpCircle
+                      size={20}
+                      className={`${menuItemCSS.menuImg}`}
+                    />
+                  </span>
+                  <a href='#none' className={`${menuItemCSS.menuLink}`}>
+                    Help
+                  </a>
+                </li>
+                <li className={`${menuItemCSS.menuLi}`}>
+                  <span>
+                    <BiLogOut size={20} className={`${menuItemCSS.menuImg}`} />
+                  </span>
+                  <a
+                    href='/'
+                    onClick={handleLogOut}
+                    className={`${menuItemCSS.menuLink}`}
+                  >
+                    Log Out
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

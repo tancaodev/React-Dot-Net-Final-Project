@@ -1,15 +1,17 @@
 import React from 'react';
 
-import { Properties } from './Properties';
+import { PropertiesCompare } from './PropertiesCompare';
 
 import { SlScreenSmartphone } from 'react-icons/sl';
 
-export const Design = ({ product, type }) => {
+export const DesignCompare = ({ product, product2, type }) => {
   const math = (value, max) => {
     return ((value / max) * 100).toFixed(0)
   };
 
   const productWeight = type === 'laptop'? `${product.weight}kg` : `${product.weight}g`
+
+  const productWeight2 = type === 'laptop'? `${product2.weight}kg` : `${product2.weight}g`
   
   const productWeightLimit = type === 'laptop'? 8.6  : 570
 
@@ -31,25 +33,34 @@ export const Design = ({ product, type }) => {
         </h2>
 
         <div className='flex flex-wrap h-[80%]'>
-          <Properties 
+          <PropertiesCompare 
 						type='Weight' 
 						name={productWeight} 
 						percent={math(product.weight, productWeightLimit)}
+
+            name2={productWeight2} 
+						percent2={math(product2.weight, productWeightLimit)}
             caption='The lower the weight the better.'
 						/>
-					<Properties 
+					<PropertiesCompare 
 						type='Height' 
 						name={`${product.height}mm`} 
 						percent={math(product.height, productHeightLimit)}
+
+            name2={`${product2.height}mm`} 
+						percent2={math(product2.height, productHeightLimit)}
             caption='The vertical dimension of the product.'
 						/>
-					<Properties 
+					<PropertiesCompare 
 						type='Width' 
 						name={`${product.width}mm`} 
 						percent={math(product.width, productWidthLimit)}
+
+            name2={`${product2.width}mm`} 
+						percent2={math(product2.width, productWidthLimit)}
             caption='The horizontal dimension of the product.'
 						/>
-					<Properties 
+					<PropertiesCompare 
 						type='Design Features' 
 						// name={`${product.weight}g`} 
 						// percent={math(product.weight, 570)}

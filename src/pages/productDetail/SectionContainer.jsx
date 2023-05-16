@@ -1,13 +1,24 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-scroll';
 
-export const SectionContainer = ({ name }) => {
-  //change spacing on url from '%20' to '-'
+export const SectionContainer = ({ product, page }) => {
+  const navigate = useNavigate();
 
-  console.log(name);
+  //change spacing on url from '%20' to '-'
+  let productName = product.name;
+
+  const localizeName = (name) => {
+    if (!name) return;
+    let locallize_name = name.replace(/\s+/g, '-');
+    return locallize_name;
+  };
+  const url_name = localizeName(productName);
+
+  const url = `/comparisions/${url_name}`;
 
   return (
-    <nav className='block h-8 fixed w-[100%] z-[100] shadow-md bg-white'>
+    <nav className='block h-8 fixed w-[100%] z-10 shadow-md bg-white'>
       <div className='pl-[10px] block overflow-x-clip overflow-y-hidden box-border h-8 mx-auto max-w-[1190px] relative whitespace-nowrap w-[100%] z-10'>
         <div className='block lg:pl-0'>
           <Link
@@ -34,15 +45,20 @@ export const SectionContainer = ({ name }) => {
           </Link>
         </div>
 
-        <div className='absolute right-0 top-0 block'>
-          <Link
-            className='bg-[#3c59fc] border-none text-white text-xs cursor-pointer h-8 outline-none p-4'
-            to=''
-          >
-            <span>+</span>
-            <span>Add to comparision</span>
-          </Link>
-        </div>
+        {page === 'compare' ? (
+          <div></div>
+        ) : (
+          <div className='absolute right-0 top-0 block'>
+            <button
+              className='bg-[#3c59fc] border-none text-white text-xs cursor-pointer h-8 outline-none px-4'
+              to={`${url}`}
+              onClick={() => navigate(url, { state: product })}
+            >
+              <span>+</span>
+              <span>Add to comparision</span>
+            </button>
+          </div>
+        )}
       </div>
     </nav>
   );

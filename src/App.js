@@ -2,7 +2,9 @@
 import 'react-loading-skeleton/dist/skeleton.css';
 import { Routes, Route } from 'react-router-dom';
 import { SkeletonTheme } from 'react-loading-skeleton';
-import { useEffect } from 'react';
+
+//hooks
+import { useAuth } from './hooks/useAuth';
 
 //components
 import { Cpus } from './pages/cpus/Cpus';
@@ -27,9 +29,11 @@ import { Comparision } from './pages/comparision/Comparision';
 import { RequireAuth } from './features/auth/RequireAuth';
 import { ROLES } from './config/roles';
 import { ComparisionType } from './pages/comparision/ComparisionType';
+import { ChangePassword } from './pages/login/ChangePassword';
 
 function App() {
-  
+  const { role } = useAuth();
+
   return (
     <SkeletonTheme baseColor='#f2f2f2' highlightColor='#e6e6e6'>
       <Routes>
@@ -43,11 +47,25 @@ function App() {
         <Route path='/laptops/:laptopName' element={<ProductDetail />} />
         <Route path='/register' element={<Register />} />
         <Route path='/categories' element={<Categories />} />
-        <Route path='/comparisions' element={<ComparisionType />}>
-          <Route path='/comparisions/:productName' element={<Comparision />} />
-        </Route>
+        <Route path='/comparisions' element={<Comparision />}></Route>
+        <Route
+          path='/comparisions/:productName'
+          element={<ComparisionType />}
+        />
         <Route path='/about' element={<About />} />
-        <Route path='/login' element={<Login />} />
+
+        {role === 'Guest' ? (
+          <Route path='/login' element={<Login />} />
+        ) : (
+          <Route
+            element={<RequireAuth allowedRoles={[]} />}
+          >
+            <Route path='/login' element={<Login />} />
+          </Route>
+        )}
+
+        <Route path='/change-password' element={<ChangePassword />} />
+
         {/* Protected Routes */}
         <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
           <Route path='/admin' element={<Admin />}>

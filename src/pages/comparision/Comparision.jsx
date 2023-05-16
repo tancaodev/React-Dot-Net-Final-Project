@@ -1,8 +1,11 @@
 import React from 'react';
 import { DropDownMenu } from '../../components/DropDownMenu';
 import { Footer } from '../../components/Footer';
+import { useLocation } from 'react-router-dom';
 
 export const Comparision = () => {
+  const { state } = useLocation()
+  
   return (
     <div className='block pt-8 h-[100%] m-auto min-h-[100%]'>
       <div className='max-w-[1170px] w-[90%] relative m-auto box-border block'>
@@ -11,7 +14,9 @@ export const Comparision = () => {
             {/* div này để show hình ảnh sản phẩm */}
             <h1 className='text-center'>
               <div>
-                Compare
+                Compare&nbsp;
+                <span>{state.name}</span>
+                &nbsp;
                 <span></span>
               </div>
             </h1>
@@ -31,7 +36,7 @@ export const Comparision = () => {
                     <div className='border rounded-2xl'>
                       <div className='m-auto max-w-[320px] w-[100%] p-4 relative text-center'>
                         <img
-                          src='https://images.versus.io/objects/google-pixel-6.front.variety.1634674732794.jpg'
+                          src={state.image}
                           alt='/'
                           className='w-[160px] h-[320px] m-auto block'
                         />

@@ -38,7 +38,6 @@ export const Laptops = () => {
   useEffect(() => {
     // Fetch phones with selected sorting option
     const url_sort = `https://localhost:44345/api/laptop/get-laptops?sort=${sortOption}`
-    console.log(url_sort);
     axios.get(url_sort)
       .then(response => {
         setLaptops(response.data.data);

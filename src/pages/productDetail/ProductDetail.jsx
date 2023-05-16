@@ -38,7 +38,6 @@ export const ProductDetail = () => {
     try {
       const response = await axios.get(url);
       const data = response.data;
-      console.log(data);
       setProduct(data);
     } catch (error) {
       console.log(error.response);
@@ -53,7 +52,7 @@ export const ProductDetail = () => {
     <div className='h-[100dvh]'>
       <div className='h-16'></div>
       <DropDownMenu />
-      <SectionContainer name={product.name} />
+      <SectionContainer product={product} />
 
       <div className='block pt-8 h-[100%] m-auto min-h-[100%]'>
         <Breadcrumbs page={'product-detail'} />

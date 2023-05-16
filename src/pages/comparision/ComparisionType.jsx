@@ -2,11 +2,17 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { DropDownMenu } from '../../components/DropDownMenu';
 import { Footer } from '../../components/Footer';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { useOutlet } from 'react-router-dom';
+import { useLocation, useOutlet } from 'react-router-dom';
 import axios from 'axios';
+import { SectionContainer } from '../productDetail/SectionContainer';
+import { ProductSpecs } from '../productDetail/ProductSpecs';
+import { ShowTwoProductSpec } from '../productDetail/compare/ShowTwoProductSpec';
 
 export const ComparisionType = () => {
   const outlet = useOutlet();
+
+  //get data from the first product
+  const { state } = useLocation();
 
   //search input
   const [data, setData] = useState([]);
@@ -17,6 +23,9 @@ export const ComparisionType = () => {
   const [selectedProduct, setSelectedProduct] = useState();
   const [showResults, setShowResults] = useState(false);
 
+  //second product 
+  const [product2, setProduct2] = useState();
+
   const url_laptop = 'https://localhost:44345/api/laptop/get-laptops';
   const url_cpu = 'https://localhost:44345/api/chipset/get-chipsets';
   const url_phone = 'https://localhost:44345/api/phone/get-phones';
@@ -25,19 +34,41 @@ export const ComparisionType = () => {
   const cpu_call = axios.get(url_cpu);
   const phone_call = axios.get(url_phone);
 
+  let url = '';
+
+  const checkFirstProductType = () => {
+    if (state.productType === 'cpu') {
+      url = url_cpu;
+    } else if (state.productType === 'phone') {
+      url = url_phone;
+    } else if (state.productType === 'laptop') {
+      url = url_laptop;
+    }
+  };
+  checkFirstProductType();
+
   const fetchData = async () => {
-    Promise.all([laptop_call, cpu_call, phone_call])
-      .then((responses) => {
-        const list_data = responses[0].data.data.concat(
-          responses[1].data.data,
-          responses[2].data.data
-        );
-        setData(list_data);
-        setResults(list_data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    try {
+      const response = await axios.get(url);
+      const data = response.data;
+      setData(data.data);
+      setResults(data.data);
+    } catch (error) {
+      console.log(error.response);
+    }
+
+    // Promise.all([laptop_call, cpu_call, phone_call])
+    //   .then((responses) => {
+    //     const list_data = responses[0].data.data.concat(
+    //       responses[1].data.data,
+    //       responses[2].data.data
+    //     );
+    //     setData(list_data);
+    //     setResults(list_data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.message);
+    //   });
   };
 
   //fetch data from api
@@ -60,11 +91,11 @@ export const ComparisionType = () => {
   //   if (results.length <= 0) setShowResults(false);
   // }, [results]);
 
-  //make searchText has data from onClick or enter 
+  //make searchText has data from onClick or enter
   useEffect(() => {
     if (selectedProduct) {
       setSearchText(selectedProduct.name);
-    } 
+    }
   }, [selectedProduct]);
 
   //move up and down, escape and enter button event
@@ -104,13 +135,13 @@ export const ComparisionType = () => {
   //when user focus on input show view
   const handleShow = () => {
     setShowResults(true);
-  }
+  };
 
   //when user pick item
   const handleSelection = (selectedIndex) => {
     const selectedItem = results[selectedIndex];
     if (!selectedItem) return resetSearchComplete();
-    setSelectedProduct(selectedItem)
+    setSelectedProduct(selectedItem);
     resetSearchComplete();
   };
 
@@ -137,25 +168,121 @@ export const ComparisionType = () => {
     setResults(filteredValue);
   };
 
+  //this function used to render image for each product type
+  const renderImage = ({ type, image }) => {
+    if (type === 'phone') {
+      return (
+        <div className='h-[100%] m-auto max-w-[320px] relative w-[100%] text-center p-4'>
+          <img
+            src={image}
+            alt='/'
+            className='w-[160px] h-[320px] m-auto block'
+          />
+        </div>
+      );
+    } else if (type === 'cpu') {
+      return (
+        <div className='h-[320px] m-auto max-w-[320px] relative w-[100%] text-center p-4'>
+          <img src={image} alt='/' className='flex h-[100%] w-[100%]' />
+        </div>
+      );
+    } else if (type === 'laptop') {
+      return (
+        <div className='h-[100%] m-auto max-w-[320px] relative w-[100%] text-center p-4'>
+          <img src={image} alt='/' className='h-[300px] object-contain' />
+        </div>
+      );
+    }
+  };
+
+  const fetchProduct = () => {
+    //change spacing on url from '%20' to '-'
+    let productName = selectedProduct.name;
+
+    const localizeName = (name) => {
+      if (!name) return;
+      let locallize_name = name.replace(/\s+/g, '%20');
+      return locallize_name;
+    };
+
+    let type = '';
+
+    const getType = () => {
+      if (state.productType === 'phone') type = 'phone';
+      if (state.productType === 'cpu') type = 'chipset';
+      if (state.productType === 'laptop') type = 'laptop';
+    };
+
+    getType()
+
+    const url_name = localizeName(productName);
+
+    const url = `https://localhost:44345/api/${type}/get-${type}-by-name/${url_name}`;
+
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(url);
+        const data = response.data;
+        setProduct2(data)
+      } catch (error) {
+        console.log(error.response);
+      }
+    };
+    fetchData()
+  };
+
   return (
     <div className='h-[100dvh]'>
       <div className='h-16'></div>
       <DropDownMenu />
+      <SectionContainer product={''} page={'compare'} />
       <div className='block pt-8 h-[100%] m-auto min-h-[100%]'>
         <Breadcrumbs page={'product-detail'} />
-        <div className='max-w-[1170px] w-[90%] relative m-auto box-border block'>
+        <div
+          id='overviews'
+          className='max-w-[1170px] w-[90%] relative m-auto box-border block pt-24'
+        >
           <div>
             <div>
-              {/* div này để show hình ảnh sản phẩm */}
               <h1 className='text-center'>
                 <div>
-                  Compare
-                  <span></span>
+                  Compare&nbsp;
+                  <span>{state.name}</span>
+                  &nbsp;vs&nbsp;
+                  {selectedProduct ? (
+                    <span>{selectedProduct.name}</span>
+                  ) : (
+                    <span></span>
+                  )}
                 </div>
               </h1>
 
               <div className='flex'>
                 <div className='block basis-0 flex-grow flex-shrink p-3'></div>
+
+                <div className='block basis-0 flex-grow flex-shrink p-3 w-[25%]'>
+                  <div className='w-[100%] mb-4 relative '>
+                    <input
+                      value={state.name}
+                      type='text'
+                      placeholder={'Product name'}
+                      className='w-[100%] border-2 rounded-[10px] block p-[6px_28px_6px_12px] 
+                      bg-gradient-to-r from-[#3c59fc] to-[#7600e0] text-white'
+                      readOnly
+                    />
+                  </div>
+                  <div className='block float-left h-auto w-[100%]'>
+                    <div className='block'>
+                      <div className='border bg-white rounded-2xl'>
+                        {renderImage({
+                          type: state.productType,
+                          image: state.image,
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div className='block basis-0 flex-grow flex-shrink p-3 w-[25%]'>
                   <div
                     tabIndex={1}
@@ -169,10 +296,11 @@ export const ComparisionType = () => {
                       value={searchText}
                       type='text'
                       placeholder='Search your product'
-                      className='w-[100%] border-2 rounded-[10px] block p-[6px_28px_6px_12px]'
+                      className='w-[100%] border-2 rounded-[10px] block p-[6px_28px_6px_12px]
+                      bg-gradient-to-r from-[#ff5631] to-[#ff164b] text-white'
                     />
                     {showResults && (
-                      <div className='absolute mt-1 w-[100%] p-2 shadow-lg rounded-bl rounded-br max-h-56 overflow-y-auto bg-white'>
+                      <div className='z-10 absolute mt-1 w-[100%] p-2 shadow-lg rounded-bl rounded-br max-h-56 overflow-y-auto bg-white'>
                         <ul>
                           {results.length === 0 ? (
                             <h1>Can't find product</h1>
@@ -181,7 +309,9 @@ export const ComparisionType = () => {
                               return (
                                 <div
                                   key={index}
-                                  onMouseDown={() => handleSelection(index)}
+                                  onMouseDown={() => {
+                                    handleSelection(index);
+                                  }}
                                   ref={
                                     index === focusedIndex
                                       ? resultContainer
@@ -205,59 +335,41 @@ export const ComparisionType = () => {
                     )}
                   </div>
 
-                  <div className='hidden float-left h-auto w-[100%]'>
+                  <div className='float-left h-auto w-[100%]'>
                     <div className='block'>
                       <div className='border rounded-2xl'>
-                        <div className='m-auto max-w-[320px] w-[100%] p-4 relative text-center'>
-                          <img
-                            src='https://images.versus.io/objects/google-pixel-6.front.variety.1634674732794.jpg'
-                            alt='/'
-                            className='w-[160px] h-[320px] m-auto block'
-                          />
-                        </div>
+                        {/* {renderImage()} */}
+                        {selectedProduct ? (
+                          renderImage({
+                            type: state.productType,
+                            image: selectedProduct.image,
+                          })
+                        ) : (
+                          <div></div>
+                        )}
                       </div>
                     </div>
                   </div>
-                </div>
-
-                <div className='block basis-0 flex-grow flex-shrink p-3 w-[25%]'>
-                  <div className='w-[100%] mb-4 relative '>
-                    <input
-                      type='text'
-                      placeholder='Product name'
-                      className='w-[100%] border-2 rounded-[10px] block p-[6px_28px_6px_12px]'
-                    />
-                  </div>
-                  <div className='block float-left h-auto w-[100%]'>
-                    <div className='block'>
-                      <div className='border bg-white rounded-2xl'>
-                        <div className='h-[100%] m-auto max-w-[320px] relative w-[100%] text-center p-4'>
-                          <img
-                            src='https://images.versus.io/objects/amd-ryzen-threadripper-pro-3995wx.front.variety.1616077215068.jpg'
-                            alt='/'
-                            className='w-[160px] h-[320px] m-auto block'
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className='block invisible'>
-              <div>
-                <div className='block'>
-                  <p>Thông tin cơ bản:</p>
-                </div>
-
-                <div className='overflow-hidden rounded-lg border block'>
-                  <table className='w-[100%] h-[100dvh]'></table>
+                  
                 </div>
               </div>
             </div>
           </div>
+          <div className='text-right'>
+            <button
+              className='border-2 p-4 mr-4 mb-4 bg-purple-400 hover:bg-blue-500 hover:text-white'
+              onClick={fetchProduct}
+            >
+              Compare
+            </button>
+          </div>
         </div>
+        <ShowTwoProductSpec
+          product1={state}
+          product2={product2 ? product2 : {}}
+          type={state.productType}
+        />
+
         {/* <div className='max-w-[1170px] w-[90%] relative m-auto box-border block'>
           <div>
             <div>

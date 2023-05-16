@@ -20,5 +20,5 @@ export const useAuth = () => {
 
     return { username, role, status, isAdmin, isUser };
   }
-  return { username: '', role: [], isAdmin, isUser, status };
+  return { username: '', role: 'Guest', isAdmin, isUser, status };
 };
