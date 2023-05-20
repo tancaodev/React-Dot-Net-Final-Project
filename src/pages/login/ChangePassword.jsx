@@ -4,52 +4,73 @@ import { useNavigate } from 'react-router-dom';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 export const ChangePassword = () => {
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmNewPassword, setConfirmNewPassword] = useState('')
+  const [errors, setError] = useState({});
   
+  let navigate = useNavigate();
+
   const handleInputChange = (e) => {
     const { id, value } = e.target;
-    if (id === 'email') {
-      setEmail(value);
-    }
+   
     if (id === 'password') {
       setPassword(value);
     }
+    if (id === 'newPassword') {
+      setNewPassword(value);
+    }
+    if (id === 'confirmNewPassword') {
+      setNewPassword(value);
+    }
   };
 
-  const url = 'https://localhost:44345/api/authenticate/login';
+  const url = 'https://localhost:44345/api/authenticate/change-password';
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    let user = {
-      email: email,
-      password: password,
+    let user_password = {
+      old_password: password,
+      new_password: newPassword,
+      confirm_new_password: ''
     };
 
-    login(user);
+    changePassword(user_password);
   };
 
-  const login = async (user) => {
+  const handleError = (error) => {
+    let errors = {
+      old_password: error.Email || '',
+      new_password: error.Password || '',
+      confirm_new_password: '',
+      error: '',
+    };
+
+    if (confirmNewPassword === '') {
+      errors.confirm_new_password = 'The Confirm Password field is required';
+    }
+
+    if (confirmNewPassword !== newPassword) {
+      errors.confirm_new_password = 'Confirm new password must be same as new password';
+    }
+
+    setError(errors);
+  }
+
+  const changePassword = async (user) => {
     try {
       await axios.post(url, user).then((response) => {
         localStorage.setItem('jwtToken', response.data.token);
         toHomepage();
       });
     } catch (error) {
-      console.log(error.response.data.errors[0]);
+      handleError(error.response.data.errors)
     }
   };
 
-  let navigate = useNavigate();
-
   const toHomepage = () => {
     let path = `/`;
-    navigate(path);
-  };
-
-  const toRegister = () => {
-    let path = `/register`;
     navigate(path);
   };
 
@@ -77,7 +98,7 @@ export const ChangePassword = () => {
             className='rounded-2xl'
           />
         </div>
-        {/* Login Form */}
+        {/* Change Password Form */}
         <div className='md:w-1/2 md:px-16 m-4'>
           <h2 className='font-bold text-2xl text-center'>CHANGE PASSWORD</h2>
           <p className='text-sm mt-4 text-center'>
@@ -88,11 +109,10 @@ export const ChangePassword = () => {
             <div className='relative my-4 border-b-2 focus-within:border-blue-500'>
               <input
                 className='block w-full appearance-none focus:outline-none'
-                type='email'
-                name='studentID'
+                type='password'
                 placeholder=' '
-                id='email'
-                value={email}
+                id='password'
+                value={password}
                 onChange={(e) => handleInputChange(e)}
               />
               <label className='absolute top-0 duration-300 origin-0 pointer-events-none text-[#5B5656]'>
@@ -103,10 +123,10 @@ export const ChangePassword = () => {
               <input
                 className='block w-full appearance-none focus:outline-none'
                 type='password'
-                name='password'
+                name='new password'
                 placeholder=' '
-                id='password'
-                value={password}
+                id='newPassword'
+                value={newPassword}
                 onChange={(e) => handleInputChange(e)}
               />
               <label className='absolute top-0 duration-300 origin-0 pointer-events-none text-[#5B5656]'>
@@ -120,16 +140,14 @@ export const ChangePassword = () => {
                 type='password'
                 name='password'
                 placeholder=' '
-                id='password'
-                value={password}
+                id='confirmNewPassword'
+                value={confirmNewPassword}
                 onChange={(e) => handleInputChange(e)}
               />
               <label className='absolute top-0 duration-300 origin-0 pointer-events-none text-[#5B5656]'>
                 Confirm Password
               </label>
             </div>
-
-            
 
             <button
               type='button'

@@ -14,7 +14,7 @@ export const Memory = ({ product, type }) => {
   else if (product.ramVersion === 'DDR3') ramVersion = 3
 
   const memoryComponent = () => {
-    if (type === 'phone' || type === 'laptop') {
+    if (type === 'smartphones' || type === 'laptops') {
       return (        
         <div className='flex flex-wrap h-[80%]'>
           <Properties 

@@ -1,16 +1,21 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { AiOutlineArrowLeft } from 'react-icons/ai';
+import { ImWarning } from 'react-icons/im';
 
 export const Register = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [gender, setGender] = useState('');
+  const [gender, setGender] = useState('male');
   const [email, setEmail] = useState('');
   const [userName, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState(''); 
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [errors, setError] = useState({});
+
+  let navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -54,17 +59,48 @@ export const Register = () => {
     addNewUser(newUser);
   };
 
+  const handleError = (error) => {
+    let errors = {
+      firstName: error.FirstName || '',
+      lastName: error.LastName || '',
+      email: error.Email || '',
+      userName: error.UserName || '',
+      password: error.Password || '',
+      confirmPassword: '',
+      error: '',
+    };
+
+    if (confirmPassword === '') {
+      errors.confirmPassword = 'The Confirm Password field is required';
+    }
+
+    if (confirmPassword !== password) {
+      errors.confirmPassword = 'Confirm password must be same as password';
+    }
+
+    if (
+      error.FirstName === undefined &&
+      error.LastName === undefined &&
+      error.Email === undefined &&
+      error.UserName === undefined &&
+      error.Password === undefined
+    ) {
+      errors.error = error;
+    }
+
+    setError(errors);
+  };
+
   const addNewUser = async (newUser) => {
     try {
       await axios.post(url, newUser).then((response) => {
         toLogin();
       });
     } catch (error) {
-      console.log(error.response.data.errors[0]);
+      handleError(error.response.data.errors);
     }
   };
 
-  let navigate = useNavigate();
 
   const toLogin = () => {
     let path = `/login`;
@@ -127,7 +163,7 @@ export const Register = () => {
                 Last Name
               </label>
             </div>
-            <div className='relative mt-4 focus-within:border-blue-500 w-[100%]'>
+            <div className='relative mt-2 mb-3 focus-within:border-blue-500 w-[100%]'>
               <label className='absolute top-0 duration-300 origin-0 pointer-events-none text-[#5B5656]'>
                 Gender
               </label>
@@ -139,12 +175,11 @@ export const Register = () => {
                 value={gender}
                 onChange={(e) => handleInputChange(e)}
               >
-                <option value=''>Please select one…</option>
-                <option value='female'>Female</option>
                 <option value='male'>Male</option>
+                <option value='female'>Female</option>
               </select>
             </div>
-            <div className='relative mt-4 border-b-2 focus-within:border-blue-500'>
+            <div className='relative border-b-2 focus-within:border-blue-500'>
               <input
                 className='block w-full appearance-none focus:outline-none'
                 type='email'
@@ -200,6 +235,32 @@ export const Register = () => {
                 Confirm Password
               </label>
             </div>
+
+            {Object.keys(errors).length > 0 ? (
+              <div className='flex justify-start items-center bg-red-100 rounded-lg p-4'>
+                <span className='items-center'>
+                  <ImWarning
+                    size={20}
+                    className='text-red-500 mr-2 align-text-bottom'
+                  />
+                </span>
+                <div className='text-red-500 max-w-[250px] w-full text-xs'>
+                  {errors.firstName ? <p>{errors.firstName[0]}</p> : <></>}
+                  {errors.lastName ? <p>{errors.lastName[0]}</p> : <></>}
+                  {errors.email ? <p>{errors.email[0]}</p> : <></>}
+                  {errors.userName ? <p>{errors.userName[0]}</p> : <></>}
+                  {errors.password ? <p>{errors.password[0]}</p> : <></>}
+                  {errors.confirmPassword ? (
+                    <p>{errors.confirmPassword}</p>
+                  ) : (
+                    <></>
+                  )}
+                  {errors.error ? <p>{errors.error}</p> : <></>}
+                </div>
+              </div>
+            ) : (
+              <div className='hidden'></div>
+            )}
 
             <button
               type='button'

@@ -26,7 +26,7 @@ export const ShowTwoProductSpec = ({ product1, product2, type }) => {
               <DisplayCompare product={product1} product2={product2 ? product2 : {}}/>
               <MemoryCompare product={product1} type={type} product2={product2 ? product2 : {}}/>
               <PerformanceCompare product={product1} product2={product2 ? product2 : {}}/>
-              <CamerasCompare product={product1} product2={product2 ? product2 : {}}/>
+              {/* <CamerasCompare product={product1} product2={product2 ? product2 : {}}/> */}
               <BatteryCompare product={product1} product2={product2 ? product2 : {}}/>
               <FeaturesCompare product={product1} background={' '} product2={product2 ? product2 : {}}/>
             </section>

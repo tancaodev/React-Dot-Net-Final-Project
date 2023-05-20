@@ -9,13 +9,13 @@ export const Design = ({ product, type }) => {
     return ((value / max) * 100).toFixed(0)
   };
 
-  const productWeight = type === 'laptop'? `${product.weight}kg` : `${product.weight}g`
+  const productWeight = type === 'laptops'? `${product.weight}kg` : `${product.weight}g`
   
-  const productWeightLimit = type === 'laptop'? 8.6  : 570
+  const productWeightLimit = type === 'laptops'? 8.6  : 570
 
-  const productHeightLimit = type === 'laptop'? 380  : 196.8
+  const productHeightLimit = type === 'laptops'? 380  : 196.8
 
-  const productWidthLimit = type === 'laptop'? 530  : 254
+  const productWidthLimit = type === 'laptops'? 530  : 254
 
   return (
     <div className='block box-border p-[64px_0_32px]'>

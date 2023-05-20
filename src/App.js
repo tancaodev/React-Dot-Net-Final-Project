@@ -1,6 +1,6 @@
 //libraries
 import 'react-loading-skeleton/dist/skeleton.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { SkeletonTheme } from 'react-loading-skeleton';
 
 //hooks
@@ -30,6 +30,7 @@ import { RequireAuth } from './features/auth/RequireAuth';
 import { ROLES } from './config/roles';
 import { ComparisionType } from './pages/comparision/ComparisionType';
 import { ChangePassword } from './pages/login/ChangePassword';
+import { NotFound } from './pages/404';
 
 function App() {
   const { role } = useAuth();
@@ -48,18 +49,18 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/categories' element={<Categories />} />
         <Route path='/comparisions' element={<Comparision />}></Route>
-        <Route
-          path='/comparisions/:productName'
-          element={<ComparisionType />}
-        />
+        <Route path='/comparisions/:product1' element={<ComparisionType />}>
+          {/* <Route
+            path='/comparisions/:product1-vs-product2'
+            element={<Comparision />}
+          /> */}
+        </Route>
         <Route path='/about' element={<About />} />
 
         {role === 'Guest' ? (
           <Route path='/login' element={<Login />} />
         ) : (
-          <Route
-            element={<RequireAuth allowedRoles={[]} />}
-          >
+          <Route element={<RequireAuth allowedRoles={[]} />}>
             <Route path='/login' element={<Login />} />
           </Route>
         )}
@@ -80,6 +81,9 @@ function App() {
           </Route>
         </Route>
         {/* End Protected Routes */}
+
+        <Route path='*' element={<Navigate to='/404' replace />} />
+        <Route path='/404' element={<NotFound />} />
       </Routes>
     </SkeletonTheme>
   );

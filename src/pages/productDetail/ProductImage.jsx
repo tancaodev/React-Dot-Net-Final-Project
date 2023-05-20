@@ -2,19 +2,19 @@ import { ProductTitle } from './ProductTitle';
 
 export const ProductImage = ({ name, image, type }) => {
   const renderImage = () => {
-    if (type === 'phone') {
+    if (type === 'smartphones') {
       return (
         <div className='h-[320px] m-auto max-w-[320px] relative w-[100%] text-center'>
           <img src={image} alt='/' className='w-[160px] h-full m-auto block' />
         </div>
       );
-    } else if (type === 'cpu') {
+    } else if (type === 'cpus') {
       return (
         <div className='h-[320px] m-auto max-w-[320px] relative w-[100%] text-center'>
           <img src={image} alt='/' className='flex h-[100%] w-[100%]' />
         </div>
       );
-    } else if (type === 'laptop') {
+    } else if (type === 'laptops') {
       return (
         <div className='h-[320px] m-auto max-w-[320px] relative w-[100%] text-center'>
           <img src={image} alt='/' className='h-[300px] object-contain p-2'/>

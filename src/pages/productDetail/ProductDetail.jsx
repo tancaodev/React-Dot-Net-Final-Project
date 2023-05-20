@@ -10,43 +10,56 @@ import { SectionContainer } from './SectionContainer';
 import { Footer } from '../../components/Footer';
 
 export const ProductDetail = () => {
-  const { state } = useLocation();
-  // const location = useLocation();
-  // console.log(location);
-
-  // const array = location.pathname.split('/')
-  // console.log(array[2]);
-  // const name = array[2]
-  // console.log(name);
-  const getProduct = state.cpu || state.phone || state.laptop || {}; // <-- unpack the item from state
-  const productName = encodeURIComponent(getProduct.name);
-  const type = getProduct.type;
-
   //call api get data from product name
   const [product, setProduct] = useState([]);
 
-  let url = '';
-  if (type === 'cpu') {
-    url = `https://localhost:44345/api/chipset/get-chipset-by-name/${productName}`;
-  } else if (type === 'phone') {
-    url = `https://localhost:44345/api/phone/get-phone-by-name/${productName}`;
-  } else if (type === 'laptop') {
-    url = `https://localhost:44345/api/laptop/get-laptop-by-name/${productName}`;
-  }
+  const location = useLocation();
+  const arr = location.pathname.split('/').filter((item) => item !== '');
+  let type = arr[0];
+  let productName = encodeURIComponent(arr[1]);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(url);
-      const data = response.data;
-      setProduct(data);
-    } catch (error) {
-      console.log(error.response);
-    }
+  //for cpu
+  function replaceDash(str) {
+    // Sử dụng biểu thức chính quy để tìm kiếm các mẫu phù hợp
+    const regex = /(?<!i\d+)-/g;
+  
+    // Thực hiện thay thế dấu "-" thành "%20", trừ các trường hợp đã xác định
+    return str.replace(regex, '%20');
+  } 
+  let cpuName = replaceDash(productName);
+
+  //for phone and laptop
+  const localizeName = (name) => {
+    if (!name) return;
+    let locallize_name = name.replace(/-/g, '%20');
+    return locallize_name;
   };
 
+  const url_product_name = localizeName(productName);
+
+  let url = '';
+
+  if (type === 'cpus') {
+    url = `https://localhost:44345/api/chipset/get-chipset-by-name/${cpuName}`;
+  } else if (type === 'smartphones') {
+    url = `https://localhost:44345/api/phone/get-phone-by-name/${url_product_name}`;
+  } else if (type === 'laptops') {
+    url = `https://localhost:44345/api/laptop/get-laptop-by-name/${url_product_name}`;
+  }
+
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(url);
+        const data = response.data;
+        setProduct(data);
+      } catch (error) {
+        console.log(error.response);
+      }
+    };
+
     fetchData();
-  }, []);
+  }, [url]);
 
   return (
     <div className='h-[100dvh]'>

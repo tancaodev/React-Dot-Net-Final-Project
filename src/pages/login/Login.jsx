@@ -1,12 +1,20 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+//icons
 import { AiOutlineArrowLeft } from 'react-icons/ai';
+import { ImWarning } from 'react-icons/im';
+
+//validation
 
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
+  const [errors, setError] = useState({});
+
+  let navigate = useNavigate();
+
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     if (id === 'email') {
@@ -21,7 +29,6 @@ export const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     let user = {
       email: email,
       password: password,
@@ -30,22 +37,36 @@ export const Login = () => {
     login(user);
   };
 
+  const handleError = (error) => {
+    let errors = {
+      email: error.Email || '',
+      password: error.Password || '',
+      error: '',
+    };
+
+    if (error.Email === undefined && error.Password === undefined) {
+      errors.error = error;
+    }
+
+    setError(errors);
+  }
+
   const login = async (user) => {
     try {
       await axios.post(url, user).then((response) => {
+        console.log(response);
         localStorage.setItem('jwtToken', response.data.token);
         toHomepage();
       });
     } catch (error) {
-      console.log(error.response.data.errors[0]);
+      handleError(error.response.data.errors)
     }
   };
 
-  let navigate = useNavigate();
 
   const toHomepage = () => {
     let path = `/`;
-    navigate(path);
+    navigate(path, { replace: true});
   };
 
   const toRegister = () => {
@@ -114,12 +135,31 @@ export const Login = () => {
               </label>
             </div>
 
-            <div className='mt-3 text-[10px] flex justify-between lg:text-[12px]'>
+            {Object.keys(errors).length > 0 ? (
+              <div className='flex justify-start items-center bg-red-100 rounded-lg p-4'>
+                <span className='items-center'>
+                  <ImWarning
+                    size={20}
+                    className='text-red-500 mr-2 align-text-bottom'
+                  />
+                </span>
+                <div className='text-red-500 max-w-[250px] w-full text-xs'>
+                  {errors.email ? <p>{errors.email[0]}</p> : <></>}
+                  {errors.password ? <p>{errors.password[0]}</p> : <></>}
+                  {errors.error ? <p>{errors.error}</p> : <></>}
+                </div>
+              </div>
+            ) : (
+              <div className='hidden'></div>
+            )}
+
+            <div className='my-4 text-[10px] flex justify-between lg:text-[12px]'>
               <div className='flex text-justify'>
                 <input type='checkbox' className='mr-1' />
                 <span>Remember me</span>
               </div>
-              <a href='#none'>Forgot your password ?</a>
+              <a href='#none' className='transition-all duration-500 hover:text-[13px] hover:leading-none
+              hover:text-blue-500'>Forgot your password ?</a>
             </div>
 
             <button

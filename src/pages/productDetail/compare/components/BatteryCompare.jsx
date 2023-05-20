@@ -5,7 +5,6 @@ import { PropertiesCompare } from './PropertiesCompare';
 import { BsBatteryFull } from 'react-icons/bs';
 
 export const BatteryCompare = ({ product, product2, background }) => {
-  console.log(product2);
   const math = (value, max) => {
     return ((value / max) * 100).toFixed(0)
   };

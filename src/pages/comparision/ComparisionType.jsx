@@ -1,9 +1,10 @@
+import axios from 'axios';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useLocation, useNavigate, useOutlet } from 'react-router-dom';
+
 import { DropDownMenu } from '../../components/DropDownMenu';
 import { Footer } from '../../components/Footer';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { useLocation, useOutlet } from 'react-router-dom';
-import axios from 'axios';
 import { SectionContainer } from '../productDetail/SectionContainer';
 import { ProductSpecs } from '../productDetail/ProductSpecs';
 import { ShowTwoProductSpec } from '../productDetail/compare/ShowTwoProductSpec';
@@ -26,13 +27,11 @@ export const ComparisionType = () => {
   //second product 
   const [product2, setProduct2] = useState();
 
+  let navigate = useNavigate();
+
   const url_laptop = 'https://localhost:44345/api/laptop/get-laptops';
   const url_cpu = 'https://localhost:44345/api/chipset/get-chipsets';
   const url_phone = 'https://localhost:44345/api/phone/get-phones';
-
-  const laptop_call = axios.get(url_laptop);
-  const cpu_call = axios.get(url_cpu);
-  const phone_call = axios.get(url_phone);
 
   let url = '';
 
@@ -45,6 +44,7 @@ export const ComparisionType = () => {
       url = url_laptop;
     }
   };
+
   checkFirstProductType();
 
   const fetchData = async () => {
@@ -56,19 +56,6 @@ export const ComparisionType = () => {
     } catch (error) {
       console.log(error.response);
     }
-
-    // Promise.all([laptop_call, cpu_call, phone_call])
-    //   .then((responses) => {
-    //     const list_data = responses[0].data.data.concat(
-    //       responses[1].data.data,
-    //       responses[2].data.data
-    //     );
-    //     setData(list_data);
-    //     setResults(list_data);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.message);
-    //   });
   };
 
   //fetch data from api
@@ -229,6 +216,24 @@ export const ComparisionType = () => {
       }
     };
     fetchData()
+
+    const routeChange = () => {
+      
+      const localizeName = (name) => {
+        if (!name) return;
+        let locallize_name = name.replace(/ /g, '-');
+        return locallize_name;
+      };
+
+      let product1 = localizeName(state.name)
+      let product2Name = localizeName(product2.name)
+
+      let path = `/comparisions/${product1}-vs-${product2Name}`
+
+      navigate(path)
+    }
+
+    routeChange()
   };
 
   return (
@@ -364,28 +369,12 @@ export const ComparisionType = () => {
             </button>
           </div>
         </div>
-        <ShowTwoProductSpec
+        {/* <ShowTwoProductSpec
           product1={state}
           product2={product2 ? product2 : {}}
           type={state.productType}
-        />
+        /> */}
 
-        {/* <div className='max-w-[1170px] w-[90%] relative m-auto box-border block'>
-          <div>
-            <div>
-              <h1 className='text-center'>
-                <div>
-                  Compare
-                  <span>First Product</span>
-                  versus
-                  <span>Second Product</span>
-                </div>
-              </h1>
-            </div>
-
-            {outlet || <div className='h-[100dvh]'></div>}
-          </div>
-        </div> */}
         <Footer />
       </div>
     </div>

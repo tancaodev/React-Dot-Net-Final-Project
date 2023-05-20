@@ -10,7 +10,7 @@ import { Battery } from './showProductSpecs/Battery';
 
 export const ProductSpecs = ({ product, type }) => {
   const productType = () => {
-    if (type === 'cpu') {
+    if (type === 'cpus') {
       return (
         <section id='specs' className='relative block pt-10'>
           <GeneralInfo product={product} />
@@ -19,7 +19,7 @@ export const ProductSpecs = ({ product, type }) => {
           <Features product={product}/>
         </section>
       );
-    } else if (type === 'phone') {
+    } else if (type === 'smartphones') {
       return (
         <section id='specs' className='relative block pt-10'>
           <Design product={product} />
@@ -31,14 +31,14 @@ export const ProductSpecs = ({ product, type }) => {
           <Features product={product} background={' '}/>
         </section>
       );
-    } else if (type === 'laptop') {
+    } else if (type === 'laptops') {
       return (
         <section id='specs' className='relative block pt-10'>
           <Design product={product} type={type}/>
           <Display product={product} />
           <Memory product={product} type={type}/>
           <Performance product={product}/>
-          <Battery product={product} background={' '}/>
+          <Battery product={product} type={type} background={' '}/>
           <Features product={product}/>
         </section>
       );

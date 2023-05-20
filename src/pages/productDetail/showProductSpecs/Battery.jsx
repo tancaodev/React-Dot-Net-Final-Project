@@ -4,10 +4,14 @@ import { Properties } from './Properties';
 
 import { BsBatteryFull } from 'react-icons/bs';
 
-export const Battery = ({ product, background }) => {
+export const Battery = ({ product, type, background }) => {
   const math = (value, max) => {
     return ((value / max) * 100).toFixed(0)
   };
+
+  const productType = type === 'laptops' ? 'Wh' : 'mAh';
+
+  const valueType = type === 'laptops' ? 99 : 13600;
 
   return (
     <div className={`block box-border p-[64px_0_32px] ${background ? background : 'bg-slate-50'}`}>
@@ -25,9 +29,9 @@ export const Battery = ({ product, background }) => {
         <div className='flex flex-wrap h-[80%]'>
           <Properties 
             type='type' 
-						name={`${product.batteryPower}mAh`} 
-						percent={math(product.batteryPower, 13600)}
-            caption='represents the amount of electrical energy that a battery can store.'/>
+						name={`${product.batteryPower} ${productType}`} 
+						percent={math(product.batteryPower, valueType)}
+            caption='Represents the amount of electrical energy that a battery can store.'/>
         </div>
       </div>
     </div>
