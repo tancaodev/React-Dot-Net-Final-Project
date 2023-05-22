@@ -48,13 +48,11 @@ function App() {
         <Route path='/laptops/:laptopName' element={<ProductDetail />} />
         <Route path='/register' element={<Register />} />
         <Route path='/categories' element={<Categories />} />
-        <Route path='/comparisions' element={<Comparision />}></Route>
-        <Route path='/comparisions/:product1' element={<ComparisionType />}>
-          {/* <Route
-            path='/comparisions/:product1-vs-product2'
-            element={<Comparision />}
-          /> */}
-        </Route>
+        <Route path='/comparisions/:product1' element={<ComparisionType />} />
+        <Route
+          path='/comparisions/:product1/:product2'
+          element={<Comparision />}
+        />
         <Route path='/about' element={<About />} />
 
         {role === 'Guest' ? (

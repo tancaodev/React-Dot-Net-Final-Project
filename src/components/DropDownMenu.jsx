@@ -58,8 +58,8 @@ export const DropDownMenu = () => {
 
           <div className='flex ml-[2em]'>
             <form action='' className='relative'>
-              <input type='text' />
-              <span className='text-black absolute left-1'>Search</span>
+              <input type='text'  placeholder='Search' className='text-black group pl-1'/>
+              {/* <span className='text-black absolute left-1 group-focus:hidden'>Search</span> */}
               <BiSearch
                 size={20}
                 className='search absolute right-1 top-[2px] text-black'
@@ -90,11 +90,11 @@ export const DropDownMenu = () => {
         </div>
 
         <div className='flex items-center'>
-          <div>
+          {/* <div>
             <Link to='/comparisions' className='p-[5px_0] link'>
               COMPARISIONS
             </Link>
-          </div>
+          </div> */}
 
           <div ref={menuRef}>
             {username ? (

@@ -1,13 +1,11 @@
 import React from 'react';
 
-export const PhoneGallery = (props) => {
+export const PhoneGallery = ({ type, products, background }) => {
   return (
-    <div className='max-h-[100dvh] bg-gray-100'>
+    <div className={background}>
       <div id='gallery' className='max-w-[1140px] m-auto w-full px-4 py-16'>
-        <h2 className='text-center text-gray-700 p-4'>
-          Most popular {props.type}
-        </h2>
-        <div className='grid sm:grid-cols-5 gap-4'>
+        <h2 className='text-center text-gray-700 p-4'>Most popular {type}</h2>
+        {/* <div className='grid sm:grid-cols-5 gap-4'>
           <div className='sm:col-span-3 col-span-2 row-span-2 relative'>
             <div className='absolute w-full h-full bg-black/60 text-white text-center cursor-pointer group'>
               <p className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:underline'>
@@ -54,6 +52,71 @@ export const PhoneGallery = (props) => {
               alt='/'
             />
           </div>
+        </div> */}
+
+        <div className='grid sm:grid-cols-5 gap-4'>
+          {products[0] ? (
+            products.map((product, index) => {
+              if (index === 0) {
+                return (
+                  // <div className='sm:col-span-3 col-span-2 row-span-2 relative'>
+                  //   <div className='absolute w-full h-full bg-black/60 text-white text-center cursor-pointer group'>
+                  //     <p className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:underline'>
+                  //       {phone.name}
+                  //     </p>
+                  //   </div>
+                  //   <img
+                  //     className='w-full h-full object-cover shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)]'
+                  //     src={phone.image}
+                  //     alt='/'
+                  //   />
+                  // </div>
+                  <div key={index} className='h-[320px] m-auto max-w-[320px] relative w-[100%] text-center'>
+                    <div className='absolute w-full h-full bg-black/60 text-white text-center cursor-pointer group'>
+                      <p className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:underline'>
+                        {product.name}
+                      </p>
+                    </div>
+                    <img
+                      src={product.image}
+                      alt='/'
+                      className='w-[160px] h-full m-auto block p-4'
+                    />
+                  </div>
+                );
+              } else {
+                return (
+                  <div key={index} className='h-[320px] m-auto max-w-[320px] relative w-[100%] text-center'>
+                    <div className='absolute w-full h-full bg-black/60 text-white text-center cursor-pointer group'>
+                      <p className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:underline'>
+                        {product.name}
+                      </p>
+                    </div>
+                    <img
+                      src={product.image}
+                      alt='/'
+                      className='w-[160px] h-full m-auto block shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)]'
+                    />
+                  </div>
+                  // <div className='relative'>
+                  //   <div className='absolute w-full h-full bg-black/60 text-white text-center cursor-pointer group'>
+                  //     <p className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:underline'>
+                  //       {phone.name}
+                  //     </p>
+                  //   </div>
+
+                  //   <img
+                  //     className='w-full h-full object-cover'
+                  //     src={phone.image}
+                  //     alt='/'
+                  //   />
+                  // </div>
+                );
+              }
+            })
+          ) : (
+            <h1></h1>
+          )}
         </div>
       </div>
     </div>

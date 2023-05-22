@@ -1,19 +1,19 @@
 import axios from 'axios';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { useLocation, useNavigate, useOutlet } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { DropDownMenu } from '../../components/DropDownMenu';
 import { Footer } from '../../components/Footer';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { SectionContainer } from '../productDetail/SectionContainer';
-import { ProductSpecs } from '../productDetail/ProductSpecs';
-import { ShowTwoProductSpec } from '../productDetail/compare/ShowTwoProductSpec';
 
 export const ComparisionType = () => {
-  const outlet = useOutlet();
-
   //get data from the first product
   const { state } = useLocation();
+
+  //get first product name from url
+  // const location = useLocation();
+  // const arr = location.pathname.split('/').filter((x) => x !== '');
 
   //search input
   const [data, setData] = useState([]);
@@ -24,16 +24,32 @@ export const ComparisionType = () => {
   const [selectedProduct, setSelectedProduct] = useState();
   const [showResults, setShowResults] = useState(false);
 
-  //second product 
+  //first product
+  // const [product1, setProduct1] = useState();
+
+  //second product
   const [product2, setProduct2] = useState();
 
   let navigate = useNavigate();
 
+  //use param get first product name from url
+  // let name1 = replaceDash(arr[1]);
+
+  //fetch list product
   const url_laptop = 'https://localhost:44345/api/laptop/get-laptops';
   const url_cpu = 'https://localhost:44345/api/chipset/get-chipsets';
   const url_phone = 'https://localhost:44345/api/phone/get-phones';
 
   let url = '';
+
+  //use to replace '-' to '%20'
+  function replaceDash(str) {
+    // Sử dụng biểu thức chính quy để tìm kiếm các mẫu phù hợp
+    const regex = /(?<!i\d+)-/g;
+
+    // Thực hiện thay thế dấu "-" thành "%20", trừ các trường hợp đã xác định
+    return str.replace(regex, '%20');
+  }
 
   const checkFirstProductType = () => {
     if (state.productType === 'cpu') {
@@ -46,6 +62,17 @@ export const ComparisionType = () => {
   };
 
   checkFirstProductType();
+
+  const getFirstProduct = async () => {
+    try {
+      const response = await axios.get(url);
+      const data = response.data;
+      setData(data.data);
+      setResults(data.data);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
 
   const fetchData = async () => {
     try {
@@ -200,7 +227,7 @@ export const ComparisionType = () => {
       if (state.productType === 'laptop') type = 'laptop';
     };
 
-    getType()
+    getType();
 
     const url_name = localizeName(productName);
 
@@ -210,30 +237,36 @@ export const ComparisionType = () => {
       try {
         const response = await axios.get(url);
         const data = response.data;
-        setProduct2(data)
+        setProduct2(data);
       } catch (error) {
         console.log(error.response);
       }
     };
-    fetchData()
+    fetchData();
 
     const routeChange = () => {
-      
       const localizeName = (name) => {
         if (!name) return;
         let locallize_name = name.replace(/ /g, '-');
         return locallize_name;
       };
 
-      let product1 = localizeName(state.name)
-      let product2Name = localizeName(product2.name)
+      let product1Name = localizeName(state.name);
+      let product2Name = localizeName(selectedProduct.name);
 
-      let path = `/comparisions/${product1}-vs-${product2Name}`
+      let path = `/comparisions/${product1Name}/${product2Name}`;
 
-      navigate(path)
-    }
+      console.log(state.name);
+      console.log(selectedProduct.name);
+      navigate(path, {
+        state: {
+          product1: state.name,
+          product2: selectedProduct.name,
+        },
+      });
+    };
 
-    routeChange()
+    routeChange();
   };
 
   return (
@@ -355,7 +388,6 @@ export const ComparisionType = () => {
                       </div>
                     </div>
                   </div>
-                  
                 </div>
               </div>
             </div>
@@ -369,12 +401,9 @@ export const ComparisionType = () => {
             </button>
           </div>
         </div>
-        {/* <ShowTwoProductSpec
-          product1={state}
-          product2={product2 ? product2 : {}}
-          type={state.productType}
-        /> */}
 
+        {/* {outlet} */}
+        <div className='h-4'></div>
         <Footer />
       </div>
     </div>
