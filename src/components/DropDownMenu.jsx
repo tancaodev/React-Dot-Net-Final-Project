@@ -96,7 +96,7 @@ export const DropDownMenu = () => {
             </Link>
           </div> */}
 
-          <div ref={menuRef}>
+          <div ref={menuRef} className='relative'>
             {username ? (
               <Link
                 id='username'
@@ -113,10 +113,10 @@ export const DropDownMenu = () => {
             <div
               className={`${
                 active
-                  ? 'mt-0 visible opacity-100'
+                  ? 'mt-2 visible opacity-100'
                   : 'invisible mt-32 opacity-0'
-              } absolute top-full border border-black
-          right-32 w-[200px] p-[10px_20px] bg-[#fff] rounded-2xl transition-all duration-500 text-black
+              } absolute -right-2 top-full border border-black
+          w-[200px] p-[10px_20px] bg-[#fff] rounded-2xl transition-all duration-500 text-black
           before:content-[""] before:absolute before:top-[-5px] before:right-[28px] before:w-[20px] 
           before:h-[20px] before:bg-[#fff] before:rotate-45`}
             >
