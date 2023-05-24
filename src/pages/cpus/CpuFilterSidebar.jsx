@@ -2,7 +2,8 @@ import { BsInfoCircle } from 'react-icons/bs';
 import { CgPerformance } from 'react-icons/cg';
 import { HiOutlineChip } from 'react-icons/hi';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
-import { CollapsibleFilter } from '../../components/sidebar/CollapsibleFilter';
+import { CollapsibleSlider } from '../../components/sidebar/CollapsibleSlider';
+import { CollapsibleChecker } from '../../components/sidebar/CollapsibleChecker';
 
 export const CpuFilterSidebar = () => {
   return (
@@ -17,12 +18,12 @@ export const CpuFilterSidebar = () => {
             <span className='text-lg font-semibold'>General Info</span>
           </p>
           <ul className='block'>
-            <CollapsibleFilter type={'type'} />
-            <CollapsibleFilter type={'weight'} />
-            <CollapsibleFilter type={'thermal design power'} />
-            <CollapsibleFilter type={'semiconductor size'} />
-            <CollapsibleFilter type={'CPU temperature'} />
-            <CollapsibleFilter type={'PCIE version'} />
+            <CollapsibleChecker type={'type'} />
+            <CollapsibleChecker type={'CPU socket'} />
+            <CollapsibleSlider type={'thermal design power'} />
+            <CollapsibleSlider type={'semiconductor size'} />
+            <CollapsibleSlider type={'CPU temperature'} />
+            <CollapsibleSlider type={'PCIE version'} />
           </ul>
         </li>
 
@@ -34,9 +35,9 @@ export const CpuFilterSidebar = () => {
             <span className='text-lg font-semibold'>Performance</span>
           </p>
           <ul className='block'>
-            <CollapsibleFilter type={'CPU speed'} />
-            <CollapsibleFilter type={'CPU speed boost'} />
-            <CollapsibleFilter type={'CPU threads'} />
+            <CollapsibleSlider type={'CPU speed'} />
+            <CollapsibleSlider type={'CPU speed boost'} />
+            <CollapsibleSlider type={'CPU threads'} />
           </ul>
         </li>
 
@@ -48,9 +49,9 @@ export const CpuFilterSidebar = () => {
             <span className='text-lg font-semibold'>Memory</span>
           </p>
           <ul className='block'>
-            <CollapsibleFilter type={'RAM speed'} />
-            <CollapsibleFilter type={'DDR memory version'} />
-            <CollapsibleFilter type={'memory channels'} />
+            <CollapsibleSlider type={'RAM speed'} />
+            <CollapsibleSlider type={'DDR memory version'} />
+            <CollapsibleSlider type={'memory channels'} />
           </ul>
         </li>
 

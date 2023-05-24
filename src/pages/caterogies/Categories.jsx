@@ -42,6 +42,28 @@ export const Categories = () => {
             />
           </Box>
         </div>
+
+        <div
+          className='bg-white overflow-hidden transition-all duration-500
+        max-h-0 peer-checked:max-h-[400px]'
+        >
+         <Box className='px-4 pt-2'>
+          {/* <Slider
+            size='small'
+            aria-label='Small'
+            onChange={handleChange}
+          /> */}
+          <Slider
+            size='small'
+            getAriaLabel={() => 'Temperature range'}
+            value={value}
+            onChange={handleChange}
+            valueLabelDisplay='auto'
+            getAriaValueText={valuetext}
+          />
+          <p>{value[0]}</p>
+        </Box>
+        </div>
       </div>
     </div>
   );

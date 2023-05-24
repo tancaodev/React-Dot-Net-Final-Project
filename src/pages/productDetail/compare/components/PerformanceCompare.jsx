@@ -14,6 +14,64 @@ export const PerformanceCompare = ({ product, product2 }) => {
 
   const cpuThread = product.type === 'Server' ? 128 : 32;
 
+  const compareTwoArr = (arr1, arr2) => {
+    const result = [];
+
+    if (arr1 === null || arr2 === null) {
+      if (arr1) {
+        for (let i = 0; i < arr1.length; i++) {
+          const obj = {};
+
+          if (i < arr1.length) {
+            obj.product1 = arr1[i];
+          }
+
+          if (i < arr1.length) {
+            obj.product2 = '';
+          }
+
+          result.push(obj);
+        }
+      }
+      if (arr2) {
+        for (let i = 0; i < arr2.length; i++) {
+          const obj = {};
+
+          if (i < arr2.length) {
+            obj.product2 = arr2[i];
+          }
+
+          if (i < arr2.length) {
+            obj.product1 = '';
+          }
+
+          result.push(obj);
+        }
+      }
+    } else {
+      for (let i = 0; i < Math.max(arr1.length, arr2.length); i++) {
+        const obj = {};
+
+        if (i < arr1.length) {
+          obj.product1 = arr1[i];
+        } else {
+          obj.product1 = '';
+        }
+
+        if (i < arr2.length) {
+          obj.product2 = arr2[i];
+        } else {
+          obj.product2 = '';
+        }
+
+        result.push(obj);
+      }
+    }
+    return result;
+  };
+
+  let compareFeature = compareTwoArr(product.performanceFeatures, product2.performanceFeatures)
+
   return (
     <div className='block box-border p-[64px_0_32px] bg-slate-50'>
       <div className='block m-auto max-w-[1170px] relative w-[calc(100%-152px)]'>
@@ -63,7 +121,8 @@ export const PerformanceCompare = ({ product, product2 }) => {
                   type={feature}
                   product1={product.name}
                   product2={product2.name}
-                />
+                  feature={compareFeature[index]}
+                  />
               );
             })
           ) : product2.performanceFeatures ? (
@@ -74,11 +133,12 @@ export const PerformanceCompare = ({ product, product2 }) => {
                   type={feature}
                   product1={product.name}
                   product2={product2.name}
+                  feature={compareFeature[index]}
                 />
               );
             })
           ) : (
-            <div>Nothing</div>
+            <></>
           )}
         </div>
       </div>

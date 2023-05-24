@@ -15,14 +15,26 @@ export const PropertieFeatureCompare = (props) => {
         </a>
         <div className='block mb-2'>
           <div className='flex '>
-            <p className='text-red-500 m-[0_0_2px] text-sm mr-2'>X</p>
+            <p className='text-red-500 m-[0_0_2px] text-sm mr-2'>
+              {props.feature.product1 === '' ? (
+                <span className='text-red-500'>X</span>
+              ) : (
+                <span className='text-green-500'>✔</span>
+              )}
+            </p>
             <p className='text-sm tracking-[.2px] m-[0_0_2px]'>
               {props.product1}
             </p>
           </div>
 
           <div className='flex '>
-            <p className='text-green-500 m-[0_0_2px] text-sm mr-2'>✔</p>
+            <p className='m-[0_0_2px] text-sm mr-2'>
+              {props.feature.product2 === '' ? (
+                <span className='text-red-500'>X</span>
+              ) : (
+                <span className='text-green-500'>✔</span>
+              )}
+            </p>
             <p className='text-sm tracking-[.2px] m-[0_0_2px]'>
               {props.product2}
             </p>

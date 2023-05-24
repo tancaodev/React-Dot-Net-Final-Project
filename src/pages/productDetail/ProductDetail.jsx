@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
@@ -12,6 +12,7 @@ import { Footer } from '../../components/Footer';
 export const ProductDetail = () => {
   //call api get data from product name
   const [product, setProduct] = useState([]);
+  const [status, setStatus] = useState();
 
   const location = useLocation();
   const arr = location.pathname.split('/').filter((item) => item !== '');
@@ -22,10 +23,10 @@ export const ProductDetail = () => {
   function replaceDash(str) {
     // Sử dụng biểu thức chính quy để tìm kiếm các mẫu phù hợp
     const regex = /(?<!i\d+)-/g;
-  
+
     // Thực hiện thay thế dấu "-" thành "%20", trừ các trường hợp đã xác định
     return str.replace(regex, '%20');
-  } 
+  }
   let cpuName = replaceDash(productName);
 
   //for phone and laptop
@@ -52,9 +53,12 @@ export const ProductDetail = () => {
       try {
         const response = await axios.get(url);
         const data = response.data;
+        setStatus(200);
         setProduct(data);
       } catch (error) {
-        console.log(error.response);
+        if (error.response.status === 404) {
+          setStatus(404);
+        }
       }
     };
 
@@ -62,18 +66,28 @@ export const ProductDetail = () => {
   }, [url]);
 
   return (
-    <div className='h-[100dvh]'>
-      <div className='h-16'></div>
-      <DropDownMenu />
-      <SectionContainer product={product} />
+    <>
+      {status === 404 ? (
+        <Navigate to='/404' />
+      ) : (
+        <div className='h-[100dvh]'>
+          <div className='h-16'></div>
+          <DropDownMenu />
+          <SectionContainer product={product} />
 
-      <div className='block pt-8 h-[100%] m-auto min-h-[100%]'>
-        <Breadcrumbs page={'product-detail'} />
-        <ProductImage name={product.name} image={product.image} type={type} />
+          <div className='block pt-8 h-[100%] m-auto min-h-[100%]'>
+            <Breadcrumbs page={'product-detail'} />
+            <ProductImage
+              name={product.name}
+              image={product.image}
+              type={type}
+            />
 
-        <ProductSpecs product={product} type={type} />
-        <Footer />
-      </div>
-    </div>
+            <ProductSpecs product={product} type={type} />
+            <Footer />
+          </div>
+        </div>
+      )}
+    </>
   );
 };

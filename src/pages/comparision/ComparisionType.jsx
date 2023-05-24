@@ -244,22 +244,31 @@ export const ComparisionType = () => {
         <div className='h-[100dvh]'>
           <div className='h-16'></div>
           <DropDownMenu />
-          <SectionContainer product={''} page={'compare'} />
           <div className='block pt-8 h-[100%] m-auto min-h-[100%]'>
             <Breadcrumbs page={'product-detail'} />
             <div
               id='overviews'
-              className='max-w-[1170px] w-[90%] relative m-auto box-border block pt-24'
+              className='max-w-[1170px] w-[90%] relative m-auto box-border block pt-16'
             >
               <div>
                 <div>
                   <h1 className='text-center'>
                     <div>
                       Compare&nbsp;
-                      <span>{product1.name}</span>
+                      <span
+                        className='text-xl text-transparent bg-clip-text 
+                      bg-gradient-to-r from-[#3c59fc] to-[#7600e0]'
+                      >
+                        {product1.name}
+                      </span>
                       &nbsp;vs&nbsp;
                       {selectedProduct ? (
-                        <span>{selectedProduct.name}</span>
+                        <span
+                          className='text-xl text-transparent bg-clip-text 
+                          bg-gradient-to-r from-[#ff5631] to-[#ff164b]'
+                        >
+                          {selectedProduct.name}
+                        </span>
                       ) : (
                         <span></span>
                       )}
@@ -348,14 +357,16 @@ export const ComparisionType = () => {
                         <div className='block'>
                           <div className='border rounded-2xl'>
                             {/* {renderImage()} */}
-                            {selectedProduct ? (
-                              renderImage({
-                                type: product1.productType,
-                                image: selectedProduct.image,
-                              })
-                            ) : (
-                              <div></div>
-                            )}
+                            {selectedProduct
+                              ? renderImage({
+                                  type: product1.productType,
+                                  image: selectedProduct.image,
+                                })
+                              : renderImage({
+                                  type: product1.productType,
+                                  image:
+                                    'https://cdn2.cellphones.com.vn/x/media/icon/icon-phtb-2.png',
+                                })}
                           </div>
                         </div>
                       </div>
