@@ -16,7 +16,7 @@ export const ProductDetail = () => {
   const location = useLocation();
   const arr = location.pathname.split('/').filter((item) => item !== '');
   let type = arr[0];
-  let productName = encodeURIComponent(arr[1]);
+  let productName = arr[1];
 
   //for cpu
   function replaceDash(str) {

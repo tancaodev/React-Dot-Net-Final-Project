@@ -1,17 +1,18 @@
 import React from 'react';
-import { PropertiesCompare } from './PropertiesCompare';
 
 import { CgPerformance } from 'react-icons/cg';
 
+import { PropertiesCompare } from './PropertiesCompare';
+import { PropertieFeatureCompare } from './PropertieFeatureCompare';
 export const PerformanceCompare = ({ product, product2 }) => {
   const math = (value, max) => {
-    return ((value / max) * 100).toFixed(0)
+    return ((value / max) * 100).toFixed(0);
   };
 
-  const baseCPUSpeed = 5
-  const boostCPUSpeed = product.type === 'Laptop'? 5 : 6
+  const baseCPUSpeed = 5;
+  const boostCPUSpeed = product.type === 'Laptop' ? 5 : 6;
 
-  const cpuThread = product.type === 'Server'? 128 : 32
+  const cpuThread = product.type === 'Server' ? 128 : 32;
 
   return (
     <div className='block box-border p-[64px_0_32px] bg-slate-50'>
@@ -29,37 +30,56 @@ export const PerformanceCompare = ({ product, product2 }) => {
         <div className='flex flex-wrap h-[80%]'>
           <PropertiesCompare
             type='Cpu speed'
-						name={`${product.cpuSpeedBase}GHz`} 
+            name={`${product.cpuSpeedBase}GHz`}
             percent={math(product.cpuSpeedBase, baseCPUSpeed)}
-
-            name2={`${product2.cpuSpeedBase}GHz`} 
+            name2={`${product2.cpuSpeedBase}GHz`}
             percent2={math(product2.cpuSpeedBase, baseCPUSpeed)}
-
             caption='The market that the CPU is designed for'
           />
-          <PropertiesCompare 
-            type='cpu speed boost' 
-						name={`${product.cpuSpeedBoost}GHz`} 
-            percent={math(product.cpuSpeedBoost, boostCPUSpeed)} 
-
-            name2={`${product2.cpuSpeedBoost}GHz`} 
-            percent2={math(product2.cpuSpeedBoost, boostCPUSpeed)} 
-
+          <PropertiesCompare
+            type='cpu speed boost'
+            name={`${product.cpuSpeedBoost}GHz`}
+            percent={math(product.cpuSpeedBoost, boostCPUSpeed)}
+            name2={`${product2.cpuSpeedBoost}GHz`}
+            percent2={math(product2.cpuSpeedBoost, boostCPUSpeed)}
             caption='The CPU can boost to a higher clock speed to increase performance'
           />
           {product.type !== undefined && (
-            <PropertiesCompare 
-              type='cpu threads' 
-              name={`${product.cpuThread}`} 
-              percent={math(product.cpuThread, cpuThread)} 
-
-              name2={`${product2.cpuThread}`} 
-              percent2={math(product2.cpuThread, cpuThread)} 
-
+            <PropertiesCompare
+              type='cpu threads'
+              name={`${product.cpuThread}`}
+              percent={math(product.cpuThread, cpuThread)}
+              name2={`${product2.cpuThread}`}
+              percent2={math(product2.cpuThread, cpuThread)}
               caption='More threads result in faster performance and better multitasking.'
             />
           )}
-          <PropertiesCompare type='performance features' />
+
+          {product.performanceFeatures ? (
+            product.performanceFeatures.map((feature, index) => {
+              return (
+                <PropertieFeatureCompare
+                  key={index}
+                  type={feature}
+                  product1={product.name}
+                  product2={product2.name}
+                />
+              );
+            })
+          ) : product2.performanceFeatures ? (
+            product2.performanceFeatures.map((feature, index) => {
+              return (
+                <PropertieFeatureCompare
+                  key={index}
+                  type={feature}
+                  product1={product.name}
+                  product2={product2.name}
+                />
+              );
+            })
+          ) : (
+            <div>Nothing</div>
+          )}
         </div>
       </div>
     </div>

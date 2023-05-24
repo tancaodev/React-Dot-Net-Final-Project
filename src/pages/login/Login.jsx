@@ -163,7 +163,7 @@ export const Login = () => {
             </div>
 
             <button
-              type='button'
+              type='submit'
               className='mt-3 rounded-lg border-black border p-1 hover:bg-blue-500 hover:text-white'
               onClick={handleSubmit}
             >
@@ -174,6 +174,7 @@ export const Login = () => {
               <p>---------Join with us---------</p>
             </div>
             <button
+            type='button'
               className='mt-3 rounded-lg border-black border p-1 bg-gradient-to-tr from-yellow-500 to-purple-500 text-white hover:bg-gradient-to-tr hover:from-yellow-700 hover:to-purple-700'
               onClick={toRegister}
             >

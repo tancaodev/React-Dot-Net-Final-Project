@@ -23,11 +23,11 @@ export const Comparision = () => {
     return str.replace(regex, '%20');
   }
 
-  let name1 = replaceDash(arr[1]);
-  let name2 = replaceDash(arr[2]);
+  let name1 = replaceDash(arr[2]);
+  let name2 = replaceDash(arr[3]);
 
   let url = `https://localhost:44345/api/chipset/compare-chipsets/${name1}/${name2}`;
-  console.log(url);
+
   useEffect(() => {
     const fetchData = async () => {
       try {

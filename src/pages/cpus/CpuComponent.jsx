@@ -7,6 +7,8 @@ export const CpuComponent = ({ cpu }) => {
   name = name.replace(/\s+/g, '-');
   const url = `/cpus/${name}`;
 
+  const semiconductorSize = cpu.semiconductorSize === 14 ? 14 : 14 - cpu.semiconductorSize;
+
   return (
     <div className='bg-white border-2 rounded-md shadow-md'>
       <Link to={`${url}`} state={{ cpu: { name: cpu.name, type: 'cpu' } }}>
@@ -38,10 +40,10 @@ export const CpuComponent = ({ cpu }) => {
               ></progress>
             </li>
             <li className='py-0 h-8'>
-              <div>Nanomet Number</div>
+              <div>Semiconductor Sỉze</div>
               <progress
                 className='w-[100%] pb-2'
-                value={14 - cpu.semiconductorSize}
+                value={semiconductorSize}
                 max={14}
               ></progress>
             </li>

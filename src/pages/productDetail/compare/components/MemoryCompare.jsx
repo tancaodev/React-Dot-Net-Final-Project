@@ -13,6 +13,10 @@ export const MemoryCompare = ({ product, product2, type }) => {
   if (product.ramVersion === 'DDR5') ramVersion = 5
   else if (product.ramVersion === 'DDR3') ramVersion = 3
 
+  let ramVersion2 = 4
+  if (product2.ramVersion === 'DDR5') ramVersion2 = 5
+  else if (product2.ramVersion === 'DDR3') ramVersion2 = 3
+
   const memoryComponent = () => {
     if (type === 'phone' || type === 'laptop') {
       return (        
@@ -67,7 +71,7 @@ export const MemoryCompare = ({ product, product2, type }) => {
             percent={math(ramVersion, 5)}
 
             name2={product2.ramVersion} 
-            percent2={math(ramVersion, 5)}
+            percent2={math(ramVersion2, 5)}
 
             caption='Newer versions of DDR memory support higher maximum speeds.'
           />

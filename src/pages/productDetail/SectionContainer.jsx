@@ -1,9 +1,14 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Link } from 'react-scroll';
 
 export const SectionContainer = ({ product, page }) => {
+  const location = useLocation();
   const navigate = useNavigate();
+
+  //get type of the product
+  const arr = location.pathname.split('/').filter((item) => item !== '');
+  let type = arr[0];
 
   //change spacing on url from '%20' to '-'
   let productName = product.name;
@@ -15,7 +20,7 @@ export const SectionContainer = ({ product, page }) => {
   };
   const url_name = localizeName(productName);
 
-  const url = `/comparisions/${url_name}`;
+  const url = `/${type}/comparisions/${url_name}`;
 
   return (
     <nav className='block h-8 fixed w-[100%] z-10 shadow-md bg-white'>
@@ -52,7 +57,7 @@ export const SectionContainer = ({ product, page }) => {
             <button
               className='bg-[#3c59fc] border-none text-white text-xs cursor-pointer h-8 outline-none px-4'
               to={`${url}`}
-              onClick={() => navigate(url, { state: product })}
+              onClick={() => navigate(url)}
             >
               <span>+</span>
               <span>Add to comparision</span>

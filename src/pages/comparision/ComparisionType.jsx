@@ -8,12 +8,10 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { SectionContainer } from '../productDetail/SectionContainer';
 
 export const ComparisionType = () => {
-  //get data from the first product
-  const { state } = useLocation();
-
-  //get first product name from url
-  // const location = useLocation();
-  // const arr = location.pathname.split('/').filter((x) => x !== '');
+  //get first product type and name from url
+  const location = useLocation();
+  const arr = location.pathname.split('/').filter((x) => x !== '');
+  let type = arr[0];
 
   //search input
   const [data, setData] = useState([]);
@@ -24,16 +22,20 @@ export const ComparisionType = () => {
   const [selectedProduct, setSelectedProduct] = useState();
   const [showResults, setShowResults] = useState(false);
 
-  //first product
-  // const [product1, setProduct1] = useState();
-
-  //second product
-  const [product2, setProduct2] = useState();
+  // first product
+  const [product1, setProduct1] = useState();
 
   let navigate = useNavigate();
 
   //use param get first product name from url
-  // let name1 = replaceDash(arr[1]);
+  let name1 = replaceDash(arr[2]);
+
+  //fetch first product data from api
+  const api_cpu = `https://localhost:44345/api/chipset/get-chipset-by-name/${name1}`;
+  const api_phone = `https://localhost:44345/api/phone/get-phone-by-name/${name1}`;
+  const api_laptop = `https://localhost:44345/api/laptop/get-laptop-by-name/${name1}`;
+
+  let api_call = '';
 
   //fetch list product
   const url_laptop = 'https://localhost:44345/api/laptop/get-laptops';
@@ -52,43 +54,46 @@ export const ComparisionType = () => {
   }
 
   const checkFirstProductType = () => {
-    if (state.productType === 'cpu') {
+    if (type === 'cpus') {
       url = url_cpu;
-    } else if (state.productType === 'phone') {
+      api_call = api_cpu;
+    } else if (type === 'smartphones') {
       url = url_phone;
-    } else if (state.productType === 'laptop') {
+      api_call = api_phone;
+    } else if (type === 'laptops') {
       url = url_laptop;
+      api_call = api_laptop;
     }
   };
 
   checkFirstProductType();
 
-  const getFirstProduct = async () => {
-    try {
-      const response = await axios.get(url);
-      const data = response.data;
-      setData(data.data);
-      setResults(data.data);
-    } catch (error) {
-      console.log(error.response);
-    }
-  };
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(url);
-      const data = response.data;
-      setData(data.data);
-      setResults(data.data);
-    } catch (error) {
-      console.log(error.response);
-    }
-  };
-
   //fetch data from api
   useEffect(() => {
+    const getFirstProduct = async () => {
+      try {
+        const response = await axios.get(api_call);
+        const data = response.data;
+        setProduct1(data);
+      } catch (error) {
+        console.log(error.response);
+      }
+    };
+
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(url);
+        const data = response.data;
+        setData(data.data);
+        setResults(data.data);
+      } catch (error) {
+        console.log(error.response);
+      }
+    };
+
+    getFirstProduct();
     fetchData();
-  }, []);
+  }, [api_call, url]);
 
   //make focus on div has focusedIndex
   useEffect(() => {
@@ -210,40 +215,6 @@ export const ComparisionType = () => {
   };
 
   const fetchProduct = () => {
-    //change spacing on url from '%20' to '-'
-    let productName = selectedProduct.name;
-
-    const localizeName = (name) => {
-      if (!name) return;
-      let locallize_name = name.replace(/\s+/g, '%20');
-      return locallize_name;
-    };
-
-    let type = '';
-
-    const getType = () => {
-      if (state.productType === 'phone') type = 'phone';
-      if (state.productType === 'cpu') type = 'chipset';
-      if (state.productType === 'laptop') type = 'laptop';
-    };
-
-    getType();
-
-    const url_name = localizeName(productName);
-
-    const url = `https://localhost:44345/api/${type}/get-${type}-by-name/${url_name}`;
-
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(url);
-        const data = response.data;
-        setProduct2(data);
-      } catch (error) {
-        console.log(error.response);
-      }
-    };
-    fetchData();
-
     const routeChange = () => {
       const localizeName = (name) => {
         if (!name) return;
@@ -251,16 +222,14 @@ export const ComparisionType = () => {
         return locallize_name;
       };
 
-      let product1Name = localizeName(state.name);
+      let product1Name = localizeName(product1.name);
       let product2Name = localizeName(selectedProduct.name);
 
-      let path = `/comparisions/${product1Name}/${product2Name}`;
+      let path = `/${type}/comparisions/${product1Name}/${product2Name}`;
 
-      console.log(state.name);
-      console.log(selectedProduct.name);
       navigate(path, {
         state: {
-          product1: state.name,
+          product1: product1.name,
           product2: selectedProduct.name,
         },
       });
@@ -270,142 +239,148 @@ export const ComparisionType = () => {
   };
 
   return (
-    <div className='h-[100dvh]'>
-      <div className='h-16'></div>
-      <DropDownMenu />
-      <SectionContainer product={''} page={'compare'} />
-      <div className='block pt-8 h-[100%] m-auto min-h-[100%]'>
-        <Breadcrumbs page={'product-detail'} />
-        <div
-          id='overviews'
-          className='max-w-[1170px] w-[90%] relative m-auto box-border block pt-24'
-        >
-          <div>
-            <div>
-              <h1 className='text-center'>
+    <>
+      {product1 ? (
+        <div className='h-[100dvh]'>
+          <div className='h-16'></div>
+          <DropDownMenu />
+          <SectionContainer product={''} page={'compare'} />
+          <div className='block pt-8 h-[100%] m-auto min-h-[100%]'>
+            <Breadcrumbs page={'product-detail'} />
+            <div
+              id='overviews'
+              className='max-w-[1170px] w-[90%] relative m-auto box-border block pt-24'
+            >
+              <div>
                 <div>
-                  Compare&nbsp;
-                  <span>{state.name}</span>
-                  &nbsp;vs&nbsp;
-                  {selectedProduct ? (
-                    <span>{selectedProduct.name}</span>
-                  ) : (
-                    <span></span>
-                  )}
-                </div>
-              </h1>
+                  <h1 className='text-center'>
+                    <div>
+                      Compare&nbsp;
+                      <span>{product1.name}</span>
+                      &nbsp;vs&nbsp;
+                      {selectedProduct ? (
+                        <span>{selectedProduct.name}</span>
+                      ) : (
+                        <span></span>
+                      )}
+                    </div>
+                  </h1>
 
-              <div className='flex'>
-                <div className='block basis-0 flex-grow flex-shrink p-3'></div>
+                  <div className='flex'>
+                    <div className='block basis-0 flex-grow flex-shrink p-3'></div>
 
-                <div className='block basis-0 flex-grow flex-shrink p-3 w-[25%]'>
-                  <div className='w-[100%] mb-4 relative '>
-                    <input
-                      value={state.name}
-                      type='text'
-                      placeholder={'Product name'}
-                      className='w-[100%] border-2 rounded-[10px] block p-[6px_28px_6px_12px] 
+                    <div className='block basis-0 flex-grow flex-shrink p-3 w-[25%]'>
+                      <div className='w-[100%] mb-4 relative '>
+                        <input
+                          value={product1.name}
+                          type='text'
+                          placeholder={'Product name'}
+                          className='w-[100%] border-2 rounded-[10px] block p-[6px_28px_6px_12px] 
                       bg-gradient-to-r from-[#3c59fc] to-[#7600e0] text-white'
-                      readOnly
-                    />
-                  </div>
-                  <div className='block float-left h-auto w-[100%]'>
-                    <div className='block'>
-                      <div className='border bg-white rounded-2xl'>
-                        {renderImage({
-                          type: state.productType,
-                          image: state.image,
-                        })}
+                          readOnly
+                        />
+                      </div>
+                      <div className='block float-left h-auto w-[100%]'>
+                        <div className='block'>
+                          <div className='border bg-white rounded-2xl'>
+                            {renderImage({
+                              type: product1.productType,
+                              image: product1.image,
+                            })}
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
 
-                <div className='block basis-0 flex-grow flex-shrink p-3 w-[25%]'>
-                  <div
-                    tabIndex={1}
-                    onBlur={resetSearchComplete}
-                    onKeyDown={handleKeyDown}
-                    className='w-[100%] mb-4 relative'
-                  >
-                    <input
-                      onChange={handleInputChange}
-                      onFocus={handleShow}
-                      value={searchText}
-                      type='text'
-                      placeholder='Search your product'
-                      className='w-[100%] border-2 rounded-[10px] block p-[6px_28px_6px_12px]
+                    <div className='block basis-0 flex-grow flex-shrink p-3 w-[25%]'>
+                      <div
+                        tabIndex={1}
+                        onBlur={resetSearchComplete}
+                        onKeyDown={handleKeyDown}
+                        className='w-[100%] mb-4 relative'
+                      >
+                        <input
+                          onChange={handleInputChange}
+                          onFocus={handleShow}
+                          value={searchText}
+                          type='text'
+                          placeholder='Search your product'
+                          className='w-[100%] border-2 rounded-[10px] block p-[6px_28px_6px_12px]
                       bg-gradient-to-r from-[#ff5631] to-[#ff164b] text-white'
-                    />
-                    {showResults && (
-                      <div className='z-10 absolute mt-1 w-[100%] p-2 shadow-lg rounded-bl rounded-br max-h-56 overflow-y-auto bg-white'>
-                        <ul>
-                          {results.length === 0 ? (
-                            <h1>Can't find product</h1>
-                          ) : (
-                            results.map((data, index) => {
-                              return (
-                                <div
-                                  key={index}
-                                  onMouseDown={() => {
-                                    handleSelection(index);
-                                  }}
-                                  ref={
-                                    index === focusedIndex
-                                      ? resultContainer
-                                      : null
-                                  }
-                                  style={{
-                                    backgroundColor:
-                                      index === focusedIndex
-                                        ? 'rgba(0,0,0,0.1)'
-                                        : '',
-                                  }}
-                                  className={`cursor-pointer hover:bg-black hover:bg-opacity-10 p-2`}
-                                >
-                                  <p>{data.name}</p>
-                                </div>
-                              );
-                            })
-                          )}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className='float-left h-auto w-[100%]'>
-                    <div className='block'>
-                      <div className='border rounded-2xl'>
-                        {/* {renderImage()} */}
-                        {selectedProduct ? (
-                          renderImage({
-                            type: state.productType,
-                            image: selectedProduct.image,
-                          })
-                        ) : (
-                          <div></div>
+                        />
+                        {showResults && (
+                          <div className='z-10 absolute mt-1 w-[100%] p-2 shadow-lg rounded-bl rounded-br max-h-56 overflow-y-auto bg-white'>
+                            <ul>
+                              {results.length === 0 ? (
+                                <h1>Can't find product</h1>
+                              ) : (
+                                results.map((data, index) => {
+                                  return (
+                                    <div
+                                      key={index}
+                                      onMouseDown={() => {
+                                        handleSelection(index);
+                                      }}
+                                      ref={
+                                        index === focusedIndex
+                                          ? resultContainer
+                                          : null
+                                      }
+                                      style={{
+                                        backgroundColor:
+                                          index === focusedIndex
+                                            ? 'rgba(0,0,0,0.1)'
+                                            : '',
+                                      }}
+                                      className={`cursor-pointer hover:bg-black hover:bg-opacity-10 p-2`}
+                                    >
+                                      <p>{data.name}</p>
+                                    </div>
+                                  );
+                                })
+                              )}
+                            </ul>
+                          </div>
                         )}
+                      </div>
+
+                      <div className='float-left h-auto w-[100%]'>
+                        <div className='block'>
+                          <div className='border rounded-2xl'>
+                            {/* {renderImage()} */}
+                            {selectedProduct ? (
+                              renderImage({
+                                type: product1.productType,
+                                image: selectedProduct.image,
+                              })
+                            ) : (
+                              <div></div>
+                            )}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <div className='text-right'>
+                <button
+                  className='border-2 p-4 mr-4 mb-4 bg-purple-400 hover:bg-blue-500 hover:text-white'
+                  onClick={fetchProduct}
+                >
+                  Compare
+                </button>
+              </div>
             </div>
-          </div>
-          <div className='text-right'>
-            <button
-              className='border-2 p-4 mr-4 mb-4 bg-purple-400 hover:bg-blue-500 hover:text-white'
-              onClick={fetchProduct}
-            >
-              Compare
-            </button>
+
+            {/* {outlet} */}
+            <div className='h-4'></div>
+            <Footer />
           </div>
         </div>
-
-        {/* {outlet} */}
-        <div className='h-4'></div>
-        <Footer />
-      </div>
-    </div>
+      ) : (
+        <h1>Please wait</h1>
+      )}
+    </>
   );
 };
